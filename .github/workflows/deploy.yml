@@ -11,13 +11,19 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v2
 
-      - name: Docker build
-        run: |
-          docker logout
-          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-          docker build -t nimble-client .
-          docker tag nimble-client ${{ secrets.DOCKERHUB_USERNAME }}/nimble-client:latest
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/nimble-client:latest
+      - name: Login to Docker hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Docker build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/nimble-client:latest
 
       - name: Get timestamp
         uses: gerred/actions/current-time@master
