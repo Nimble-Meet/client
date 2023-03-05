@@ -13,10 +13,11 @@ jobs:
 
       - name: Docker build
         run: |
+          docker logout
           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker build -t nimble-client .
-          docker tag nimble-client jadenkim5179/nimble-client:latest
-          docker push jadenkim5179/nimble-client:latest
+          docker tag nimble-client ${{ secrets.DOCKERHUB_USERNAME }}/nimble-client:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/nimble-client:latest
 
       - name: Get timestamp
         uses: gerred/actions/current-time@master
