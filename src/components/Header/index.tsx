@@ -2,7 +2,12 @@
 import React from "react";
 import { css } from "@emotion/react";
 import { flexGrid } from "@/emotion/grid";
-import { Typography } from "nimble-nds";
+import { Button, Typography } from "nimble-nds";
+
+const headerStyle = css`
+  background-color: black;
+  padding: 0.5rem 1rem;
+`;
 
 const Header = () => (
   <header
@@ -12,14 +17,15 @@ const Header = () => (
         justifyContent: "space-between",
         alignItems: "center",
       }),
-      {
-        backgroundColor: "black",
-      }
+      headerStyle
     )}
   >
-    <Typography color="gray100" weight="lg" size="xxl">
-      Nimble Meet
-    </Typography>
+    <div>
+      <Typography color="gray100" weight="lg" size="xxl">
+        Nimble Meet
+      </Typography>
+    </div>
+    <Button>Try Free</Button>
   </header>
 );
 
