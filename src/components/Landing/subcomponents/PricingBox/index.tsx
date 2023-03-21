@@ -78,8 +78,8 @@ const PricingBox = ({
         /month
       </Typography>
     </div>
-    <Button size="big" theme="secondary" disabled={disabled}>
-      {disabled ? "Coming soon" : "Buy Now"}
+    <Button size="lg" theme="link" disabled={disabled} fontSize="1rem">
+      {disabled ? "Coming soon.." : "Buy Now"}
     </Button>
   </div>
 );

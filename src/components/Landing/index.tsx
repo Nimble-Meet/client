@@ -83,8 +83,12 @@ const Landing = () => (
               gap: "1.5rem",
             })}
           >
-            <Button>Get Start</Button>
-            <Button>Learn More</Button>
+            <Button theme="link" size="xl" width="10rem" fontSize="1.125rem">
+              Get Start
+            </Button>
+            <Button theme="dark" size="xl" width="10rem" fontSize="1rem">
+              Learn More
+            </Button>
           </div>
         </div>
       </div>

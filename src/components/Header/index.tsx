@@ -6,7 +6,7 @@ import { Button, Typography } from "nimble-nds";
 
 const headerStyle = css`
   background-color: black;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 8rem;
 `;
 
 const Header = () => (
@@ -25,7 +25,9 @@ const Header = () => (
         Nimble Meet
       </Typography>
     </div>
-    <Button>Try Free</Button>
+    <Button theme="dark" size="md">
+      Try Free
+    </Button>
   </header>
 );
 
