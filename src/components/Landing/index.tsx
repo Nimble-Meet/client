@@ -48,13 +48,16 @@ const Landing = () => (
           direction: "column",
           justifyContent: "center",
           alignItems: "flex-start",
+          gap: "1.5rem",
         })}
       >
         <div>
-          <Typography color="gray50" size="xxl" weight="lg">
+          <Typography color="cyan300" size="80px" weight="lg">
             Nimble
-            <br />
-            Meet!
+          </Typography>
+          <br />
+          <Typography color="cyan500" size="80px" weight="lg">
+            Meet !
           </Typography>
         </div>
         <div
@@ -62,14 +65,14 @@ const Landing = () => (
             direction: "column",
             justifyContent: "center",
             alignItems: "flex-start",
-            gap: "1rem",
+            gap: "4rem",
           })}
         >
           <div>
-            <Typography color="gray50" size="xxl" weight="lg">
-              빠르게 미팅을 시작하고,
+            <Typography color="gray500" size="20px" weight="sm">
+              빠르게 미팅을 시작하고, 아이디어를 공유해보세요.
               <br />
-              아이디어를 공유해보세요.
+              Nimble은 어쩌구저쩌구 완벽합니다
             </Typography>
           </div>
           <div
@@ -77,7 +80,7 @@ const Landing = () => (
               direction: "row",
               justifyContent: "center",
               alignItems: "center",
-              gap: "0.5rem",
+              gap: "1.5rem",
             })}
           >
             <Button>Get Start</Button>
@@ -140,7 +143,7 @@ const Landing = () => (
           }
         )}
       >
-        <Typography color="gray50" size="xxl" weight="lg">
+        <Typography color="gray50" size="48px" weight="lg">
           We are compony that has created a
           <br />
           meeting platform for everyone
@@ -177,10 +180,10 @@ const Landing = () => (
           }
         )}
       >
-        <Typography color="gray50" size="xxl" weight="lg">
+        <Typography color="gray50" size="60px" weight="lg">
           Our Pricing
         </Typography>
-        <Typography color="gray500" size="md" weight="lg">
+        <Typography color="gray500" size="24px" weight="lg">
           We offer favorable conditions for your <br />
           comfotable and productive work.
         </Typography>
@@ -206,6 +209,8 @@ const Landing = () => (
             type={pricing.type}
             description={pricing.description}
             benefits={pricing.benefits}
+            price={pricing.price}
+            disabled={pricing.disabled}
           />
         ))}
       </div>
