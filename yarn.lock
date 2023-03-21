@@ -2524,7 +2524,7 @@ __metadata:
     eslint: 8.35.0
     eslint-config-next: 13.2.1
     next: 13.2.1
-    nimble-nds: ^1.2.7
+    nimble-nds: ^1.2.8
     react: 18.2.0
     react-dom: 18.2.0
     react-query: ^3.39.3
@@ -2605,9 +2605,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nimble-nds@npm:^1.2.7":
-  version: 1.2.7
-  resolution: "nimble-nds@npm:1.2.7"
+"nimble-nds@npm:^1.2.8":
+  version: 1.2.8
+  resolution: "nimble-nds@npm:1.2.8"
   dependencies:
     "@babel/runtime": ^7.21.0
     "@emotion/styled": ^11.10.6
@@ -2619,7 +2619,7 @@ __metadata:
     "@react-spring/web": ^9.6.1
     react: ^18.2.0
     react-dom: ^18.2.0
-  checksum: e47d297b4ad38b358f65609249e672d7c5f9bc789fbfa3484f703c8472ef3c199ff0d21c82be9d0484e7acb564a7214516f338e39d314d441189bb692024eb3a
+  checksum: 4024d21a9b01b23cb3c978d25f6a1c02cae8c5b86f4110a0927763e4ef36f4fe6c69f8377e62b0eeac9a583aea75b596bf186fa27364782a9c4bd66a3e0253fd
   languageName: node
   linkType: hard
 

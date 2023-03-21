@@ -21,7 +21,7 @@ const Footer = () => (
       footerStyle
     )}
   >
-    <Typography color="gray100" weight="lg" size="sm">
+    <Typography color="gray100" weight="lg" size="40px">
       footer
     </Typography>
   </footer>

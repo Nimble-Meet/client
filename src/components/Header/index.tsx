@@ -21,7 +21,7 @@ const Header = () => (
     )}
   >
     <div>
-      <Typography color="gray100" weight="lg" size="xxl">
+      <Typography color="gray100" weight="lg" size="40px">
         Nimble Meet
       </Typography>
     </div>
