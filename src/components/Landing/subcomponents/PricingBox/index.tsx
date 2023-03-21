@@ -16,6 +16,8 @@ const PricingBoxStyle = css`
   border-radius: 2rem;
   background-color: black;
   border: 2px solid #393939;
+
+  margin-bottom: 6rem;
 `;
 
 const container = css`
