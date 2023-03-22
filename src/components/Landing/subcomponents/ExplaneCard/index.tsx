@@ -1,8 +1,7 @@
-/** @jsxImportSource @emotion/react */
 import React from 'react';
-import { css } from '@emotion/react';
 
 import { explaneCardStyle, introIconStyle } from './explaneCard.styles';
+
 import { Typography } from 'nimble-nds';
 
 type Props = {
