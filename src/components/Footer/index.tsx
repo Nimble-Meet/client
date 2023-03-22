@@ -34,15 +34,19 @@ const Footer = () => (
         gap: "0.5rem",
       })}
     >
-      <Typography color="gray300" weight="lg" size="16px">
-        (주) Nimble
-      </Typography>
-      <Typography color="gray600" weight="lg" size="12px">
-        경기도 성남시 분당구 판교로 242 PDC A동
-      </Typography>
-      <Typography color="gray600" weight="lg" size="14px">
-        Copyright © 2023 Nimble Inc.
-      </Typography>
+      <Typography color="gray300" weight="lg" size="16px" value="(주) Nimble" />
+      <Typography
+        color="gray600"
+        weight="lg"
+        size="12px"
+        value="경기도 성남시 분당구 판교로 242 PDC A동"
+      />
+      <Typography
+        color="gray600"
+        weight="lg"
+        size="14px"
+        value="Copyright © 2023 Nimble Inc."
+      />
     </div>
     <div
       css={flexGrid({
@@ -53,20 +57,22 @@ const Footer = () => (
       })}
     >
       <div>
-        <Typography color="gray300" weight="lg" size="14px">
-          대표 :{" "}
-        </Typography>
-        <Typography color="gray600" weight="lg" size="14px">
-          NIMBLER
-        </Typography>
+        <Typography color="gray300" weight="lg" size="14px" value="대표 : " />
+        <Typography color="gray600" weight="lg" size="14px" value="Nimbler" />
       </div>
       <div>
-        <Typography color="gray300" weight="lg" size="14px">
-          고객 문의 :{" "}
-        </Typography>
-        <Typography color="gray600" weight="lg" size="14px">
-          nimbleTeam@gmail.com
-        </Typography>
+        <Typography
+          color="gray300"
+          weight="lg"
+          size="14px"
+          value="고객 문의 : "
+        />
+        <Typography
+          color="gray600"
+          weight="lg"
+          size="14px"
+          value="nimbleTeam@gmail.com"
+        />
       </div>
     </div>
     <div
@@ -78,14 +84,20 @@ const Footer = () => (
       })}
     >
       <div>
-        <Typography color="gray300" weight="lg" size="14px">
-          서비스 이용약관
-        </Typography>
+        <Typography
+          color="gray300"
+          weight="lg"
+          size="14px"
+          value="서비스 이용약관"
+        />
       </div>
       <div>
-        <Typography color="gray300" weight="lg" size="14px">
-          개인정보처리방침
-        </Typography>
+        <Typography
+          color="gray300"
+          weight="lg"
+          size="14px"
+          value="개인정보처리방침"
+        />
       </div>
     </div>
   </footer>

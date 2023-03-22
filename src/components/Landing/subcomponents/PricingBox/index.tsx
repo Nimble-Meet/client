@@ -52,33 +52,37 @@ const PricingBox = ({
   <div css={PricingBoxStyle}>
     <div css={container}>
       <div>
-        <Typography color="gray50" size="40px" weight="lg">
-          {type}
-        </Typography>
+        <Typography color="gray50" size="40px" weight="lg" value={type} />
       </div>
       <div>
-        <Typography color="gray500" size="16px" weight="lg">
-          {description}
-        </Typography>
+        <Typography
+          color="gray500"
+          size="16px"
+          weight="lg"
+          value={description}
+        />
       </div>
     </div>
     <div css={benefitsStyle}>
       {benefits.map((benefit) => (
         <div key={benefit}>
-          <Typography color="gray300" size="20px" weight="md">
-            ✔️ {benefit}
-          </Typography>
+          <Typography
+            color="gray300"
+            size="20px"
+            weight="md"
+            value={`✔️ ${benefit}`}
+          />
         </div>
       ))}
     </div>
     <div>
-      <Typography color="gray50" size="32px" weight="lg">
-        ${price}
-      </Typography>
-      <Typography color="gray500" size="20px" weight="lg">
-        {" "}
-        /month
-      </Typography>
+      <Typography
+        color="gray50"
+        size="32px"
+        weight="lg"
+        value={`$ ${price} `}
+      />
+      <Typography color="gray500" size="20px" weight="lg" value="/month" />
     </div>
     <Button size="lg" theme="link" disabled={disabled} fontSize="1rem">
       {disabled ? "Coming soon.." : "Buy Now"}

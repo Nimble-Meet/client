@@ -52,13 +52,12 @@ const Landing = () => (
         })}
       >
         <div>
-          <Typography color="cyan300" size="80px" weight="lg">
-            Nimble
-          </Typography>
-          <br />
-          <Typography color="cyan500" size="80px" weight="lg">
-            Meet !
-          </Typography>
+          <Typography
+            color="cyan300"
+            size="80px"
+            weight="lg"
+            value={`Nimble\nMeet !`}
+          />
         </div>
         <div
           css={flexGrid({
@@ -69,11 +68,12 @@ const Landing = () => (
           })}
         >
           <div>
-            <Typography color="gray500" size="20px" weight="sm">
-              빠르게 미팅을 시작하고, 아이디어를 공유해보세요.
-              <br />
-              Nimble은 어쩌구저쩌구 완벽합니다
-            </Typography>
+            <Typography
+              color="gray500"
+              size="20px"
+              weight="sm"
+              value={`빠르게 미팅을 시작하고, 아이디어를 공유해보세요.\nNimble은 어쩌구저쩌구 완벽합니다.`}
+            />
           </div>
           <div
             css={flexGrid({
@@ -147,11 +147,12 @@ const Landing = () => (
           }
         )}
       >
-        <Typography color="gray50" size="48px" weight="lg">
-          We are compony that has created a
-          <br />
-          meeting platform for everyone
-        </Typography>
+        <Typography
+          color="gray50"
+          size="48px"
+          weight="lg"
+          value={`We are compony that has created a\nmeeting platform for everyone`}
+        />
       </div>
       <div css={imageStyle2} />
     </article>
@@ -184,13 +185,18 @@ const Landing = () => (
           }
         )}
       >
-        <Typography color="gray50" size="60px" weight="lg">
-          Our Pricing
-        </Typography>
-        <Typography color="gray500" size="24px" weight="lg">
-          We offer favorable conditions for your <br />
-          comfotable and productive work.
-        </Typography>
+        <Typography
+          color="gray50"
+          size="60px"
+          weight="lg"
+          value="Our Pricing"
+        />
+        <Typography
+          color="gray500"
+          size="24px"
+          weight="lg"
+          value={`We offer favorable conditions for your\ncomfotable and productive work.`}
+        />
       </div>
       <div
         css={css(

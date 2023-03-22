@@ -38,14 +38,10 @@ const ExplaneBox = ({ title, description }: Props) => (
   <div css={ExplaneBoxStyle}>
     <div css={Image} />
     <div>
-      <Typography color="gray50" size="24px" weight="lg">
-        {title}
-      </Typography>
+      <Typography color="gray50" size="24px" weight="lg" value={title} />
     </div>
     <div>
-      <Typography color="gray500" size="16px" weight="lg">
-        {description}
-      </Typography>
+      <Typography color="gray500" size="16px" weight="lg" value={description} />
     </div>
   </div>
 );

@@ -21,9 +21,7 @@ const Header = () => (
     )}
   >
     <div>
-      <Typography color="gray100" weight="lg" size="40px">
-        Nimble Meet
-      </Typography>
+      <Typography color="gray100" weight="lg" size="40px" value="Nimble Meet" />
     </div>
     <Button theme="dark" size="md">
       Try Free
