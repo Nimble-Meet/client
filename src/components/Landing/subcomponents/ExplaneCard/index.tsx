@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { explaneCardStyle, introIconStyle } from './explaneCard.styles';
-
 import { Typography } from 'nimble-nds';
+
+// emotion styles
+import { explaneCardStyle, introIconStyle } from './explaneCard.style';
 
 type Props = {
     title: string;

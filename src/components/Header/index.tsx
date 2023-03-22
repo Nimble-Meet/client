@@ -1,13 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
 import { css } from '@emotion/react';
-import { flexGrid } from '@/styles/grid';
+
 import { Button, Typography } from 'nimble-nds';
 
-const headerStyle = css`
-    background-color: black;
-    padding: 0.5rem 8rem;
-`;
+// emotion styles
+import { flexGrid } from '@/styles/grid';
+import { headerStyle } from './header.style';
 
 const Header = () => (
     <header

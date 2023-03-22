@@ -1,18 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
 import { css } from '@emotion/react';
-import { flexGrid } from '@/styles/grid';
+
 import { Typography } from 'nimble-nds';
 
-const footerStyle = css`
-    background-color: black;
-    height: 10rem;
-    width: 100%;
-
-    padding: 1rem 12rem;
-
-    border-top: 1px solid #181818;
-`;
+// emotion styles
+import { flexGrid } from '@/styles/grid';
+import { footerStyle } from './footer.style';
 
 const Footer = () => (
     <footer

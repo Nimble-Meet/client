@@ -8,6 +8,7 @@ import { Button, Typography } from 'nimble-nds';
 import ExplaneCard from './subcomponents/ExplaneCard';
 import PricingCard from './subcomponents/PricingCard';
 
+// emotion styles
 import {
     contentWrapperSidePadding,
     introSectionStyle,

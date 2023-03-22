@@ -1,12 +1,13 @@
 import React from 'react';
 
+import { Button, Typography } from 'nimble-nds';
+
+// emotion styles
 import {
     pricingCardContainerStyle,
     pricingPlanStyle,
     planBenefitsStyle
 } from './pricingCard.style';
-
-import { Button, Typography } from 'nimble-nds';
 
 type Props = {
     type: string;
