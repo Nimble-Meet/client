@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-import COLOR from '@/styles/color';
+import COLOR from '@/common/color';
 
 export const pricingCardContainerStyle = css`
     flex: 1;

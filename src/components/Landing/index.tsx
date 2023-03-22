@@ -2,7 +2,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
 
-import { flexGrid } from '@/styles/grid';
+import { flexGrid } from '@/common/emotion/grid';
 import { Button, Typography } from 'nimble-nds';
 
 import ExplaneCard from './subcomponents/ExplaneCard';

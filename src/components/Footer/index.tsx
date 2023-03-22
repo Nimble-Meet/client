@@ -5,7 +5,7 @@ import { css } from '@emotion/react';
 import { Typography } from 'nimble-nds';
 
 // emotion styles
-import { flexGrid } from '@/styles/grid';
+import { flexGrid } from '@/common/emotion/grid';
 import { footerStyle } from './footer.style';
 
 const Footer = () => (

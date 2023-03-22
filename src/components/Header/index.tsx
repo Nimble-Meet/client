@@ -5,7 +5,7 @@ import { css } from '@emotion/react';
 import { Button, Typography } from 'nimble-nds';
 
 // emotion styles
-import { flexGrid } from '@/styles/grid';
+import { flexGrid } from '@/common/emotion/grid';
 import { headerStyle } from './header.style';
 
 const Header = () => (
