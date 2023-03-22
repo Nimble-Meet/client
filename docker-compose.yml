@@ -1,0 +1,14 @@
+# for development
+
+version: "3"
+services:
+  nimble-client:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ../client
+    volumes:
+      - /usr/src/app/node_modules
+      - ../client:/usr/src/app
+    ports:
+      - "3000:3000"
+    stdin_open: true
