@@ -3,10 +3,10 @@ import React from 'react';
 import { css } from '@emotion/react';
 
 import {
-    pricingBoxContainerStyle,
+    pricingCardContainerStyle,
     pricingPlanStyle,
     planBenefitsStyle
-} from '@/styles/pricingBox.style';
+} from './pricingCard.style';
 
 import { Button, Typography } from 'nimble-nds';
 
@@ -18,14 +18,14 @@ type Props = {
     disabled: boolean;
 };
 
-const PricingBox = ({
+const PricingCard = ({
     type,
     description,
     benefits,
     price,
     disabled
 }: Props) => (
-    <div css={pricingBoxContainerStyle}>
+    <div css={pricingCardContainerStyle}>
         <div css={pricingPlanStyle}>
             <div>
                 <Typography
@@ -76,4 +76,4 @@ const PricingBox = ({
     </div>
 );
 
-export default PricingBox;
+export default PricingCard;

@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-export const pricingBoxContainerStyle = css`
+export const pricingCardContainerStyle = css`
     flex: 1;
     height: 500px;
 

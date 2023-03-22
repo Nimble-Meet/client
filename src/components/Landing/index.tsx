@@ -5,15 +5,15 @@ import { css } from '@emotion/react';
 import { flexGrid } from '@/styles/grid';
 import { Button, Typography } from 'nimble-nds';
 
-import ExplaneBox from './subcomponents/ExplaneBox';
-import PricingBox from './subcomponents/PricingBox';
+import ExplaneCard from './subcomponents/ExplaneCard';
+import PricingCard from './subcomponents/PricingCard';
 
 import {
     contentWrapperSidePadding,
     introSectionStyle,
     introSectionImageStyle,
     mainSectionImageStyle
-} from '@/styles/landing.style';
+} from './landing.style';
 
 import CONSTANT from './constants';
 
@@ -107,7 +107,7 @@ const Landing = () => (
             )}
         >
             {CONSTANT.EXPLANE.map((data) => (
-                <ExplaneBox
+                <ExplaneCard
                     key={data?.title}
                     title={data?.title}
                     description={data?.description}
@@ -202,7 +202,7 @@ const Landing = () => (
                 )}
             >
                 {CONSTANT.PRICING.map((pricing) => (
-                    <PricingBox
+                    <PricingCard
                         key={pricing.type}
                         type={pricing.type}
                         description={pricing.description}

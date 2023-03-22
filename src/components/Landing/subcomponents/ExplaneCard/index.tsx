@@ -2,9 +2,10 @@
 import React from 'react';
 import { css } from '@emotion/react';
 
+import { explaneCardStyle, introIconStyle } from './explaneCard.styles';
 import { Typography } from 'nimble-nds';
 
-const ExplaneBoxStyle = css`
+const ExplaneCardStyle = css`
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -34,8 +35,8 @@ type Props = {
     description: string;
 };
 
-const ExplaneBox = ({ title, description }: Props) => (
-    <div css={ExplaneBoxStyle}>
+const ExplaneCard = ({ title, description }: Props) => (
+    <div css={ExplaneCardStyle}>
         <div css={Image} />
         <div>
             <Typography color="gray50" size="24px" weight="lg" value={title} />
@@ -51,4 +52,4 @@ const ExplaneBox = ({ title, description }: Props) => (
     </div>
 );
 
-export default ExplaneBox;
+export default ExplaneCard;
