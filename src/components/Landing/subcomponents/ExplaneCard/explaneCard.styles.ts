@@ -1,6 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
+import COLOR from '@/styles/color';
+
 export const explaneCardStyle = css`
     flex: 1;
     display: flex;
@@ -14,7 +16,7 @@ export const explaneCardStyle = css`
 
     border-radius: 2rem;
     background-color: black;
-    border: 2px solid #393939;
+    border: 2px solid ${COLOR.gray900};
 `;
 
 export const introIconStyle = css`
@@ -22,6 +24,6 @@ export const introIconStyle = css`
     width: 100px;
 
     border-radius: 1rem;
-    background-color: #393939;
+    background-color: ${COLOR.gray900};
     border: none;
 `;
