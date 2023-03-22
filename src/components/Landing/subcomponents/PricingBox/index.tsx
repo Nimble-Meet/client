@@ -2,37 +2,13 @@
 import React from 'react';
 import { css } from '@emotion/react';
 
+import {
+    pricingBoxContainerStyle,
+    pricingPlanStyle,
+    planBenefitsStyle
+} from '@/styles/pricingBox.style';
+
 import { Button, Typography } from 'nimble-nds';
-
-const PricingBoxStyle = css`
-    flex: 1;
-    height: 500px;
-
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-
-    border-radius: 2rem;
-    background-color: black;
-    border: 2px solid #393939;
-
-    margin-bottom: 6rem;
-`;
-
-const container = css`
-    height: 112px;
-    border-bottom: 1px solid #393939;
-    margin-bottom: 1rem;
-`;
-
-const benefitsStyle = css`
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-
-    margin-bottom: 2rem;
-`;
 
 type Props = {
     type: string;
@@ -49,8 +25,8 @@ const PricingBox = ({
     price,
     disabled
 }: Props) => (
-    <div css={PricingBoxStyle}>
-        <div css={container}>
+    <div css={pricingBoxContainerStyle}>
+        <div css={pricingPlanStyle}>
             <div>
                 <Typography
                     color="gray50"
@@ -68,7 +44,7 @@ const PricingBox = ({
                 />
             </div>
         </div>
-        <div css={benefitsStyle}>
+        <div css={planBenefitsStyle}>
             {benefits.map((benefit) => (
                 <div key={benefit}>
                     <Typography
