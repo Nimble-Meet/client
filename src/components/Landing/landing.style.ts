@@ -1,15 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-export const contentWrapperSidePadding = css`
+export const landingStyle = css`
     width: 100%;
     padding-right: 12rem;
     padding-left: 12rem;
-`;
 
-export const introSectionStyle = css`
     background-color: black;
-    height: 80vh;
 `;
 
 export const introSectionImageStyle = css`

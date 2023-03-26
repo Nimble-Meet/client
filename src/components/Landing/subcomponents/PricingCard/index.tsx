@@ -1,12 +1,13 @@
+/** @jsxImportSource @emotion/react */
 import React from 'react';
+import { css } from '@emotion/react';
 
-import { Button, Typography } from 'nimble-nds';
+import { Button, Typography, FlexContainer } from 'nimble-nds';
 
 // emotion styles
 import {
     pricingCardContainerStyle,
-    pricingPlanStyle,
-    planBenefitsStyle
+    pricingPlanStyle
 } from './pricingCard.style';
 
 type Props = {
@@ -24,7 +25,14 @@ const PricingCard = ({
     price,
     disabled
 }: Props) => (
-    <div css={pricingCardContainerStyle}>
+    <FlexContainer
+        direction="column"
+        justifyContent="start"
+        alignItems="start"
+        gap="1rem"
+        grow={1}
+        customCss={pricingCardContainerStyle}
+    >
         <div css={pricingPlanStyle}>
             <div>
                 <Typography
@@ -43,7 +51,15 @@ const PricingCard = ({
                 />
             </div>
         </div>
-        <div css={planBenefitsStyle}>
+        <FlexContainer
+            direction="column"
+            justifyContent="start"
+            alignItems="start"
+            gap="1rem"
+            customCss={css`
+                margin-bottom: 2rem;
+            `}
+        >
             {benefits.map((benefit) => (
                 <div key={benefit}>
                     <Typography
@@ -54,7 +70,7 @@ const PricingCard = ({
                     />
                 </div>
             ))}
-        </div>
+        </FlexContainer>
         <div>
             <Typography
                 color="gray50"
@@ -69,10 +85,16 @@ const PricingCard = ({
                 value="/month"
             />
         </div>
-        <Button size="lg" theme="link" disabled={disabled} fontSize="1rem">
+        <Button
+            size="lg"
+            theme="link"
+            disabled={disabled}
+            fontSize="1rem"
+            width="100%"
+        >
             {disabled ? 'Coming soon..' : 'Buy Now'}
         </Button>
-    </div>
+    </FlexContainer>
 );
 
 export default PricingCard;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Typography } from 'nimble-nds';
+import { Typography, FlexContainer } from 'nimble-nds';
 
 // emotion styles
 import { explaneCardStyle, introIconStyle } from './explaneCard.style';
@@ -11,7 +11,14 @@ type Props = {
 };
 
 const ExplaneCard = ({ title, description }: Props) => (
-    <div css={explaneCardStyle}>
+    <FlexContainer
+        direction="column"
+        justifyContent="start"
+        alignItems="start"
+        gap="1rem"
+        grow={1}
+        customCss={explaneCardStyle}
+    >
         <div css={introIconStyle} />
         <div>
             <Typography color="gray50" size="24px" weight="lg" value={title} />
@@ -24,7 +31,7 @@ const ExplaneCard = ({ title, description }: Props) => (
                 value={description}
             />
         </div>
-    </div>
+    </FlexContainer>
 );
 
 export default ExplaneCard;

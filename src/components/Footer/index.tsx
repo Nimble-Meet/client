@@ -2,113 +2,103 @@
 import React from 'react';
 import { css } from '@emotion/react';
 
-import { Typography } from 'nimble-nds';
+import { Typography, FlexContainer } from 'nimble-nds';
 
 // emotion styles
-import { flexGrid } from '@/common/emotion/grid';
 import { footerStyle } from './footer.style';
 
 const Footer = () => (
-    <footer
-        css={css(
-            flexGrid({
-                direction: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'flex-start',
-                gap: '0.5rem'
-            }),
-            footerStyle
-        )}
-    >
-        <div
-            css={flexGrid({
-                direction: 'column',
-                justifyContent: 'flex-start',
-                alignItems: 'flex-start',
-                gap: '0.5rem'
-            })}
+    <footer css={css(footerStyle)}>
+        <FlexContainer
+            direction="row"
+            justifyContent="between"
+            alignItems="start"
+            gap="0.5rem"
         >
-            <Typography
-                color="gray300"
-                weight="lg"
-                size="16px"
-                value="(주) Nimble"
-            />
-            <Typography
-                color="gray600"
-                weight="lg"
-                size="12px"
-                value="경기도 성남시 분당구 판교로 242 PDC A동"
-            />
-            <Typography
-                color="gray600"
-                weight="lg"
-                size="14px"
-                value="Copyright © 2023 Nimble Inc."
-            />
-        </div>
-        <div
-            css={flexGrid({
-                direction: 'column',
-                justifyContent: 'flex-start',
-                alignItems: 'flex-start',
-                gap: '0.5rem'
-            })}
-        >
-            <div>
+            <FlexContainer
+                direction="column"
+                justifyContent="start"
+                alignItems="start"
+                gap="0.5rem"
+            >
                 <Typography
                     color="gray300"
                     weight="lg"
-                    size="14px"
-                    value="대표 : "
+                    size="16px"
+                    value="(주) Nimble"
+                />
+                <Typography
+                    color="gray600"
+                    weight="lg"
+                    size="12px"
+                    value="경기도 성남시 분당구 판교로 242 PDC A동"
                 />
                 <Typography
                     color="gray600"
                     weight="lg"
                     size="14px"
-                    value="Nimbler"
+                    value="Copyright © 2023 Nimble Inc."
                 />
-            </div>
-            <div>
-                <Typography
-                    color="gray300"
-                    weight="lg"
-                    size="14px"
-                    value="고객 문의 : "
-                />
-                <Typography
-                    color="gray600"
-                    weight="lg"
-                    size="14px"
-                    value="nimbleTeam@gmail.com"
-                />
-            </div>
-        </div>
-        <div
-            css={flexGrid({
-                direction: 'column',
-                justifyContent: 'flex-start',
-                alignItems: 'flex-end',
-                gap: '0.5rem'
-            })}
-        >
-            <div>
-                <Typography
-                    color="gray300"
-                    weight="lg"
-                    size="14px"
-                    value="서비스 이용약관"
-                />
-            </div>
-            <div>
-                <Typography
-                    color="gray300"
-                    weight="lg"
-                    size="14px"
-                    value="개인정보처리방침"
-                />
-            </div>
-        </div>
+            </FlexContainer>
+            <FlexContainer
+                direction="column"
+                justifyContent="start"
+                alignItems="start"
+                gap="0.5rem"
+            >
+                <div>
+                    <Typography
+                        color="gray300"
+                        weight="lg"
+                        size="14px"
+                        value="대표 : "
+                    />
+                    <Typography
+                        color="gray600"
+                        weight="lg"
+                        size="14px"
+                        value="Nimbler"
+                    />
+                </div>
+                <div>
+                    <Typography
+                        color="gray300"
+                        weight="lg"
+                        size="14px"
+                        value="고객 문의 : "
+                    />
+                    <Typography
+                        color="gray600"
+                        weight="lg"
+                        size="14px"
+                        value="nimbleTeam@gmail.com"
+                    />
+                </div>
+            </FlexContainer>
+            <FlexContainer
+                direction="column"
+                justifyContent="start"
+                alignItems="start"
+                gap="0.5rem"
+            >
+                <div>
+                    <Typography
+                        color="gray300"
+                        weight="lg"
+                        size="14px"
+                        value="서비스 이용약관"
+                    />
+                </div>
+                <div>
+                    <Typography
+                        color="gray300"
+                        weight="lg"
+                        size="14px"
+                        value="개인정보처리방침"
+                    />
+                </div>
+            </FlexContainer>
+        </FlexContainer>
     </footer>
 );
 

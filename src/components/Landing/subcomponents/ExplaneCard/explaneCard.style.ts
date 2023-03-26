@@ -4,15 +4,10 @@ import { css } from '@emotion/react';
 import COLOR from '@/common/color';
 
 export const explaneCardStyle = css`
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    position: relative;
     height: 300px;
 
     padding: 2rem;
-
-    position: relative;
 
     border-radius: 2rem;
     background-color: black;

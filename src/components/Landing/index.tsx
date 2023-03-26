@@ -2,16 +2,14 @@
 import React from 'react';
 import { css } from '@emotion/react';
 
-import { flexGrid } from '@/common/emotion/grid';
-import { Button, Typography } from 'nimble-nds';
+import { Button, Typography, FlexContainer } from 'nimble-nds';
 
 import ExplaneCard from './subcomponents/ExplaneCard';
 import PricingCard from './subcomponents/PricingCard';
 
 // emotion styles
 import {
-    contentWrapperSidePadding,
-    introSectionStyle,
+    landingStyle,
     introSectionImageStyle,
     mainSectionImageStyle
 } from './landing.style';
@@ -19,25 +17,20 @@ import {
 import CONSTANT from './constants';
 
 const Landing = () => (
-    <main>
-        <section
-            css={css(
-                flexGrid({
-                    direction: 'row',
-                    justifyContent: 'space-between',
-                    alignItems: 'center'
-                }),
-                introSectionStyle,
-                contentWrapperSidePadding
-            )}
+    <main css={landingStyle}>
+        <FlexContainer
+            direction="row"
+            justifyContent="between"
+            alignItems="center"
+            customCss={css`
+                height: 80vh;
+            `}
         >
-            <div
-                css={flexGrid({
-                    direction: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'flex-start',
-                    gap: '1.5rem'
-                })}
+            <FlexContainer
+                direction="column"
+                justifyContent="center"
+                alignItems="start"
+                gap="1.5rem"
             >
                 <div>
                     <Typography
@@ -47,13 +40,11 @@ const Landing = () => (
                         value={`Nimble\nMeet !`}
                     />
                 </div>
-                <div
-                    css={flexGrid({
-                        direction: 'column',
-                        justifyContent: 'center',
-                        alignItems: 'flex-start',
-                        gap: '4rem'
-                    })}
+                <FlexContainer
+                    direction="column"
+                    justifyContent="center"
+                    alignItems="start"
+                    gap="4rem"
                 >
                     <div>
                         <Typography
@@ -63,13 +54,11 @@ const Landing = () => (
                             value={`빠르게 미팅을 시작하고, 아이디어를 공유해보세요.\nNimble은 어쩌구저쩌구 완벽합니다.`}
                         />
                     </div>
-                    <div
-                        css={flexGrid({
-                            direction: 'row',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            gap: '1.5rem'
-                        })}
+                    <FlexContainer
+                        direction="row"
+                        justifyContent="center"
+                        alignItems="center"
+                        gap="1.5rem"
                     >
                         <Button
                             theme="link"
@@ -87,25 +76,19 @@ const Landing = () => (
                         >
                             Learn More
                         </Button>
-                    </div>
-                </div>
-            </div>
+                    </FlexContainer>
+                </FlexContainer>
+            </FlexContainer>
             <div css={introSectionImageStyle} />
-        </section>
-        <article
-            css={css(
-                flexGrid({
-                    direction: 'row',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    gap: '4rem'
-                }),
-                {
-                    height: '500px',
-                    backgroundColor: 'black'
-                },
-                contentWrapperSidePadding
-            )}
+        </FlexContainer>
+        <FlexContainer
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+            gap="4rem"
+            customCss={css`
+                height: 500px;
+            `}
         >
             {CONSTANT.EXPLANE.map((data) => (
                 <ExplaneCard
@@ -114,33 +97,20 @@ const Landing = () => (
                     description={data?.description}
                 />
             ))}
-        </article>
-        <article
-            css={css(
-                flexGrid({
-                    direction: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }),
-                {
-                    backgroundColor: 'black'
-                }
-            )}
+        </FlexContainer>
+        <FlexContainer
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
         >
-            <div
-                css={css(
-                    flexGrid({
-                        direction: 'column',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        gap: '1rem'
-                    }),
-                    {
-                        height: '300px',
-                        backgroundColor: 'black'
-                    },
-                    contentWrapperSidePadding
-                )}
+            <FlexContainer
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+                gap="1rem"
+                customCss={css`
+                    height: 300px;
+                `}
             >
                 <Typography
                     color="gray50"
@@ -148,36 +118,25 @@ const Landing = () => (
                     weight="lg"
                     value={`We are compony that has created a\nmeeting platform for everyone`}
                 />
-            </div>
+            </FlexContainer>
             <div css={mainSectionImageStyle} />
-        </article>
-        <article
-            css={css(
-                flexGrid({
-                    direction: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }),
-                {
-                    backgroundColor: 'black'
-                }
-            )}
+        </FlexContainer>
+        <FlexContainer
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
         >
-            <div
-                css={css(
-                    flexGrid({
-                        direction: 'column',
-                        justifyContent: 'center',
-                        alignItems: 'flex-start',
-                        gap: '1rem'
-                    }),
-                    {
-                        height: '300px',
-                        backgroundColor: 'black'
-                    },
-                    contentWrapperSidePadding
-                )}
+            <FlexContainer
+                direction="column"
+                justifyContent="center"
+                alignItems="start"
+                gap="1rem"
+                customCss={css`
+                    width: 100%;
+                    height: 300px;
+                `}
             >
+                {' '}
                 <Typography
                     color="gray50"
                     size="60px"
@@ -190,17 +149,15 @@ const Landing = () => (
                     weight="lg"
                     value={`We offer favorable conditions for your\ncomfotable and productive work.`}
                 />
-            </div>
-            <div
-                css={css(
-                    flexGrid({
-                        direction: 'row',
-                        justifyContent: 'center',
-                        alignItems: 'flex-start',
-                        gap: '3rem'
-                    }),
-                    contentWrapperSidePadding
-                )}
+            </FlexContainer>
+            <FlexContainer
+                direction="row"
+                justifyContent="center"
+                alignItems="start"
+                gap="3rem"
+                customCss={css`
+                    width: 100%;
+                `}
             >
                 {CONSTANT.PRICING.map((pricing) => (
                     <PricingCard
@@ -212,8 +169,8 @@ const Landing = () => (
                         disabled={pricing.disabled}
                     />
                 ))}
-            </div>
-        </article>
+            </FlexContainer>
+        </FlexContainer>
     </main>
 );
 
