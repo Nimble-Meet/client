@@ -7,6 +7,10 @@ import { Typography, FlexContainer } from 'nimble-nds';
 // emotion styles
 import { footerStyle } from './footer.style';
 
+import { isColor, isWeight } from '@/utils/typography';
+
+import TEXT_DATA from './constants';
+
 const Footer = () => (
     <footer css={css(footerStyle)}>
         <FlexContainer
@@ -21,24 +25,15 @@ const Footer = () => (
                 alignItems="start"
                 gap="0.5rem"
             >
-                <Typography
-                    color="gray300"
-                    weight="lg"
-                    size="16px"
-                    value="(주) Nimble"
-                />
-                <Typography
-                    color="gray600"
-                    weight="lg"
-                    size="12px"
-                    value="경기도 성남시 분당구 판교로 242 PDC A동"
-                />
-                <Typography
-                    color="gray600"
-                    weight="lg"
-                    size="14px"
-                    value="Copyright © 2023 Nimble Inc."
-                />
+                {TEXT_DATA.INTRO.map((text) => (
+                    <Typography
+                        key={text.key}
+                        color={isColor(text.color) ? text.color : undefined}
+                        weight={isWeight(text.weight) ? text.weight : undefined}
+                        size={text.size}
+                        value={text.value}
+                    />
+                ))}
             </FlexContainer>
             <FlexContainer
                 direction="column"
@@ -47,56 +42,47 @@ const Footer = () => (
                 gap="0.5rem"
             >
                 <div>
-                    <Typography
-                        color="gray300"
-                        weight="lg"
-                        size="14px"
-                        value="대표 : "
-                    />
-                    <Typography
-                        color="gray600"
-                        weight="lg"
-                        size="14px"
-                        value="Nimbler"
-                    />
+                    {TEXT_DATA.CEO.map((text) => (
+                        <Typography
+                            key={text.key}
+                            color={isColor(text.color) ? text.color : undefined}
+                            weight={
+                                isWeight(text.weight) ? text.weight : undefined
+                            }
+                            size={text.size}
+                            value={text.value}
+                        />
+                    ))}
                 </div>
                 <div>
-                    <Typography
-                        color="gray300"
-                        weight="lg"
-                        size="14px"
-                        value="고객 문의 : "
-                    />
-                    <Typography
-                        color="gray600"
-                        weight="lg"
-                        size="14px"
-                        value="nimbleTeam@gmail.com"
-                    />
+                    {TEXT_DATA.CS.map((text) => (
+                        <Typography
+                            key={text.key}
+                            color={isColor(text.color) ? text.color : undefined}
+                            weight={
+                                isWeight(text.weight) ? text.weight : undefined
+                            }
+                            size={text.size}
+                            value={text.value}
+                        />
+                    ))}
                 </div>
             </FlexContainer>
             <FlexContainer
                 direction="column"
                 justifyContent="start"
-                alignItems="start"
+                alignItems="end"
                 gap="0.5rem"
             >
-                <div>
+                {TEXT_DATA.TERMS.map((text) => (
                     <Typography
-                        color="gray300"
-                        weight="lg"
-                        size="14px"
-                        value="서비스 이용약관"
+                        key={text.key}
+                        color={isColor(text.color) ? text.color : undefined}
+                        weight={isWeight(text.weight) ? text.weight : undefined}
+                        size={text.size}
+                        value={text.value}
                     />
-                </div>
-                <div>
-                    <Typography
-                        color="gray300"
-                        weight="lg"
-                        size="14px"
-                        value="개인정보처리방침"
-                    />
-                </div>
+                ))}
             </FlexContainer>
         </FlexContainer>
     </footer>
