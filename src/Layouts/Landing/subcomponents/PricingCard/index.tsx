@@ -16,6 +16,7 @@ type Props = {
     benefits: string[];
     price: number;
     disabled: boolean;
+    moveMainPage: Function;
 };
 
 const PricingCard = ({
@@ -23,7 +24,8 @@ const PricingCard = ({
     description,
     benefits,
     price,
-    disabled
+    disabled,
+    moveMainPage
 }: Props) => (
     <FlexContainer
         direction="column"
@@ -91,6 +93,11 @@ const PricingCard = ({
             disabled={disabled}
             fontSize="1rem"
             width="100%"
+            onClick={
+                moveMainPage as (
+                    e?: React.MouseEvent<HTMLButtonElement, MouseEvent>
+                ) => void
+            }
         >
             {disabled ? 'Coming soon..' : 'Buy Now'}
         </Button>
