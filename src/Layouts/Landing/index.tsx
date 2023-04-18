@@ -22,7 +22,7 @@ const Landing = () => {
     const router = useRouter();
 
     const moveMainPage = () => {
-        router.push('/main');
+        router.push('/login');
     };
 
     return (
