@@ -2,7 +2,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
 
-import { Button, Typography, FlexContainer } from 'nimble-nds';
+import { Button, Typography, FlexContainer } from 'nimble-ds';
 
 // emotion styles
 import {

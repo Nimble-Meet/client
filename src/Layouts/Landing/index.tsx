@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { css } from '@emotion/react';
 
-import { Button, Typography, FlexContainer } from 'nimble-nds';
+import { Button, Typography, FlexContainer } from 'nimble-ds';
 
 import ExplaneCard from './subcomponents/ExplaneCard';
 import PricingCard from './subcomponents/PricingCard';
