@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosInstance from '@/lib/axiosInstance';
 
 import { IUser } from '@/types/user';
 
@@ -14,7 +14,7 @@ export const createUser = async ({
             password,
         }
 
-        const { data } = await axios.post('/api/auth/signup', params);
+        const { data } = await axiosInstance.post('auth/signup', params);
         
         return data;
     } catch (err) {
