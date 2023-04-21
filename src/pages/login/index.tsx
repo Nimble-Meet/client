@@ -3,22 +3,20 @@ import React, { useState } from 'react';
 
 import { css } from '@emotion/react';
 
+import { useCreateUser } from '@/query-hooks/useFetchUser';
+
 import { FlexContainer, Button } from 'nimble-ds';
 
 import InputContainer from './subcomponents/InputContainer';
 
 import CONSTANT from './constants';
 
-interface LoginData {
-    id: string;
-    email: string;
-    password: string;
-    [key: string]: string;
-}
+import { IUser } from '@/types/user';
 
 const Login = () => {
-    const [loginData, setLoginData] = useState<LoginData>({
-        id: '',
+    const { mutateAsync: createUserMutate } = useCreateUser();
+    const [loginData, setLoginData] = useState<IUser>({
+        nickname: '',
         email: '',
         password: ''
     });
@@ -29,6 +27,10 @@ const Login = () => {
             [key]: value
         });
     };
+
+    const handleCreateUser = () => {
+        createUserMutate(loginData);
+    }
 
     return (
         <main>
@@ -50,7 +52,7 @@ const Login = () => {
                         placeholder={input.placeholder}
                     />
                 ))}
-                <Button theme="primary">hihi</Button>
+                <Button theme="primary" onClick={handleCreateUser}>hihi</Button>
             </FlexContainer>
         </main>
     );

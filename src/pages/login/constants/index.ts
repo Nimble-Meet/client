@@ -1,8 +1,8 @@
 const LOGIN_TEXT = [
     {
-        key: 'id',
-        label: 'id',
-        placeholder: '아이디를 입력해주세요'
+        key: 'nickname',
+        label: 'nickname',
+        placeholder: '닉네임을 입력해주세요'
     },
     {
         key: 'email',
