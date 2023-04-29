@@ -2,6 +2,8 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
+// import { useCheckLogin } from '@/query-hooks/useFetchUser';
+
 import { css } from '@emotion/react';
 
 import { Button, Typography, FlexContainer } from 'nimble-ds';
@@ -19,10 +21,18 @@ import {
 import CONSTANT from './constants';
 
 const Landing = () => {
+    // const { mutateAsync: createUserMutate } = useCheckLogin();
     const router = useRouter();
 
-    const moveMainPage = () => {
-        router.push('/login');
+    const moveMainPage = async () => {
+        // const { data: isLoggedIn } = await createUserMutate();
+
+        // if (!isLoggedIn) {
+        //     router.push('/login');
+        // } else {
+        //     router.push('/main');
+        // }
+        router.push('/auth/signIn');
     };
 
     return (
