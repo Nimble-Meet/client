@@ -1,5 +1,10 @@
 export interface IUser {
-  email: string | undefined;
-  profileImage: string | undefined;
-  username: string | undefined;
+    nickname: string;
+    email: string;
+    password: string;
+}
+
+export interface ILogin {
+    email: string;
+    password: string;
 }
