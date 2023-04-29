@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Landing from '@/Layouts/Landing';
+import Landing from '@/layouts/Landing';
 
 export default function Home() {
     return (
