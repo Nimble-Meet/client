@@ -16,7 +16,7 @@ import {
     landingStyle,
     introSectionImageStyle,
     mainSectionImageStyle
-} from './landing.style';
+} from './Landing.style';
 
 import CONSTANT from './constants';
 

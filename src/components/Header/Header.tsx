@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 import { Button, Typography, FlexContainer } from 'nimble-ds';
 
 // emotion styles
-import { headerStyle } from './header.style';
+import { headerStyle } from './Header.style';
 
 const Header = () => {
     const router = useRouter();

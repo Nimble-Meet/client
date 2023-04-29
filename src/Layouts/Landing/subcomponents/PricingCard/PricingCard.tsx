@@ -8,7 +8,7 @@ import { Button, Typography, FlexContainer } from 'nimble-ds';
 import {
     pricingCardContainerStyle,
     pricingPlanStyle
-} from './pricingCard.style';
+} from './PricingCard.style';
 
 type Props = {
     type: string;

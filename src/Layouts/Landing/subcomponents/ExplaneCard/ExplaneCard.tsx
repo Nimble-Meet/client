@@ -3,7 +3,7 @@ import React from 'react';
 import { Typography, FlexContainer } from 'nimble-ds';
 
 // emotion styles
-import { explaneCardStyle, introIconStyle } from './explaneCard.style';
+import { explaneCardStyle, introIconStyle } from './ExplaneCard.style';
 
 type Props = {
     title: string;

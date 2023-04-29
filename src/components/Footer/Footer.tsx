@@ -5,7 +5,7 @@ import { css } from '@emotion/react';
 import { Typography, FlexContainer } from 'nimble-ds';
 
 // emotion styles
-import { footerStyle } from './footer.style';
+import { footerStyle } from './Footer.style';
 
 import { isColor, isWeight } from '@/utils/typography';
 
