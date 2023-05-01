@@ -4,6 +4,8 @@ import { useRouter } from 'next/router';
 
 import { css } from '@emotion/react';
 
+import { usePostAuthenticateUser } from '@/query-hooks/useFetchUser';
+
 import { FlexContainer, Button } from 'nimble-ds';
 import InputContainer from '../components/InputContainer';
 
@@ -14,6 +16,8 @@ import { ILogin } from '@/types/user';
 const SignIn = () => {
     const router = useRouter();
 
+    const { mutateAsync: authenticateUserMutate } = usePostAuthenticateUser();
+
     const [loginData, setLoginData] = React.useState<ILogin>({
         email: '',
         password: ''
@@ -23,9 +27,14 @@ const SignIn = () => {
         router.push('/auth/signUp');
     };
 
-    const validateLoginData = () => {
-        // 검증 후 main 이동
-        router.push('/main');
+    const postSignIn = async () => {
+        const data = await authenticateUserMutate(loginData);
+
+        if (data) {
+            router.push('/main');
+        } else {
+            // 추후 사용자에게 알리는 방식 구현
+        }
     };
 
     return (
@@ -52,7 +61,7 @@ const SignIn = () => {
                         handleChangeFunctions={setLoginData}
                     />
                 ))}
-                <Button theme="primary" onClick={validateLoginData}>
+                <Button theme="primary" onClick={postSignIn}>
                     로그인
                 </Button>
                 <Button theme="primary" onClick={moveSignUpPage}>
