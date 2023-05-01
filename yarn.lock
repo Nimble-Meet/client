@@ -2022,10 +2022,10 @@ next@13.2.1:
     "@next/swc-win32-ia32-msvc" "13.2.1"
     "@next/swc-win32-x64-msvc" "13.2.1"
 
-nimble-ds@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/nimble-ds/-/nimble-ds-1.0.0.tgz#f174b828b8d706d479f743b942828cc05143c3fc"
-  integrity sha512-Jk4rzcH9dyc8osaV0dLJnRbRHvsO9SckVULozqnm4PExUuEzYVUU1lB4UuZpVnu/oQ98iqP+5EqJK1OTigCaKw==
+nimble-ds@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/nimble-ds/-/nimble-ds-1.0.1.tgz#12482f115071c99de32c13ea35b632c053b000aa"
+  integrity sha512-8W8RXabPPTYTltQBQJxBhzbKjHUhNOSslxzNLZF548GvJRq6D4VEIZifd81NfjaxtV4jjfmlOemB6tWuAr/dbQ==
   dependencies:
     "@babel/runtime" "^7.21.0"
     "@emotion/styled" "^11.10.6"
