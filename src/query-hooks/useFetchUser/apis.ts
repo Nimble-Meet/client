@@ -1,9 +1,9 @@
 import axiosInstance from '@/lib/axiosInstance';
 import sha256 from 'crypto-js/sha256';
 
-import { IUser } from '@/types/user';
+import { IUser, ILogin } from '@/types/user';
 
-export const createUser = async ({ nickname, email, password }: IUser) => {
+export const createNewUser = async ({ nickname, email, password }: IUser) => {
     try {
         const params = <IUser>{
             nickname,
@@ -19,7 +19,22 @@ export const createUser = async ({ nickname, email, password }: IUser) => {
     }
 };
 
-export const checkLogin = async () => {
+export const postAuthenticateUser = async ({ email, password }: ILogin) => {
+    try {
+        const params = <ILogin>{
+            email,
+            password: sha256(password).toString()
+        };
+
+        const { data } = await axiosInstance.post('auth/login/local', params);
+
+        return data;
+    } catch (err) {
+        return console.log('로그인을 실패했습니다.', err);
+    }
+};
+
+export const checkUserLoginStatus = async () => {
     try {
         const { data } = await axiosInstance.get('auth/whoami');
 
