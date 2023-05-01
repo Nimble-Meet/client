@@ -8,11 +8,17 @@ import { useCreateUser } from '@/query-hooks/useFetchUser';
 
 import { FlexContainer, Button } from 'nimble-ds';
 import InputContainer from '../components/InputContainer';
+import CheckSamePasswordInput from './components/CheckSamePasswordInput';
 
-import { validateEmail, validatePassword } from '../utils/validation';
+import {
+    validateNickname,
+    validateEmail,
+    validatePassword
+} from '../utils/validation';
+
 import { SIGN_UP_INPUT_DATA } from './constants';
 
-import { IUser, ILogin } from '@/types/user';
+import { IUser } from '@/types/user';
 
 const SignUp = () => {
     const router = useRouter();
@@ -23,14 +29,28 @@ const SignUp = () => {
         email: '',
         password: ''
     });
+    const [isSamePasswordValid, setIsSamePasswordValid] =
+        React.useState<boolean>(false);
 
-    const handleCreateUser = ({ email, password }: ILogin) => {
+    const validateSignupButtonDiabled = ({
+        nickname,
+        email,
+        password
+    }: IUser) => {
+        const isNicknameValid = validateNickname(nickname);
         const isEmailValid = validateEmail(email);
         const isPasswordValid = validatePassword(password);
 
-        console.log(isEmailValid, isPasswordValid);
+        if (
+            isNicknameValid &&
+            isEmailValid &&
+            isPasswordValid &&
+            isSamePasswordValid
+        ) {
+            return false;
+        }
 
-        // createUserMutate(loginData);
+        return true;
     };
 
     const moveSignInPage = () => {
@@ -53,24 +73,27 @@ const SignUp = () => {
                         key={i}
                         id={input.key}
                         type={input.type}
-                        labelText={input.label}
                         placeholder={input.placeholder}
-                        handleChangeFunctions={setLoginData}
+                        labelText={input.label}
+                        inValidMessage={input.inValidMessage}
                         currentData={loginData}
+                        validateFunction={input.validate}
+                        handleChangeFunctions={setLoginData}
                     />
                 ))}
+                <CheckSamePasswordInput
+                    password={loginData.password}
+                    isSamePasswordValid={isSamePasswordValid}
+                    setIsSamePasswordValid={setIsSamePasswordValid}
+                />
                 <Button
-                    theme="primary"
-                    onClick={() =>
-                        handleCreateUser({
-                            email: loginData.email,
-                            password: loginData.password
-                        })
-                    }
+                    theme="link"
+                    onClick={() => createUserMutate(loginData)}
+                    disabled={validateSignupButtonDiabled(loginData)}
                 >
                     가입하기
                 </Button>
-                <Button theme="primary" onClick={moveSignInPage}>
+                <Button theme="link" onClick={moveSignInPage}>
                     이전
                 </Button>
             </FlexContainer>
