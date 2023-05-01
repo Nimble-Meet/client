@@ -44,10 +44,12 @@ const SignIn = () => {
                         key={i}
                         id={input.key}
                         type={input.type}
-                        labelText={input.label}
                         placeholder={input.placeholder}
-                        handleChangeFunctions={setLoginData}
+                        labelText={input.label}
+                        inValidMessage={input.inValidMessage}
                         currentData={loginData}
+                        validateFunction={input.validate}
+                        handleChangeFunctions={setLoginData}
                     />
                 ))}
                 <Button theme="primary" onClick={validateLoginData}>
