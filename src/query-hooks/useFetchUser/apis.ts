@@ -1,4 +1,5 @@
 import axiosInstance from '@/lib/axiosInstance';
+import sha256 from 'crypto-js/sha256';
 
 import { IUser } from '@/types/user';
 
@@ -7,7 +8,7 @@ export const createUser = async ({ nickname, email, password }: IUser) => {
         const params = <IUser>{
             nickname,
             email,
-            password
+            password: sha256(password).toString()
         };
 
         const { data } = await axiosInstance.post('auth/signup', params);
