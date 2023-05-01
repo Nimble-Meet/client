@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 
 import { Typography } from 'nimble-ds';
 
-import { navButtonStyle } from './NavigationButton.style';
+import { navigationButtonStyle } from './NavigationButton.style';
 
 type Props = {
     title: string;
@@ -15,7 +15,7 @@ type Props = {
 
 const NavigationButton = ({ title, urn }: Props) => {
     return (
-        <Link href={urn} css={css(navButtonStyle)}>
+        <Link href={urn} css={css(navigationButtonStyle)}>
             <Typography value={title} />
         </Link>
     );
