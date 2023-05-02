@@ -1,69 +1,61 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import jwt_decode from 'jwt-decode';
-
-interface TokenPayload {
-    exp: number;
-    iat: number;
-    sub: string;
-}
+import axios, {
+    AxiosError,
+    AxiosInstance,
+    AxiosRequestConfig,
+    AxiosResponse
+} from 'axios';
+import Cookies from 'js-cookie';
 
 interface InternalAxiosRequestConfig<T = any> extends AxiosRequestConfig {
     _retry?: boolean;
 }
 
-const refreshInstance = axios.create({
-    baseURL: '/auth/refresh',
-    withCredentials: true
-});
-
 const axiosInstance: AxiosInstance = axios.create({
     baseURL: '/api',
-    withCredentials: true
+    headers: {
+        'Content-Type': 'application/json'
+    }
 });
+
+axiosInstance.interceptors.request.use(
+    (config: any) => {
+        const token = Cookies.get('accessToken');
+        if (token) {
+            config.headers['Authorization'] = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error: AxiosError) => {
+        return Promise.reject(error);
+    }
+);
 
 axiosInstance.interceptors.response.use(
     (response: AxiosResponse) => {
         return response;
     },
-    async (error) => {
+    async (error: AxiosError) => {
         const originalRequest = error.config as InternalAxiosRequestConfig;
 
         if (
-            error.response &&
-            error.response.status === 401 &&
-            !originalRequest._retry
+            error.response?.status === 401 &&
+            !originalRequest._retry &&
+            originalRequest.url !== '/auth/refresh'
         ) {
             originalRequest._retry = true;
-            const token = localStorage.getItem('accessToken');
-
-            if (token) {
-                try {
-                    const decodedToken = jwt_decode<TokenPayload>(token);
-                    const exp = decodedToken.exp;
-                    const now = new Date().getTime() / 1000;
-                    if (exp - now < 60) {
-                        const refreshData = await refreshInstance.post(
-                            '/',
-                            {},
-                            { headers: { Authorization: `Bearer ${token}` } }
-                        );
-                        localStorage.setItem(
-                            'accessToken',
-                            refreshData.data.accessToken
-                        );
-                        const newRequest = { ...originalRequest };
-                        newRequest.headers = {
-                            ...newRequest.headers,
-                            Authorization: `Bearer ${refreshData.data.accessToken}`
-                        };
-                        return axiosInstance(newRequest);
-                    }
-                } catch (e) {
-                    console.log(e);
-                }
+            try {
+                const response = await axiosInstance.post('/auth/refresh');
+                const { accessToken } = response.data;
+                Cookies.set('accessToken', accessToken);
+                axiosInstance.defaults.headers.common[
+                    'Authorization'
+                ] = `Bearer ${accessToken}`;
+                return axiosInstance(originalRequest);
+            } catch (error) {
+                Cookies.remove('accessToken');
+                return Promise.reject(error);
             }
         }
-
         return Promise.reject(error);
     }
 );
