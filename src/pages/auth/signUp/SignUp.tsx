@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { css } from '@emotion/react';
 
-import { useCreateUser } from '@/query-hooks/useFetchUser';
+import { useCreateNewUser } from '@/query-hooks/useFetchUser';
 
 import { FlexContainer, Button } from 'nimble-ds';
 import InputContainer from '../components/InputContainer';
@@ -23,7 +23,7 @@ import { IUser } from '@/types/user';
 const SignUp = () => {
     const router = useRouter();
 
-    const { mutateAsync: createUserMutate } = useCreateUser();
+    const { mutateAsync: createNewUserMutate } = useCreateNewUser();
     const [loginData, setLoginData] = React.useState<IUser>({
         nickname: '',
         email: '',
@@ -57,6 +57,16 @@ const SignUp = () => {
         router.push('/auth/signIn');
     };
 
+    const postSignUp = async () => {
+        const data = await createNewUserMutate(loginData);
+
+        if (data) {
+            router.push('/auth/signIn');
+        } else {
+            // 추후 사용자에게 알리는 방식 구현
+        }
+    };
+
     return (
         <main>
             <FlexContainer
@@ -88,7 +98,7 @@ const SignUp = () => {
                 />
                 <Button
                     theme="link"
-                    onClick={() => createUserMutate(loginData)}
+                    onClick={postSignUp}
                     disabled={validateSignupButtonDiabled(loginData)}
                 >
                     가입하기

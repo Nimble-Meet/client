@@ -1,31 +1,38 @@
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 
-import { createUser, checkLogin } from './apis';
+import {
+    createNewUser,
+    postAuthenticateUser,
+    checkUserLoginStatus
+} from './apis';
 
 import USER_KEY from './keys';
 
-import { IUser } from '@/types/user';
+import { ILogin, IUser } from '@/types/user';
 
-export const useCreateUser = () => {
-    const queryClient = useQueryClient();
-
+export const useCreateNewUser = () => {
     return useMutation(
         ({ nickname, email, password }: IUser) =>
-            createUser({ nickname, email, password }),
+            createNewUser({ nickname, email, password }),
         {
             onSuccess: (data) => {
-                console.log(data);
+                return data;
             }
         }
     );
 };
 
-export const useCheckLogin = () => {
-    const queryClient = useQueryClient();
-
-    return useMutation(() => checkLogin(), {
-        onSuccess: (data) => {
-            queryClient.setQueryData(USER_KEY.all, data);
+export const usePostAuthenticateUser = () => {
+    return useMutation(
+        ({ email, password }: ILogin) =>
+            postAuthenticateUser({ email, password }),
+        {
+            onSuccess: (data) => {
+                return data;
+            }
         }
-    });
+    );
 };
+
+export const useCheckUserLoginStatus = () =>
+    useQuery(USER_KEY.all, checkUserLoginStatus);
