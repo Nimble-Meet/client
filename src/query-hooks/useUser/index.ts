@@ -1,10 +1,7 @@
 import GET from './GET';
-import { newUser, authenticate } from './POST';
+import POST from './POST';
 
 export default {
     GET,
-    POST: {
-        newUser,
-        authenticate
-    }
+    POST
 };

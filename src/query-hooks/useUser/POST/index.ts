@@ -1,4 +1,1 @@
-export {
-    usePostNewUser as newUser,
-    usePostAuthenticateUser as authenticate
-} from './usePostUser';
+export { default } from './usePostUser';

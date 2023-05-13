@@ -1,16 +1,22 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+import { AxiosError } from 'axios';
 import { useMutation } from 'react-query';
 
 import { createNewUser, postAuthenticateUser } from './apis';
 import type { CreateNewUser, PostAuthenticateUser } from './api.type';
 
-const usePostNewUser = () => {
-    return useMutation<CreateNewUser.Return, void, CreateNewUser.ReqParams>(
+type ActionType = 'signUp' | 'signIn';
+
+const useCreateNewUser = () => {
+    return useMutation<
+        CreateNewUser.Return,
+        AxiosError,
+        CreateNewUser.ReqParams
+    >(
         ({ nickname, email, password }) =>
             createNewUser({ nickname, email, password }),
         {
-            onSuccess: (
-                data: CreateNewUser.Return
-            ): Promise<CreateNewUser.Return> => {
+            onSuccess: (data: CreateNewUser.Return) => {
                 return Promise.resolve(data);
             }
         }
@@ -20,15 +26,19 @@ const usePostNewUser = () => {
 const usePostAuthenticateUser = () => {
     return useMutation<
         PostAuthenticateUser.Return,
-        void,
+        AxiosError,
         PostAuthenticateUser.ReqParams
     >(({ email, password }) => postAuthenticateUser({ email, password }), {
-        onSuccess: (
-            data: PostAuthenticateUser.Return
-        ): Promise<PostAuthenticateUser.Return> => {
+        onSuccess: (data: PostAuthenticateUser.Return) => {
             return Promise.resolve(data);
         }
     });
 };
 
-export { usePostNewUser, usePostAuthenticateUser };
+const usePostUser = <O extends ActionType>(actionType: O) =>
+    ({
+        signUp: useCreateNewUser(),
+        signIn: usePostAuthenticateUser()
+    }[actionType]);
+
+export default usePostUser;
