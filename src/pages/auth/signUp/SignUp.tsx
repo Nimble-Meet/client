@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { css } from '@emotion/react';
 
-import usePostUser from '@/query-hooks/useUser';
+import useUser from '@/query-hooks/useUser';
 
 import { FlexContainer, Button } from 'nimble-ds';
 import InputContainer from '../components/InputContainer';
@@ -23,7 +23,7 @@ import { IUserSignup } from '@/types/user';
 const SignUp = () => {
     const router = useRouter();
 
-    const { mutateAsync: createNewUserMutate } = usePostUser.POST('signUp');
+    const { mutateAsync: createNewUserMutate } = useUser.POST('signUp');
     const [loginData, setLoginData] = React.useState<IUserSignup>({
         nickname: '',
         email: '',
