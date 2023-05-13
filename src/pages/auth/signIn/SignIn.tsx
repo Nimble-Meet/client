@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 
 import { css } from '@emotion/react';
@@ -39,7 +39,7 @@ const SignIn = () => {
         }
     };
 
-    useEffect(() => {
+    React.useEffect(() => {
         if (!!userData) {
             router.push('/main');
         }
