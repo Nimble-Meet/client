@@ -18,13 +18,13 @@ import {
 
 import { SIGN_UP_INPUT_DATA } from './constants';
 
-import { IUser } from '@/types/user';
+import { IUserSignup } from '@/types/user';
 
 const SignUp = () => {
     const router = useRouter();
 
-    const { mutateAsync: createNewUserMutate } = usePostUser.POST.newUser();
-    const [loginData, setLoginData] = React.useState<IUser>({
+    const { mutateAsync: createNewUserMutate } = usePostUser.POST('signUp');
+    const [loginData, setLoginData] = React.useState<IUserSignup>({
         nickname: '',
         email: '',
         password: ''
@@ -36,7 +36,7 @@ const SignUp = () => {
         nickname,
         email,
         password
-    }: IUser) => {
+    }: IUserSignup) => {
         const isNicknameValid = validateNickname(nickname);
         const isEmailValid = validateEmail(email);
         const isPasswordValid = validatePassword(password);

@@ -11,15 +11,14 @@ import InputContainer from '../components/InputContainer';
 
 import { SIGN_IN_INPUT_DATA } from './constants';
 
-import { ILogin } from '@/types/user';
+import { IUserLogin } from '@/types/user';
 
 const SignIn = () => {
     const router = useRouter();
 
-    const { mutateAsync: authenticateUserMutate } =
-        usePostUser.POST.authenticate();
+    const { mutateAsync: authenticateUserMutate } = usePostUser.POST('signIn');
 
-    const [loginData, setLoginData] = React.useState<ILogin>({
+    const [loginData, setLoginData] = React.useState<IUserLogin>({
         email: '',
         password: ''
     });
