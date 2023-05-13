@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import { css } from '@emotion/react';
@@ -17,6 +17,8 @@ const SignIn = () => {
     const router = useRouter();
 
     const { mutateAsync: authenticateUserMutate } = useUser.POST('signIn');
+
+    const { data: userData } = useUser.GET();
 
     const [loginData, setLoginData] = React.useState<IUserLogin>({
         email: '',
@@ -36,6 +38,12 @@ const SignIn = () => {
             // 추후 사용자에게 알리는 방식 구현
         }
     };
+
+    useEffect(() => {
+        if (!!userData) {
+            router.push('/main');
+        }
+    }, [router, userData]);
 
     return (
         <main>
