@@ -13,7 +13,7 @@ describe('SignIn', () => {
         cy.url().should('include', '/main');
     });
 
-    it('should move SignUp page successfully', () => {
+    it('should navigate to sign up page successfully', () => {
         cy.contains('회원가입').click();
 
         cy.url().should('include', '/auth/signUp');
