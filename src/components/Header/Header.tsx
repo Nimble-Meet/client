@@ -12,7 +12,7 @@ const Header = () => {
     const router = useRouter();
 
     const moveMainPage = () => {
-        router.push('/login');
+        router.push('auth/signIn');
     };
 
     return (
