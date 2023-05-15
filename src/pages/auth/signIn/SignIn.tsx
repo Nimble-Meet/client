@@ -4,21 +4,21 @@ import { useRouter } from 'next/router';
 
 import { css } from '@emotion/react';
 
-import { usePostAuthenticateUser } from '@/query-hooks/useFetchUser';
+import useUser from '@/query-hooks/useUser';
 
 import { FlexContainer, Button } from 'nimble-ds';
 import InputContainer from '../components/InputContainer';
 
 import { SIGN_IN_INPUT_DATA } from './constants';
 
-import { ILogin } from '@/types/user';
+import { IUserLogin } from '@/types/user';
 
 const SignIn = () => {
     const router = useRouter();
 
-    const { mutateAsync: authenticateUserMutate } = usePostAuthenticateUser();
+    const { mutateAsync: authenticateUserMutate } = useUser.POST('signIn');
 
-    const [loginData, setLoginData] = React.useState<ILogin>({
+    const [loginData, setLoginData] = React.useState<IUserLogin>({
         email: '',
         password: ''
     });

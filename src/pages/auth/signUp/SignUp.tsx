@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { css } from '@emotion/react';
 
-import { useCreateNewUser } from '@/query-hooks/useFetchUser';
+import useUser from '@/query-hooks/useUser';
 
 import { FlexContainer, Button } from 'nimble-ds';
 import InputContainer from '../components/InputContainer';
@@ -18,13 +18,13 @@ import {
 
 import { SIGN_UP_INPUT_DATA } from './constants';
 
-import { IUser } from '@/types/user';
+import { IUserSignup } from '@/types/user';
 
 const SignUp = () => {
     const router = useRouter();
 
-    const { mutateAsync: createNewUserMutate } = useCreateNewUser();
-    const [loginData, setLoginData] = React.useState<IUser>({
+    const { mutateAsync: createNewUserMutate } = useUser.POST('signUp');
+    const [loginData, setLoginData] = React.useState<IUserSignup>({
         nickname: '',
         email: '',
         password: ''
@@ -36,7 +36,7 @@ const SignUp = () => {
         nickname,
         email,
         password
-    }: IUser) => {
+    }: IUserSignup) => {
         const isNicknameValid = validateNickname(nickname);
         const isEmailValid = validateEmail(email);
         const isPasswordValid = validatePassword(password);

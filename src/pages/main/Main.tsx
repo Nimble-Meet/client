@@ -2,7 +2,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
 
-import { useCheckUserLoginStatus } from '@/query-hooks/useFetchUser';
+import useLoginStatus from '@/query-hooks/useUser';
 
 import { FlexContainer } from 'nimble-ds';
 
@@ -11,7 +11,7 @@ import MainContainer from './components/MainContainer';
 import CurrentTimeContainer from './components/CurrentTimeContainer';
 
 const Main = () => {
-    const { data: userData } = useCheckUserLoginStatus();
+    const { data: userData } = useLoginStatus.GET();
 
     // test
     console.log(userData);

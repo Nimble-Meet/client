@@ -1,10 +1,10 @@
-export interface IUser {
-    nickname: string;
+export interface IUserLogin {
     email: string;
     password: string;
 }
 
-export interface ILogin {
+export interface IUserSignup {
+    nickname: string;
     email: string;
     password: string;
 }
