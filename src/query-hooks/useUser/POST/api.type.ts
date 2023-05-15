@@ -1,4 +1,11 @@
 // craeteNewUser function Type
+
+enum ProviderType {
+    LOCAL = 'LOCAL',
+    GOOGLE = 'GOOGLE',
+    KAKAO = 'KAKAO',
+    NAVER = 'NAVER'
+}
 export namespace CreateNewUser {
     export interface ReqParams {
         nickname: string;
@@ -10,7 +17,7 @@ export namespace CreateNewUser {
         data: {
             email: string;
             nickname: string;
-            providerType: 'LOCAL' | 'GOOGLE' | 'KAKAO' | 'NAVER';
+            providerType: ProviderType;
         };
     }
 
@@ -18,7 +25,7 @@ export namespace CreateNewUser {
         data: {
             email: string;
             nickname: string;
-            providerType: 'LOCAL' | 'GOOGLE' | 'KAKAO' | 'NAVER';
+            providerType: ProviderType;
         };
     }
 
