@@ -23,7 +23,7 @@ export const createNewUser: CreateNewUser.PostFunc = async ({
 
         return data;
     } catch (err) {
-        console.log('유저 생성을 실패했습니다.', err);
+        console.error('유저 생성을 실패했습니다.', err);
         throw err;
     }
 };
@@ -48,7 +48,7 @@ export const postAuthenticateUser: PostAuthenticateUser.PostFunc = async ({
 
         return data;
     } catch (err) {
-        console.log('로그인을 실패했습니다.', err);
+        console.error('로그인을 실패했습니다.', err);
         throw err;
     }
 };
