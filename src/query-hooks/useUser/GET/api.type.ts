@@ -1,10 +1,17 @@
 // checkUserLoginStatus function Type
+
+enum ProviderType {
+    LOCAL = 'LOCAL',
+    GOOGLE = 'GOOGLE',
+    KAKAO = 'KAKAO',
+    NAVER = 'NAVER'
+}
 export namespace CheckUserLoginStatus {
     export interface Response {
         data: {
             email: string;
             nickname: string;
-            providerType: 'LOCAL' | 'GOOGLE' | 'KAKAO' | 'NAVER';
+            providerType: ProviderType;
         };
     }
 
@@ -12,7 +19,7 @@ export namespace CheckUserLoginStatus {
         data: {
             email: string;
             nickname: string;
-            providerType: 'LOCAL' | 'GOOGLE' | 'KAKAO' | 'NAVER';
+            providerType: ProviderType;
         };
     }
 
