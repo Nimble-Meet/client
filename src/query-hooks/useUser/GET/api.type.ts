@@ -8,19 +8,15 @@ enum ProviderType {
 }
 export namespace CheckUserLoginStatus {
     export interface Response {
-        data: {
-            email: string;
-            nickname: string;
-            providerType: ProviderType;
-        };
+        email: string;
+        nickname: string;
+        providerType: ProviderType;
     }
 
     export interface Return {
-        data: {
-            email: string;
-            nickname: string;
-            providerType: ProviderType;
-        };
+          email: string;
+          nickname: string;
+          providerType: ProviderType;
     }
 
     export interface GetFunc {

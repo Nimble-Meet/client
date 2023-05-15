@@ -18,6 +18,8 @@ const SignIn = () => {
 
     const { mutateAsync: authenticateUserMutate } = useUser.POST('signIn');
 
+    const { data: userData } = useUser.GET();
+
     const [loginData, setLoginData] = React.useState<IUserLogin>({
         email: '',
         password: ''
@@ -36,6 +38,12 @@ const SignIn = () => {
             // 추후 사용자에게 알리는 방식 구현
         }
     };
+
+    React.useEffect(() => {
+        if (!!userData) {
+            router.push('/main');
+        }
+    }, [router, userData]);
 
     return (
         <main>

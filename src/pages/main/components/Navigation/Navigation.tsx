@@ -1,5 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
+import { useRouter } from 'next/router';
+
+import Cookies from 'js-cookie';
 import { css } from '@emotion/react';
 
 import { FlexContainer } from 'nimble-ds';
@@ -9,6 +12,13 @@ import { NAVIGATION_ITEMS } from './constants';
 import { navStyle } from './Navigation.style';
 
 const Navigation = () => {
+    const router = useRouter();
+
+    const logout = () => {
+        Cookies.remove('accessToken');
+        router.push('/auth/signIn');
+    };
+
     return (
         <nav css={css(navStyle)}>
             <FlexContainer
@@ -27,6 +37,7 @@ const Navigation = () => {
                         key={i}
                     />
                 ))}
+                <button onClick={logout}>Logout</button>
             </FlexContainer>
         </nav>
     );
