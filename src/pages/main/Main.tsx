@@ -28,6 +28,6 @@ const Main = () => {
     );
 };
 
-Main.requireAuth = true;
+Main.isRequireAuthPage = true;
 
 export default Main;

@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
     const token = Cookies.get('accessToken');
 
     React.useEffect(() => {
-        if (!token && (Component as any).requireAuth) {
+        if (!token && (Component as any).isRequireAuthPage) {
             router.push('/auth/signIn');
         }
     }, [router.pathname, token]);
