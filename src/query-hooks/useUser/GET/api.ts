@@ -10,7 +10,7 @@ export const checkUserLoginStatus: CheckUserLoginStatus.GetFunc = async () => {
 
         return data;
     } catch (err) {
-        console.log('로그인 상태 확인을 실패했습니다.', err);
+        console.error('로그인 상태 확인을 실패했습니다.', err);
         throw err;
     }
 };
