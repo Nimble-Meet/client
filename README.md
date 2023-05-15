@@ -17,5 +17,5 @@ $ docker-compose up
 # Test
 
 ```bash
-$ yarn run cy:run -- --record --spec "cypress/e2e";
+$ yarn run cy:run -- --record --spec "cypress/e2e"
 ```
