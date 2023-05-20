@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import React from 'react';
 
 import { FlexContainer, Label, Input, Typography } from 'nimble-ds';

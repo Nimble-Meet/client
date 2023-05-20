@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
 export const landingStyle = css`
@@ -7,6 +6,11 @@ export const landingStyle = css`
     padding-left: 12rem;
 
     background-color: black;
+
+    @media (max-width: 1440px) {
+        padding-right: 6rem;
+        padding-left: 6rem;
+    }
 `;
 
 export const introSectionImageStyle = css`
@@ -14,6 +18,11 @@ export const introSectionImageStyle = css`
     height: 400px;
 
     background-color: blue;
+
+    @media (max-width: 1440px) {
+        width: 504px;
+        height: 336px;
+    }
 `;
 
 export const mainSectionImageStyle = css`
@@ -21,4 +30,9 @@ export const mainSectionImageStyle = css`
     height: 500px;
 
     background-color: blue;
+
+    @media (max-width: 1440px) {
+        padding-right: 8rem;
+        padding-left: 8rem;
+    }
 `;
