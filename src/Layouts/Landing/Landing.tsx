@@ -123,6 +123,7 @@ const Landing = () => {
                                     width="10rem"
                                     fontSize="1.125rem"
                                     onClick={moveMainPage}
+                                    round
                                 >
                                     시작하기
                                 </Button>
@@ -131,6 +132,7 @@ const Landing = () => {
                                     size="xl"
                                     width="10rem"
                                     fontSize="1rem"
+                                    round
                                 >
                                     더 알아보기
                                 </Button>

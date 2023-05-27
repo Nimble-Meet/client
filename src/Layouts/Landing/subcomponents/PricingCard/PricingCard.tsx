@@ -154,6 +154,7 @@ const PricingCard = ({
                 fontSize="1rem"
                 width="100%"
                 onClick={moveMainPage}
+                round
             >
                 {disabled ? 'Coming soon' : '시작하기'}
             </Button>
