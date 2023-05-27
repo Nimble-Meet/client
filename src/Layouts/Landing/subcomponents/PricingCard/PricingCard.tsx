@@ -28,8 +28,8 @@ type Props = {
     benefits: string[];
     price: string;
     disabled: boolean;
-    moveMainPage: Function;
     animationDelay: number;
+    moveMainPage: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
 const PricingCard = ({
@@ -38,8 +38,8 @@ const PricingCard = ({
     benefits,
     price,
     disabled,
-    moveMainPage,
-    animationDelay
+    animationDelay,
+    moveMainPage
 }: Props) => {
     const { targetRef: titleRef, isIntersecting: titleInterscting } =
         useIntersectionObserver(0);
@@ -153,11 +153,7 @@ const PricingCard = ({
                 disabled={disabled}
                 fontSize="1rem"
                 width="100%"
-                onClick={
-                    moveMainPage as (
-                        e?: React.MouseEvent<HTMLButtonElement, MouseEvent>
-                    ) => void
-                }
+                onClick={moveMainPage}
             >
                 {disabled ? 'Coming soon' : '시작하기'}
             </Button>
