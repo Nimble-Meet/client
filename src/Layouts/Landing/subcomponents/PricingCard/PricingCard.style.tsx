@@ -3,19 +3,24 @@ import { css } from '@emotion/react';
 import COLOR from '@/common/color';
 
 export const pricingCardContainerStyle = css`
-    height: 500px;
+    flex: 1;
 
-    padding: 1.5rem;
+    min-width: 23rem; // 368px
+    height: 31.25rem; // 500px
 
-    border-radius: 2rem;
-    background-color: black;
+    padding: 1.5rem; // 24px
+
+    border-radius: 2rem; // 32px
+
+    background-color: ${COLOR.softBlack};
     border: 2px solid ${COLOR.gray900};
 
-    margin-bottom: 6rem;
+    box-shadow: 0px 0px 8px ${COLOR.gray900};
 `;
 
 export const pricingPlanStyle = css`
-    height: 112px;
+    width: 100%;
+    height: 7rem; // 112px
     border-bottom: 1px solid ${COLOR.gray900};
     margin-bottom: 1rem;
 `;
