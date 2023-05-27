@@ -1,8 +1,8 @@
-import { IUser, ILogin } from '@/types/user';
+import { IUserSignup, IUserLogin } from '@/types/user';
 
 interface ISetInputTextWithKey {
     handleChangeFunctions: Function;
-    currentData: IUser | ILogin;
+    currentData: IUserSignup | IUserLogin;
     key: string;
     value: string;
 }
