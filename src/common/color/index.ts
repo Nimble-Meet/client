@@ -1,6 +1,7 @@
 const COLOR = {
     white: '#fff',
     black: '#000',
+    softBlack: '#101010',
     // Gray
     gray50: '#f7f7fa',
     gray100: '#f0f0f5',

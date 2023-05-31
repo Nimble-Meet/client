@@ -1,23 +1,20 @@
-/** @jsxImportSource @emotion/react */
-import React from 'react';
-import { css } from '@emotion/react';
-
 import { Typography, FlexContainer } from 'nimble-ds';
 
 // emotion styles
-import { footerStyle } from './Footer.style';
+import { footerStyle, footerContentsStyle } from './Footer.style';
 
 import { isColor, isWeight } from '@/utils/typography';
 
 import TEXT_DATA from './constants';
 
 const Footer = () => (
-    <footer css={css(footerStyle)}>
+    <footer css={footerStyle}>
         <FlexContainer
             direction="row"
             justifyContent="between"
             alignItems="start"
             gap="0.5rem"
+            customCss={footerContentsStyle}
         >
             <FlexContainer
                 direction="column"
