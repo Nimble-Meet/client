@@ -7,7 +7,7 @@ import { css } from '@emotion/react';
 import useUser from '@/query-hooks/useUser';
 
 // design-system
-import { FlexContainer, Button, Typography } from 'nimble-ds';
+import { FlexContainer, Button } from 'nimble-ds';
 
 // component
 import Devider from '@/components/Devider';
@@ -17,6 +17,7 @@ import InputContainer from '../subcomponents/InputContainer';
 import AuthContainer from '../subcomponents/AuthContainer';
 import ServiceInfoContainer from '../subcomponents/ServiceInfoContainer';
 import AuthenticationMessage from '../subcomponents/AuthenticationMessage';
+import AuthGuide from '../subcomponents/AuthGuide';
 
 // subcomponents
 import OAuthButton from './subcomponents/OAuthButton';
@@ -78,11 +79,9 @@ const SignIn = () => {
                             width: 16rem;
                         `}
                     >
-                        <Typography value={`간편 로그인`} size="32px" />
-                        <Typography
-                            color="gray600"
-                            value={`소셜 계정으로 로그인하고\n더욱 편리하게 이용해보세요.`}
-                            size="16px"
+                        <AuthGuide
+                            title="간편 로그인"
+                            description={`소셜 계정으로 로그인하고\n더욱 편리하게 이용해보세요.`}
                         />
                     </FlexContainer>
                     <FlexContainer

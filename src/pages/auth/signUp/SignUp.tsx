@@ -5,12 +5,13 @@ import { css } from '@emotion/react';
 
 import useUser from '@/query-hooks/useUser';
 
-import { FlexContainer, Typography, Button } from 'nimble-ds';
+import { FlexContainer, Button } from 'nimble-ds';
 
 import InputContainer from '../subcomponents/InputContainer';
 import AuthContainer from '../subcomponents/AuthContainer';
 import ServiceInfoContainer from '../subcomponents/ServiceInfoContainer';
 import AuthenticationMessage from '../subcomponents/AuthenticationMessage';
+import AuthGuide from '../subcomponents/AuthGuide';
 
 import SamePasswordCheckInput from './subcomponents/SamePasswordCheckInput';
 
@@ -91,11 +92,9 @@ const SignUp = () => {
                             width: 16rem;
                         `}
                     >
-                        <Typography value={`회원가입`} size="32px" />
-                        <Typography
-                            color="gray600"
-                            value={`회원가입을 위해 정보를 입력해주세요.`}
-                            size="16px"
+                        <AuthGuide
+                            title="회원가입"
+                            description="회원가입을 위해 정보를 입력해주세요."
                         />
                     </FlexContainer>
                 </FlexContainer>
