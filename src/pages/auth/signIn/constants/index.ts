@@ -19,13 +19,15 @@ export const SIGN_IN_INPUT_DATA = [
     }
 ];
 
-export const OAUTH_BUTTON_SRC = {
-    GOOGLE: {
+export const OAUTH_BUTTONS = [
+    {
         src: 'https://statics.goorm.io/images/social/logo/googleLogo.svg',
+        handler: () => {},
         bgColor: '#ffffff'
     },
-    KAKAO: {
+    {
         src: 'https://statics.goorm.io/images/social/logo/kakaoLogo.svg',
+        handler: () => {},
         bgColor: '#fee500'
     }
-};
+];
