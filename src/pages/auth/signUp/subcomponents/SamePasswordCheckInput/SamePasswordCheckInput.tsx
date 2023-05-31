@@ -10,7 +10,7 @@ type Props = {
     setIsSamePasswordValid: Function;
 };
 
-const CheckSamePasswordInput = ({
+const SamePasswordCheckInput = ({
     password,
     isSamePasswordValid,
     setIsSamePasswordValid
@@ -29,14 +29,9 @@ const CheckSamePasswordInput = ({
     }, [password, passwordCheckValue]);
 
     return (
-        <FlexContainer
-            direction="column"
-            alignItems="start"
-            justifyContent="start"
-            gap="0.5rem"
-        >
+        <FlexContainer direction="column" gap="0.5rem">
             <Label htmlFor="password_check">
-                <Typography value="Check Password" />
+                <Typography value="비밀번호 확인" size="14px" />
             </Label>
             <Input
                 id="password_check"
@@ -48,17 +43,14 @@ const CheckSamePasswordInput = ({
                 }
                 placeholder="비밀번호를 다시 입력해주세요."
                 size="lg"
-                width={250}
+                width={256}
+                invalid={
+                    !isSamePasswordValid && passwordCheckValue.length !== 0
+                }
+                invalidMessage="비밀번호가 일치하지 않습니다."
             />
-            {!isSamePasswordValid && passwordCheckValue.length !== 0 && (
-                <Typography
-                    value="비밀번호가 일치하지 않습니다."
-                    size="12px"
-                    color="red600"
-                />
-            )}
         </FlexContainer>
     );
 };
 
-export default CheckSamePasswordInput;
+export default SamePasswordCheckInput;
