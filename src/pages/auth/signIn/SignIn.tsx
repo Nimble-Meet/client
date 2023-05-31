@@ -91,9 +91,9 @@ const SignIn = () => {
                             width: 100%;
                         `}
                     >
-                        {OAUTH_BUTTONS.map((oauth, index) => (
+                        {OAUTH_BUTTONS.map((oauth, i) => (
                             <OAuthButton
-                                key={index}
+                                key={i}
                                 src={oauth.src}
                                 bgColor={oauth.bgColor}
                                 handler={oauth.handler}

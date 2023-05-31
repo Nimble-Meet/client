@@ -104,9 +104,9 @@ const PricingCard = ({
                     benefitsInterscting ? smoothHorizontal('-1rem') : css``
                 ]}
             >
-                {benefits.map((benefit) => (
+                {benefits.map((benefit, i) => (
                     <div
-                        key={benefit}
+                        key={i}
                         css={css`
                             display: flex;
                             gap: 0.25rem;

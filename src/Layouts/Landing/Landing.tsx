@@ -20,7 +20,7 @@ import {
 // animation styles
 import { smoothVertical, smoothHorizontal } from './Landing.animate';
 
-import CONSTANT from './constants';
+import { EXPLANE_CARD_LIST, PRICING_CARD_LIST } from './constants';
 
 const Landing = () => {
     const {
@@ -151,13 +151,13 @@ const Landing = () => {
                         width: 100%;
                     `}
                 >
-                    {CONSTANT.EXPLANE.map((data) => (
+                    {EXPLANE_CARD_LIST.map((explaneCard, i) => (
                         <ExplaneCard
-                            key={data.title}
-                            title={data.title}
-                            description={data.description}
-                            icon={data.icon}
-                            trasitionDelay={data.delay}
+                            key={i}
+                            title={explaneCard.title}
+                            description={explaneCard.description}
+                            icon={explaneCard.icon}
+                            trasitionDelay={explaneCard.delay}
                         />
                     ))}
                 </FlexContainer>
@@ -262,16 +262,16 @@ const Landing = () => {
                             margin-bottom: 10rem;
                         `}
                     >
-                        {CONSTANT.PRICING.map((pricing) => (
+                        {PRICING_CARD_LIST.map((pricingCard, i) => (
                             <PricingCard
-                                key={pricing.type}
-                                type={pricing.type}
-                                description={pricing.description}
-                                benefits={pricing.benefits}
-                                price={pricing.price}
-                                disabled={pricing.disabled}
+                                key={i}
+                                type={pricingCard.type}
+                                description={pricingCard.description}
+                                benefits={pricingCard.benefits}
+                                price={pricingCard.price}
+                                disabled={pricingCard.disabled}
                                 moveMainPage={moveMainPage}
-                                animationDelay={pricing.delay}
+                                animationDelay={pricingCard.delay}
                             />
                         ))}
                     </FlexContainer>

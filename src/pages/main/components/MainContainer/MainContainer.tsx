@@ -17,7 +17,7 @@ const MainContainer = () => {
                 wrap="wrap"
             >
                 {ACTION_ITEMS.map((item, i) => (
-                    <ActionButton title={item.title} key={i} />
+                    <ActionButton key={i} title={item.title} />
                 ))}
             </FlexContainer>
         </section>

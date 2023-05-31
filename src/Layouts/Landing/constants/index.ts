@@ -2,7 +2,7 @@ import { BsPeopleFill } from 'react-icons/bs';
 import { FiActivity } from 'react-icons/fi';
 import { RiChatSmileFill } from 'react-icons/ri';
 
-const EXPLANE = [
+export const EXPLANE_CARD_LIST = [
     {
         title: 'Meeting Invitation',
         description:
@@ -26,7 +26,7 @@ const EXPLANE = [
     }
 ];
 
-const PRICING = [
+export const PRICING_CARD_LIST = [
     {
         type: 'Free',
         description: '간단한 회의를 위한',
@@ -67,5 +67,3 @@ const PRICING = [
         delay: 0.2
     }
 ];
-
-export default { EXPLANE, PRICING };
