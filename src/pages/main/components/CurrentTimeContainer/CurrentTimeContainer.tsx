@@ -37,12 +37,7 @@ const CurrentTimeContainer = () => {
                     `}
                 >
                     <Typography value={time} size="32px" />
-                    <FlexContainer
-                        direction="row"
-                        justifyContent="start"
-                        alignItems="center"
-                        gap="0.5rem"
-                    >
+                    <FlexContainer alignItems="center" gap="0.5rem">
                         <Typography value={`${year}.`} size="16px" />
                         <Typography value={`${month}.`} size="16px" />
                         <Typography value={`${day}`} size="16px" />

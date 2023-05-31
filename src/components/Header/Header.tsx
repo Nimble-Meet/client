@@ -15,7 +15,6 @@ const Header = () => {
     return (
         <header css={headerStyle}>
             <FlexContainer
-                direction="row"
                 justifyContent="between"
                 alignItems="center"
                 customCss={headerContentsStyle}

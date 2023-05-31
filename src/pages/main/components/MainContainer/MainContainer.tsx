@@ -11,7 +11,6 @@ const MainContainer = () => {
     return (
         <section css={css(mainStyle)}>
             <FlexContainer
-                direction="row"
                 justifyContent="center"
                 alignItems="center"
                 gap="2rem"

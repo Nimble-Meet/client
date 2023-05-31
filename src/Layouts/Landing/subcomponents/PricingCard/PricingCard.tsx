@@ -55,8 +55,6 @@ const PricingCard = ({
     return (
         <FlexContainer
             direction="column"
-            justifyContent="start"
-            alignItems="start"
             gap="1rem"
             grow={1}
             customCss={pricingCardContainerStyle}
@@ -97,8 +95,6 @@ const PricingCard = ({
             </div>
             <FlexContainer
                 direction="column"
-                justifyContent="start"
-                alignItems="start"
                 gap="1rem"
                 ref={benefitsRef}
                 customCss={[

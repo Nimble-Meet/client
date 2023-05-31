@@ -35,7 +35,7 @@ const Landing = () => {
         useIntersectionObserver(0);
 
     const { targetRef: mottoRef, isIntersecting: mottoIntersecting } =
-        useIntersectionObserver(1);
+        useIntersectionObserver();
 
     const {
         targetRef: sectionImageRef,
@@ -43,7 +43,7 @@ const Landing = () => {
     } = useIntersectionObserver(0);
 
     const { targetRef: priceRef, isIntersecting: priceIntersecting } =
-        useIntersectionObserver(1);
+        useIntersectionObserver();
 
     const {
         targetRef: priceDescriptionRef,
@@ -60,7 +60,6 @@ const Landing = () => {
         <main css={landingStyle}>
             <div css={landingContentsStyle}>
                 <FlexContainer
-                    direction="row"
                     justifyContent="between"
                     alignItems="center"
                     customCss={css`
@@ -72,7 +71,6 @@ const Landing = () => {
                     <FlexContainer
                         direction="column"
                         justifyContent="center"
-                        alignItems="start"
                         gap="1.5rem"
                     >
                         <Typography
@@ -84,7 +82,6 @@ const Landing = () => {
                         <FlexContainer
                             direction="column"
                             justifyContent="center"
-                            alignItems="start"
                             gap="4rem"
                         >
                             <div
@@ -102,7 +99,6 @@ const Landing = () => {
                                 />
                             </div>
                             <FlexContainer
-                                direction="row"
                                 justifyContent="center"
                                 alignItems="center"
                                 gap="1.5rem"
@@ -148,7 +144,6 @@ const Landing = () => {
                     />
                 </FlexContainer>
                 <FlexContainer
-                    direction="row"
                     justifyContent="center"
                     alignItems="center"
                     gap="4rem"
@@ -188,11 +183,7 @@ const Landing = () => {
                             weight="lg"
                             value={`Nimble은 무료하지 않은 회의를 목표로 합니다.`}
                         />
-                        <FlexContainer
-                            direction="row"
-                            justifyContent="start"
-                            alignItems="start"
-                        >
+                        <FlexContainer>
                             <Typography
                                 color="blue600"
                                 size="48px"
@@ -231,7 +222,6 @@ const Landing = () => {
                     <FlexContainer
                         direction="column"
                         justifyContent="center"
-                        alignItems="start"
                         gap="1rem"
                         customCss={css`
                             width: 100%;
@@ -265,9 +255,7 @@ const Landing = () => {
                         </div>
                     </FlexContainer>
                     <FlexContainer
-                        direction="row"
                         justifyContent="center"
-                        alignItems="start"
                         gap="3rem"
                         customCss={css`
                             width: 100%;

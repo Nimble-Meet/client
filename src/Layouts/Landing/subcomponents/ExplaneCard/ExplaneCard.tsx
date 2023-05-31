@@ -48,8 +48,6 @@ const ExplaneCard = ({ title, description, icon, trasitionDelay }: Props) => {
     return (
         <FlexContainer
             direction="column"
-            justifyContent="start"
-            alignItems="start"
             gap="1rem"
             grow={1}
             customCss={[explaneCardStyle]}

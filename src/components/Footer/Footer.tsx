@@ -10,18 +10,11 @@ import TEXT_DATA from './constants';
 const Footer = () => (
     <footer css={footerStyle}>
         <FlexContainer
-            direction="row"
             justifyContent="between"
-            alignItems="start"
             gap="0.5rem"
             customCss={footerContentsStyle}
         >
-            <FlexContainer
-                direction="column"
-                justifyContent="start"
-                alignItems="start"
-                gap="0.5rem"
-            >
+            <FlexContainer direction="column" gap="0.5rem">
                 {TEXT_DATA.INTRO.map((text) => (
                     <Typography
                         key={text.key}
@@ -32,12 +25,7 @@ const Footer = () => (
                     />
                 ))}
             </FlexContainer>
-            <FlexContainer
-                direction="column"
-                justifyContent="start"
-                alignItems="start"
-                gap="0.5rem"
-            >
+            <FlexContainer direction="column" gap="0.5rem">
                 <div>
                     {TEXT_DATA.CEO.map((text) => (
                         <Typography
@@ -65,12 +53,7 @@ const Footer = () => (
                     ))}
                 </div>
             </FlexContainer>
-            <FlexContainer
-                direction="column"
-                justifyContent="start"
-                alignItems="end"
-                gap="0.5rem"
-            >
+            <FlexContainer direction="column" alignItems="end" gap="0.5rem">
                 {TEXT_DATA.TERMS.map((text) => (
                     <Typography
                         key={text.key}

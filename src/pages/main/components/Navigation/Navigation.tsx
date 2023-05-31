@@ -21,7 +21,6 @@ const Navigation = () => {
     return (
         <nav css={css(navStyle)}>
             <FlexContainer
-                direction="row"
                 justifyContent="center"
                 alignItems="center"
                 gap="3rem"

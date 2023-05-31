@@ -15,8 +15,6 @@ const Devider = ({ width, value }: Props) => {
     if (value) {
         return (
             <FlexContainer
-                direction="row"
-                justifyContent="start"
                 alignItems="center"
                 gap="0.25rem"
                 customCss={css`
