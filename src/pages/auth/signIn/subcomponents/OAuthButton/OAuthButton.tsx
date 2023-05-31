@@ -7,9 +7,10 @@ import { oauthButtonStyle } from './OAuthButton.style';
 interface Props {
     src: string;
     bgColor: string;
+    handler: () => void;
 }
 
-const OAuthButton = ({ src, bgColor }: Props) => {
+const OAuthButton = ({ src, bgColor, handler }: Props) => {
     return (
         <FlexContainer
             justifyContent="center"
