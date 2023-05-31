@@ -2718,10 +2718,10 @@ next@13.2.1:
     "@next/swc-win32-ia32-msvc" "13.2.1"
     "@next/swc-win32-x64-msvc" "13.2.1"
 
-nimble-ds@^1.0.10:
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/nimble-ds/-/nimble-ds-1.0.10.tgz#61a8f4bd25a8b4ec38bc0c937193e5d52a3e06c0"
-  integrity sha512-zuI/obuF7tdEwMthmc7J46uAbBJFF+BuH/cN0DI6s27uNq1hXMBn+nyRsIgTCmxA6s9NlzkchW6VQDV3b/D02Q==
+nimble-ds@^1.0.12:
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/nimble-ds/-/nimble-ds-1.0.12.tgz#3cb1bb5423871c1de02a7cd2eec82767610198f2"
+  integrity sha512-6ldlZdDM11BG7ai2PduA501s2iRe5yBHxVJltlM5oFLEKEiucZZeEbK5PI6r62vmAbUG37b/yoTx8HTIARojhQ==
   dependencies:
     "@babel/runtime" "^7.21.0"
     "@emotion/styled" "^11.10.6"
