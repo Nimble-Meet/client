@@ -54,14 +54,9 @@ const InputContainer = ({
     }, [inputValue]);
 
     return (
-        <FlexContainer
-            direction="column"
-            alignItems="start"
-            justifyContent="start"
-            gap="0.5rem"
-        >
+        <FlexContainer direction="column" gap="0.5rem">
             <Label htmlFor={id}>
-                <Typography value={labelText} />
+                <Typography value={labelText} size="14px" />
             </Label>
             <Input
                 id={id}
@@ -71,7 +66,7 @@ const InputContainer = ({
                 onBlur={() => validateInputValue(inputValue)}
                 placeholder={placeholder}
                 size="lg"
-                width={250}
+                width={256}
                 invalid={!isValid && inputValue.length !== 0}
                 invalidMessage={inValidMessage}
             />
