@@ -12,7 +12,7 @@ import AuthContainer from '../subcomponents/AuthContainer';
 import ServiceInfoContainer from '../subcomponents/ServiceInfoContainer';
 import AuthenticationMessage from '../subcomponents/AuthenticationMessage';
 
-import CheckSamePasswordInput from './subcomponents/CheckSamePasswordInput';
+import SamePasswordCheckInput from './subcomponents/SamePasswordCheckInput';
 
 import { signUpMainStyle } from './SignUp.style';
 
@@ -118,7 +118,7 @@ const SignUp = () => {
                             handleChangeFunctions={setLoginData}
                         />
                     ))}
-                    <CheckSamePasswordInput
+                    <SamePasswordCheckInput
                         password={loginData.password}
                         isSamePasswordValid={isSamePasswordValid}
                         setIsSamePasswordValid={setIsSamePasswordValid}
