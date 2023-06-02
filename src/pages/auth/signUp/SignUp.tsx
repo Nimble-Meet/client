@@ -7,13 +7,17 @@ import useUser from '@/query-hooks/useUser';
 
 import { FlexContainer, Button } from 'nimble-ds';
 
-import InputContainer from '../subcomponents/InputContainer';
-import AuthContainer from '../subcomponents/AuthContainer';
-import ServiceInfoContainer from '../subcomponents/ServiceInfoContainer';
-import AuthenticationMessage from '../subcomponents/AuthenticationMessage';
-import AuthGuide from '../subcomponents/AuthGuide';
+import {
+    InputContainer,
+    ServiceInfoContainer,
+    SamePasswordCheckInput
+} from '@/components/Auth';
 
-import SamePasswordCheckInput from './subcomponents/SamePasswordCheckInput';
+import {
+    AuthContainer,
+    AuthenticationMessage,
+    AuthGuide
+} from '@/components/Auth/@subComponents';
 
 import { signUpMainStyle } from './SignUp.style';
 
@@ -21,16 +25,16 @@ import {
     validateNickname,
     validateEmail,
     validatePassword
-} from '../utils/validation';
+} from '@/utils/Auth/validation';
 
 import { SIGN_UP_INPUT_DATA } from './constants';
 
-import { IUserSignup } from '@/types/user';
+import { IUserSignUp } from 'UserInterfaces';
 
 const SignUp = () => {
     const router = useRouter();
 
-    const [loginData, setLoginData] = React.useState<IUserSignup>({
+    const [loginData, setLoginData] = React.useState<IUserSignUp>({
         nickname: '',
         email: '',
         password: ''
@@ -44,7 +48,7 @@ const SignUp = () => {
         nickname,
         email,
         password
-    }: IUserSignup) => {
+    }: IUserSignUp) => {
         const isNicknameValid = validateNickname(nickname);
         const isEmailValid = validateEmail(email);
         const isPasswordValid = validatePassword(password);
@@ -108,11 +112,11 @@ const SignUp = () => {
                         <InputContainer
                             key={i}
                             id={input.key}
+                            action={input.action}
                             type={input.type}
                             placeholder={input.placeholder}
                             labelText={input.label}
                             inValidMessage={input.inValidMessage}
-                            currentData={loginData}
                             validateFunction={input.validate}
                             handleChangeFunctions={setLoginData}
                         />

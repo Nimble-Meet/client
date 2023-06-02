@@ -10,23 +10,24 @@ import useUser from '@/query-hooks/useUser';
 import { FlexContainer, Button } from 'nimble-ds';
 
 // component
-import Devider from '@/components/Devider';
+import { Devider } from '@/components/Ui';
 
-// auth common components
-import InputContainer from '../subcomponents/InputContainer';
-import AuthContainer from '../subcomponents/AuthContainer';
-import ServiceInfoContainer from '../subcomponents/ServiceInfoContainer';
-import AuthenticationMessage from '../subcomponents/AuthenticationMessage';
-import AuthGuide from '../subcomponents/AuthGuide';
+import { InputContainer, ServiceInfoContainer } from '@/components/Auth';
+
+import {
+    AuthContainer,
+    AuthenticationMessage,
+    AuthGuide,
+    OAuthButton
+} from '@/components/Auth/@subComponents';
 
 // subcomponents
-import OAuthButton from './subcomponents/OAuthButton';
 
 // constants
 import { SIGN_IN_INPUT_DATA, OAUTH_BUTTONS } from './constants';
 
 // types
-import { IUserLogin } from '@/types/user';
+import { IUserLogin } from 'UserInterfaces';
 
 // emotion styles
 import { signInMainStyle } from './SignIn.style';
@@ -112,11 +113,11 @@ const SignIn = () => {
                         <InputContainer
                             key={i}
                             id={input.key}
+                            action={input.action}
                             type={input.type}
                             placeholder={input.placeholder}
                             labelText={input.label}
                             inValidMessage={input.inValidMessage}
-                            currentData={loginData}
                             validateFunction={input.validate}
                             handleChangeFunctions={setLoginData}
                         />
