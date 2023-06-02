@@ -55,8 +55,6 @@ const PricingCard = ({
     return (
         <FlexContainer
             direction="column"
-            justifyContent="start"
-            alignItems="start"
             gap="1rem"
             grow={1}
             customCss={pricingCardContainerStyle}
@@ -97,8 +95,6 @@ const PricingCard = ({
             </div>
             <FlexContainer
                 direction="column"
-                justifyContent="start"
-                alignItems="start"
                 gap="1rem"
                 ref={benefitsRef}
                 customCss={[
@@ -108,9 +104,9 @@ const PricingCard = ({
                     benefitsInterscting ? smoothHorizontal('-1rem') : css``
                 ]}
             >
-                {benefits.map((benefit) => (
+                {benefits.map((benefit, i) => (
                     <div
-                        key={benefit}
+                        key={i}
                         css={css`
                             display: flex;
                             gap: 0.25rem;
@@ -154,6 +150,7 @@ const PricingCard = ({
                 fontSize="1rem"
                 width="100%"
                 onClick={moveMainPage}
+                round
             >
                 {disabled ? 'Coming soon' : '시작하기'}
             </Button>

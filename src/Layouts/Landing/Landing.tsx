@@ -20,7 +20,7 @@ import {
 // animation styles
 import { smoothVertical, smoothHorizontal } from './Landing.animate';
 
-import CONSTANT from './constants';
+import { EXPLANE_CARD_LIST, PRICING_CARD_LIST } from './constants';
 
 const Landing = () => {
     const {
@@ -35,7 +35,7 @@ const Landing = () => {
         useIntersectionObserver(0);
 
     const { targetRef: mottoRef, isIntersecting: mottoIntersecting } =
-        useIntersectionObserver(1);
+        useIntersectionObserver();
 
     const {
         targetRef: sectionImageRef,
@@ -43,7 +43,7 @@ const Landing = () => {
     } = useIntersectionObserver(0);
 
     const { targetRef: priceRef, isIntersecting: priceIntersecting } =
-        useIntersectionObserver(1);
+        useIntersectionObserver();
 
     const {
         targetRef: priceDescriptionRef,
@@ -60,7 +60,6 @@ const Landing = () => {
         <main css={landingStyle}>
             <div css={landingContentsStyle}>
                 <FlexContainer
-                    direction="row"
                     justifyContent="between"
                     alignItems="center"
                     customCss={css`
@@ -72,7 +71,6 @@ const Landing = () => {
                     <FlexContainer
                         direction="column"
                         justifyContent="center"
-                        alignItems="start"
                         gap="1.5rem"
                     >
                         <Typography
@@ -84,7 +82,6 @@ const Landing = () => {
                         <FlexContainer
                             direction="column"
                             justifyContent="center"
-                            alignItems="start"
                             gap="4rem"
                         >
                             <div
@@ -102,7 +99,6 @@ const Landing = () => {
                                 />
                             </div>
                             <FlexContainer
-                                direction="row"
                                 justifyContent="center"
                                 alignItems="center"
                                 gap="1.5rem"
@@ -123,6 +119,7 @@ const Landing = () => {
                                     width="10rem"
                                     fontSize="1.125rem"
                                     onClick={moveMainPage}
+                                    round
                                 >
                                     시작하기
                                 </Button>
@@ -131,6 +128,7 @@ const Landing = () => {
                                     size="xl"
                                     width="10rem"
                                     fontSize="1rem"
+                                    round
                                 >
                                     더 알아보기
                                 </Button>
@@ -146,7 +144,6 @@ const Landing = () => {
                     />
                 </FlexContainer>
                 <FlexContainer
-                    direction="row"
                     justifyContent="center"
                     alignItems="center"
                     gap="4rem"
@@ -154,13 +151,13 @@ const Landing = () => {
                         width: 100%;
                     `}
                 >
-                    {CONSTANT.EXPLANE.map((data) => (
+                    {EXPLANE_CARD_LIST.map((explaneCard, i) => (
                         <ExplaneCard
-                            key={data.title}
-                            title={data.title}
-                            description={data.description}
-                            icon={data.icon}
-                            trasitionDelay={data.delay}
+                            key={i}
+                            title={explaneCard.title}
+                            description={explaneCard.description}
+                            icon={explaneCard.icon}
+                            trasitionDelay={explaneCard.delay}
                         />
                     ))}
                 </FlexContainer>
@@ -186,11 +183,7 @@ const Landing = () => {
                             weight="lg"
                             value={`Nimble은 무료하지 않은 회의를 목표로 합니다.`}
                         />
-                        <FlexContainer
-                            direction="row"
-                            justifyContent="start"
-                            alignItems="start"
-                        >
+                        <FlexContainer>
                             <Typography
                                 color="blue600"
                                 size="48px"
@@ -229,7 +222,6 @@ const Landing = () => {
                     <FlexContainer
                         direction="column"
                         justifyContent="center"
-                        alignItems="start"
                         gap="1rem"
                         customCss={css`
                             width: 100%;
@@ -263,25 +255,23 @@ const Landing = () => {
                         </div>
                     </FlexContainer>
                     <FlexContainer
-                        direction="row"
                         justifyContent="center"
-                        alignItems="start"
                         gap="3rem"
                         customCss={css`
                             width: 100%;
                             margin-bottom: 10rem;
                         `}
                     >
-                        {CONSTANT.PRICING.map((pricing) => (
+                        {PRICING_CARD_LIST.map((pricingCard, i) => (
                             <PricingCard
-                                key={pricing.type}
-                                type={pricing.type}
-                                description={pricing.description}
-                                benefits={pricing.benefits}
-                                price={pricing.price}
-                                disabled={pricing.disabled}
+                                key={i}
+                                type={pricingCard.type}
+                                description={pricingCard.description}
+                                benefits={pricingCard.benefits}
+                                price={pricingCard.price}
+                                disabled={pricingCard.disabled}
                                 moveMainPage={moveMainPage}
-                                animationDelay={pricing.delay}
+                                animationDelay={pricingCard.delay}
                             />
                         ))}
                     </FlexContainer>

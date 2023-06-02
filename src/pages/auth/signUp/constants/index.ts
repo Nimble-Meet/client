@@ -7,7 +7,7 @@ import {
 export const SIGN_UP_INPUT_DATA = [
     {
         key: 'nickname',
-        label: 'Nickname',
+        label: '닉네임',
         type: 'text',
         placeholder: '닉네임을 입력해주세요.',
         validate: (nickname: string) => validateNickname(nickname),
@@ -15,7 +15,7 @@ export const SIGN_UP_INPUT_DATA = [
     },
     {
         key: 'email',
-        label: 'Email',
+        label: '이메일',
         type: 'text',
         placeholder: '이메일을 입력해주세요.',
         validate: (email: string) => validateEmail(email),
@@ -23,7 +23,7 @@ export const SIGN_UP_INPUT_DATA = [
     },
     {
         key: 'password',
-        label: 'Password',
+        label: '비밀번호',
         type: 'password',
         placeholder: '비밀번호를 입력해주세요.',
         validate: (password: string) => validatePassword(password),

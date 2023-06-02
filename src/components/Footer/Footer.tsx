@@ -10,21 +10,14 @@ import TEXT_DATA from './constants';
 const Footer = () => (
     <footer css={footerStyle}>
         <FlexContainer
-            direction="row"
             justifyContent="between"
-            alignItems="start"
             gap="0.5rem"
             customCss={footerContentsStyle}
         >
-            <FlexContainer
-                direction="column"
-                justifyContent="start"
-                alignItems="start"
-                gap="0.5rem"
-            >
-                {TEXT_DATA.INTRO.map((text) => (
+            <FlexContainer direction="column" gap="0.5rem">
+                {TEXT_DATA.INTRO.map((text, i) => (
                     <Typography
-                        key={text.key}
+                        key={i}
                         color={isColor(text.color) ? text.color : undefined}
                         weight={isWeight(text.weight) ? text.weight : undefined}
                         size={text.size}
@@ -32,16 +25,11 @@ const Footer = () => (
                     />
                 ))}
             </FlexContainer>
-            <FlexContainer
-                direction="column"
-                justifyContent="start"
-                alignItems="start"
-                gap="0.5rem"
-            >
+            <FlexContainer direction="column" gap="0.5rem">
                 <div>
-                    {TEXT_DATA.CEO.map((text) => (
+                    {TEXT_DATA.CEO.map((text, i) => (
                         <Typography
-                            key={text.key}
+                            key={i}
                             color={isColor(text.color) ? text.color : undefined}
                             weight={
                                 isWeight(text.weight) ? text.weight : undefined
@@ -52,9 +40,9 @@ const Footer = () => (
                     ))}
                 </div>
                 <div>
-                    {TEXT_DATA.CS.map((text) => (
+                    {TEXT_DATA.CS.map((text, i) => (
                         <Typography
-                            key={text.key}
+                            key={i}
                             color={isColor(text.color) ? text.color : undefined}
                             weight={
                                 isWeight(text.weight) ? text.weight : undefined
@@ -65,15 +53,10 @@ const Footer = () => (
                     ))}
                 </div>
             </FlexContainer>
-            <FlexContainer
-                direction="column"
-                justifyContent="start"
-                alignItems="end"
-                gap="0.5rem"
-            >
-                {TEXT_DATA.TERMS.map((text) => (
+            <FlexContainer direction="column" alignItems="end" gap="0.5rem">
+                {TEXT_DATA.TERMS.map((text, i) => (
                     <Typography
-                        key={text.key}
+                        key={i}
                         color={isColor(text.color) ? text.color : undefined}
                         weight={isWeight(text.weight) ? text.weight : undefined}
                         size={text.size}

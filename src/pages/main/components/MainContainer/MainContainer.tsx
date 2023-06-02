@@ -11,14 +11,13 @@ const MainContainer = () => {
     return (
         <section css={css(mainStyle)}>
             <FlexContainer
-                direction="row"
                 justifyContent="center"
                 alignItems="center"
                 gap="2rem"
                 wrap="wrap"
             >
                 {ACTION_ITEMS.map((item, i) => (
-                    <ActionButton title={item.title} key={i} />
+                    <ActionButton key={i} title={item.title} />
                 ))}
             </FlexContainer>
         </section>

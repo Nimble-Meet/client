@@ -12,7 +12,6 @@ const Main = () => {
         <main>
             <Navigation />
             <FlexContainer
-                direction="row"
                 justifyContent="center"
                 alignItems="center"
                 gap="3rem"

@@ -4,7 +4,7 @@ import { FlexContainer, Label, Input, Typography } from 'nimble-ds';
 
 import { commonSetInputTextWithKey } from '../../utils/common';
 
-import { ILogin, IUser } from '@/types/user';
+import { IUserLogin, IUserSignup } from '@/types/user';
 
 type Props = {
     id: string;
@@ -12,7 +12,7 @@ type Props = {
     placeholder: string;
     labelText: string;
     inValidMessage: string;
-    currentData: ILogin | IUser;
+    currentData: IUserLogin | IUserSignup;
     handleChangeFunctions: Function;
     validateFunction: Function;
 };
@@ -54,14 +54,9 @@ const InputContainer = ({
     }, [inputValue]);
 
     return (
-        <FlexContainer
-            direction="column"
-            alignItems="start"
-            justifyContent="start"
-            gap="0.5rem"
-        >
+        <FlexContainer direction="column" gap="0.5rem">
             <Label htmlFor={id}>
-                <Typography value={labelText} />
+                <Typography value={labelText} size="14px" />
             </Label>
             <Input
                 id={id}
@@ -71,11 +66,10 @@ const InputContainer = ({
                 onBlur={() => validateInputValue(inputValue)}
                 placeholder={placeholder}
                 size="lg"
-                width={250}
+                width={256}
+                invalid={!isValid && inputValue.length !== 0}
+                invalidMessage={inValidMessage}
             />
-            {!isValid && inputValue.length !== 0 && (
-                <Typography value={inValidMessage} size="12px" color="red600" />
-            )}
         </FlexContainer>
     );
 };
