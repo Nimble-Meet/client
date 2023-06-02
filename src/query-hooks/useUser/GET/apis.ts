@@ -2,7 +2,7 @@ import axiosInstance from '@/lib/axiosInstance';
 
 import type { CheckUserLoginStatus } from './apis.type';
 
-export const checkUserLoginStatus: CheckUserLoginStatus.GetFunc = async () => {
+export const checkUserLoginStatus: CheckUserLoginStatus.Func = async () => {
     try {
         const { data } = await axiosInstance.get<CheckUserLoginStatus.Response>(
             'auth/whoami'

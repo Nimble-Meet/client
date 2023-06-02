@@ -1,11 +1,5 @@
-// checkUserLoginStatus function Type
+export type ProviderType = 'LOCAL' | 'GOOGLE' | 'KAKAO' | 'NAVER';
 
-enum ProviderType {
-    LOCAL = 'LOCAL',
-    GOOGLE = 'GOOGLE',
-    KAKAO = 'KAKAO',
-    NAVER = 'NAVER'
-}
 export namespace CheckUserLoginStatus {
     export interface Response {
         email: string;
@@ -13,13 +7,9 @@ export namespace CheckUserLoginStatus {
         providerType: ProviderType;
     }
 
-    export interface Return {
-          email: string;
-          nickname: string;
-          providerType: ProviderType;
-    }
+    export type Return = Response;
 
-    export interface GetFunc {
+    export interface Func {
         (): Promise<Return>;
     }
 }

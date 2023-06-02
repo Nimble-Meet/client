@@ -29,7 +29,7 @@ export namespace CreateNewUser {
         };
     }
 
-    export interface PostFunc {
+    export interface Func {
         (params: ReqParams): Promise<Return>;
     }
 }
@@ -56,7 +56,7 @@ export namespace PostAuthenticateUser {
         };
     }
 
-    export interface PostFunc {
+    export interface Func {
         (params: ReqParams): Promise<Return>;
     }
 }

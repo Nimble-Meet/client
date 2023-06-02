@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 
 import type { CreateNewUser, PostAuthenticateUser } from './apis.type';
 
-export const createNewUser: CreateNewUser.PostFunc = async ({
+export const createNewUser: CreateNewUser.Func = async ({
     nickname,
     email,
     password
@@ -28,7 +28,7 @@ export const createNewUser: CreateNewUser.PostFunc = async ({
     }
 };
 
-export const postAuthenticateUser: PostAuthenticateUser.PostFunc = async ({
+export const postAuthenticateUser: PostAuthenticateUser.Func = async ({
     email,
     password
 }) => {
