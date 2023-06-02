@@ -1,6 +1,6 @@
 import axiosInstance from '@/lib/axiosInstance';
 
-import type { CheckUserLoginStatus } from './api.type';
+import type { CheckUserLoginStatus } from './apis.type';
 
 export const checkUserLoginStatus: CheckUserLoginStatus.GetFunc = async () => {
     try {

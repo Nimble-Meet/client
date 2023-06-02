@@ -3,7 +3,7 @@ import { AxiosError } from 'axios';
 import { useMutation } from 'react-query';
 
 import { createNewUser, postAuthenticateUser } from './apis';
-import type { CreateNewUser, PostAuthenticateUser } from './api.type';
+import type { CreateNewUser, PostAuthenticateUser } from './apis.type';
 
 type ActionType = 'signUp' | 'signIn';
 
