@@ -3,8 +3,6 @@ import { Typography, FlexContainer } from 'nimble-ds';
 // emotion styles
 import { footerStyle, footerContentsStyle } from './Footer.style';
 
-import { isColor, isWeight } from '@/utils/typography';
-
 import TEXT_DATA from './constants';
 
 const Footer = () => (
@@ -18,8 +16,8 @@ const Footer = () => (
                 {TEXT_DATA.INTRO.map((text, i) => (
                     <Typography
                         key={i}
-                        color={isColor(text.color) ? text.color : undefined}
-                        weight={isWeight(text.weight) ? text.weight : undefined}
+                        color={text.color}
+                        weight={text.weight}
                         size={text.size}
                         value={text.value}
                     />
@@ -30,10 +28,8 @@ const Footer = () => (
                     {TEXT_DATA.CEO.map((text, i) => (
                         <Typography
                             key={i}
-                            color={isColor(text.color) ? text.color : undefined}
-                            weight={
-                                isWeight(text.weight) ? text.weight : undefined
-                            }
+                            color={text.color}
+                            weight={text.weight}
                             size={text.size}
                             value={text.value}
                         />
@@ -43,10 +39,8 @@ const Footer = () => (
                     {TEXT_DATA.CS.map((text, i) => (
                         <Typography
                             key={i}
-                            color={isColor(text.color) ? text.color : undefined}
-                            weight={
-                                isWeight(text.weight) ? text.weight : undefined
-                            }
+                            color={text.color}
+                            weight={text.weight}
                             size={text.size}
                             value={text.value}
                         />
@@ -57,8 +51,8 @@ const Footer = () => (
                 {TEXT_DATA.TERMS.map((text, i) => (
                     <Typography
                         key={i}
-                        color={isColor(text.color) ? text.color : undefined}
-                        weight={isWeight(text.weight) ? text.weight : undefined}
+                        color={text.color}
+                        weight={text.weight}
                         size={text.size}
                         value={text.value}
                     />
