@@ -4,7 +4,7 @@
 ![Docker Badge](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
 <img src="https://img.shields.io/badge/React Query-FF4154?style=flat-square&logo=react query&logoColor=white"/>
 
-# Folder Structure (~ing)
+# Folder Structure
 
 ```
 |--🗂️ .github
@@ -13,45 +13,62 @@
 |--🗂️ src
    |--🗂️ assets (에셋)
    |--🗂️ common (전체 프로젝트가 공유하는 common 파일)
+        |--🗂️ animation
+            |--📑 move.ts
+            |--📑 size.ts
         |--🗂️ color
             |--📑 index.ts
-   |--🗂️ components (전체 컴포넌트가 공유하는 컴포넌트)
-        |--🗂️  Header
-            |--📑 Header.style.tsx
-            |--📑 Header.tsx
+   |--🗂️ components (관심사별로 묶은 컴포넌트)
+        |--🗂️ Auth (관심사)
+            |--🗂️ @subComponents (Auth 관심사에서 사용하는 subComponent)
+                |--🗂️ AuthContainer
+                |--🗂️ AuthGuide
+                |--🗂️ OAuthButton
+                |--📑 index.ts
+            |--🗂️ InputContainer
+                |--📑 InputContainer.style.tsx
+                |--📑 InputContainer.tsx
+                |--📑 index.ts
+            |--🗂️ SamePasswordCheckInput
+            |--🗂️ ServiceInfoContainer
             |--📑 index.ts
-   |--🗂️ hooks (전역적 hook 정의)
+        |--🗂️ Landing (관심사)
+        |--🗂️ Main (관심사)
+        |--🗂️ Ui (전체 컴포넌트가 공유할만한 Ui 컴포넌트)
+            |--🗂️ Header
+                |--📑 Header.style.tsx
+                |--📑 Header.tsx
+                |--📑 index.ts
+            |--🗂️ Footer
+   |--🗂️ hooks (전역 hook 정의)
         |--📑 useIntersectionObserver.ts
-   |--🗂️ layouts (Layout 컴포넌트 정의)
-        |--🗂️Landing
-            |-- ....
-   |--🗂️ lib (axios 미들웨어)
+   |--🗂️ lib (axios 미들웨어 등)
    |--🗂️ pages
         |--🗂️ auth
-            |--🗂️ subcomponents (auth 페이지 내부에서만(signIn, signUp) 사용되는 공통 컴포넌트 정의)
-                |--🗂️ AuthContainer
-                |--🗂️ AuthenticationMessage
-            |--📁 signIn
+            |--🗂️ signIn
                 |--🗂️ constants (signIn 내부에서만 사용하는 상수 정의)
-                |--🗂️ subcomponents (signIn 페이지 내부에서만 사용하는 컴포넌트 정의)
-                    |--🗂️ OAuthButton
                 |--📑 index.ts
                 |--📑 SignIn.style.tsx
                 |--📑 SignIn.tsx
             |--🗂️ SignUp (signIn과 내부 구조 동일)
    |--🗂️ query-hooks (react-query 관련 폴더, 큰 틀의 명사 => 관심사로 분류)
         |--🗂️ useUser
-            |--📁 GET
+            |--🗂️ GET
                 |--📑 api.ts
                 |--📑 api.type.ts
                 |--📑 index.ts
                 |--📑 useFetchLoginStatus.ts
-            |--📁 POST
+            |--🗂️ POST
             |--📑 index.ts
             |--📑 useUser.keys.ts
    |--🗂️ styles (global 스타일 정의)
-   |--🗂️ types (global 타입 정의)
    |--🗂️ utils (global util 정의)
+        |--🗂️ Auth (관심사)
+            |-- common.ts
+            |-- validation.ts
+        |--🗂️ Main (관심사)
+            |-- time.ts
+   |--📑 index.d.ts (global type 정의)
 ```
 
 # Description
