@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 
-import { checkUserLoginStatus } from './api';
+import { checkUserLoginStatus } from './apis';
 
 import USER_KEY from '../useUser.keys';
 

@@ -3,9 +3,11 @@ import { css } from '@emotion/react';
 
 import { FlexContainer } from 'nimble-ds';
 
-import Navigation from './components/Navigation';
-import MainContainer from './components/MainContainer';
-import CurrentTimeContainer from './components/CurrentTimeContainer';
+import {
+    Navigation,
+    MainContainer,
+    CurrentTimeContainer
+} from '@/components/Main';
 
 const Main = () => {
     return (

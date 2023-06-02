@@ -1,8 +1,7 @@
 import Head from 'next/head';
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import Landing from '@/layouts/Landing';
+import { Header, Footer } from '@/components/Ui';
+import Landing from '@/components/Landing/LandingContainer';
 
 export default function Home() {
     return (

@@ -2,7 +2,7 @@ import axiosInstance from '@/lib/axiosInstance';
 import sha256 from 'crypto-js/sha256';
 import Cookies from 'js-cookie';
 
-import type { CreateNewUser, PostAuthenticateUser } from './api.type';
+import type { CreateNewUser, PostAuthenticateUser } from './apis.type';
 
 export const createNewUser: CreateNewUser.PostFunc = async ({
     nickname,
