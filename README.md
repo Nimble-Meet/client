@@ -75,6 +75,13 @@
 
 ##### Nimble Meet 프론트엔드 리퍼지토리
 
+# .env
+
+```
+REACT_APP_SERVER_DOMAIN_URL=<host>
+CYPRESS_PROJECT_ID=<random secret>
+```
+
 # Running the app
 
 ```bash
