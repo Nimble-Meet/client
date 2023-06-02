@@ -9,6 +9,8 @@ declare module 'UserInterfaces' {
         email: string;
         password: string;
     }
+
+    export type ProviderType = 'LOCAL' | 'GOOGLE' | 'KAKAO' | 'NAVER';
 }
 
 declare module 'FontInterface' {

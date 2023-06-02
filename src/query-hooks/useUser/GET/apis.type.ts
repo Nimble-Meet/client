@@ -1,4 +1,4 @@
-export type ProviderType = 'LOCAL' | 'GOOGLE' | 'KAKAO' | 'NAVER';
+import { ProviderType } from 'UserInterfaces';
 
 export namespace CheckUserLoginStatus {
     export interface Response {

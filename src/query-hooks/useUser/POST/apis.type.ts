@@ -1,11 +1,7 @@
+import { ProviderType } from 'UserInterfaces';
+
 // craeteNewUser function Type
 
-enum ProviderType {
-    LOCAL = 'LOCAL',
-    GOOGLE = 'GOOGLE',
-    KAKAO = 'KAKAO',
-    NAVER = 'NAVER'
-}
 export namespace CreateNewUser {
     export interface ReqParams {
         nickname: string;
@@ -35,6 +31,7 @@ export namespace CreateNewUser {
 }
 
 // postAuthenticateUser function Type
+
 export namespace PostAuthenticateUser {
     export interface ReqParams {
         email: string;
