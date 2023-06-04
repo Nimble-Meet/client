@@ -4,7 +4,7 @@ import { FlexContainer, Label, Input, Typography } from 'nimble-ds';
 
 import { setInputTextWithKey } from '@/utils/Auth/common';
 
-import { IUserLogin, IUserSignUp } from 'UserInterfaces';
+import type { IUserLogin, IUserSignUp } from 'UserInterfaces';
 
 import type { Props } from './InputContainer.type';
 

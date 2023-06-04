@@ -19,7 +19,7 @@ import {
 import { smoothVertical, smoothHorizontal } from '@/common/animation/move';
 import { opacityZeroToHundred } from '@/common/animation/opacity';
 
-import { Props } from './PricingCard.type';
+import type { Props } from './PricingCard.type';
 
 const PricingCard = ({
     type,
