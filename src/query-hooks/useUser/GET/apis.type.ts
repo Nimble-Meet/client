@@ -1,6 +1,6 @@
 import { ProviderType } from 'UserInterfaces';
 
-export namespace CheckUserLoginStatus {
+export namespace CheckLoginStatus {
     export interface Response {
         email: string;
         nickname: string;

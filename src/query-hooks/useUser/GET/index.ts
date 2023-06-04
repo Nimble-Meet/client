@@ -1,1 +1,1 @@
-export { default } from './useFetchLoginStatus';
+export { default } from './useGetUser';

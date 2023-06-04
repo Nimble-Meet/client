@@ -1,7 +1,5 @@
 import { ProviderType } from 'UserInterfaces';
 
-// craeteNewUser function Type
-
 export namespace CreateNewUser {
     export interface ReqParams {
         nickname: string;
@@ -10,48 +8,12 @@ export namespace CreateNewUser {
     }
 
     export interface Response {
-        data: {
-            email: string;
-            nickname: string;
-            providerType: ProviderType;
-        };
-    }
-
-    export interface Return {
-        data: {
-            email: string;
-            nickname: string;
-            providerType: ProviderType;
-        };
-    }
-
-    export interface Func {
-        (params: ReqParams): Promise<Return>;
-    }
-}
-
-// postAuthenticateUser function Type
-
-export namespace PostAuthenticateUser {
-    export interface ReqParams {
         email: string;
-        password: string;
+        nickname: string;
+        providerType: ProviderType;
     }
 
-    export interface Response {
-        accessToken: string;
-        data: {
-            userId: number;
-            accessToken: string;
-        };
-    }
-
-    export interface Return {
-        data: {
-            userId: number;
-            accessToken: string;
-        };
-    }
+    export type Return = Response;
 
     export interface Func {
         (params: ReqParams): Promise<Return>;
