@@ -5,15 +5,12 @@ import { css } from '@emotion/react';
 
 // react-query
 import useUser from '@/query-hooks/useUser';
+import useAuth from '@/query-hooks/useAuth';
 
-// design-system
 import { FlexContainer, Button } from 'nimble-ds';
 
-// component
 import { Devider } from '@/components/Ui';
-
 import { InputContainer, ServiceInfoContainer } from '@/components/Auth';
-
 import {
     AuthContainer,
     AuthenticationMessage,
@@ -21,16 +18,11 @@ import {
     OAuthButton
 } from '@/components/Auth/@subComponents';
 
-// subcomponents
+import { signInMainStyle } from './SignIn.style';
 
-// constants
 import { SIGN_IN_INPUT_DATA, OAUTH_BUTTONS } from './constants';
 
-// types
-import { IUserLogin } from 'UserInterfaces';
-
-// emotion styles
-import { signInMainStyle } from './SignIn.style';
+import type { IUserLogin } from 'UserInterfaces';
 
 const SignIn = () => {
     const router = useRouter();
@@ -40,7 +32,7 @@ const SignIn = () => {
         password: ''
     });
 
-    const { mutateAsync: authenticateUserMutate } = useUser.POST('signIn');
+    const { mutateAsync: authenticateUserMutate } = useAuth.POST('login');
     const { data: userData } = useUser.GET();
 
     const moveSignUpPage = () => {

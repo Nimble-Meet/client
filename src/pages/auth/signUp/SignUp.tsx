@@ -3,16 +3,15 @@ import { useRouter } from 'next/router';
 
 import { css } from '@emotion/react';
 
+// react-query
 import useUser from '@/query-hooks/useUser';
 
 import { FlexContainer, Button } from 'nimble-ds';
-
 import {
     InputContainer,
     ServiceInfoContainer,
     SamePasswordCheckInput
 } from '@/components/Auth';
-
 import {
     AuthContainer,
     AuthenticationMessage,
@@ -29,7 +28,7 @@ import {
 
 import { SIGN_UP_INPUT_DATA } from './constants';
 
-import { IUserSignUp } from 'UserInterfaces';
+import type { IUserSignUp } from 'UserInterfaces';
 
 const SignUp = () => {
     const router = useRouter();
@@ -42,7 +41,7 @@ const SignUp = () => {
     const [isSamePasswordValid, setIsSamePasswordValid] =
         React.useState<boolean>(false);
 
-    const { mutateAsync: createNewUserMutate } = useUser.POST('signUp');
+    const { mutateAsync: createNewUserMutate } = useUser.POST();
 
     const validateSignupButtonDiabled = ({
         nickname,
