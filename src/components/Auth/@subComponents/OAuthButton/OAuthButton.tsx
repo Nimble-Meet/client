@@ -4,13 +4,9 @@ import { FlexContainer } from 'nimble-ds';
 
 import { oauthButtonStyle } from './OAuthButton.style';
 
-interface Props {
-    src: string;
-    bgColor: string;
-    handler: () => void;
-}
+import type { Props } from './OAuthButton.type';
 
-const OAuthButton = ({ src, bgColor, handler }: Props) => {
+const OAuthButton = ({ src, bgColor, handler }: Props.OAuthButton) => {
     return (
         <FlexContainer
             justifyContent="center"

@@ -6,16 +6,7 @@ import { setInputTextWithKey } from '@/utils/Auth/common';
 
 import { IUserLogin, IUserSignUp } from 'UserInterfaces';
 
-type Props<T> = {
-    id: string;
-    type: any;
-    action: 'signIn' | 'signUp';
-    placeholder: string;
-    labelText: string;
-    inValidMessage: string;
-    handleChangeFunctions: React.Dispatch<React.SetStateAction<T>>;
-    validateFunction: Function;
-};
+import type { Props } from './InputContainer.type';
 
 const InputContainer = <T extends IUserSignUp | IUserLogin>({
     id,
@@ -26,7 +17,7 @@ const InputContainer = <T extends IUserSignUp | IUserLogin>({
     inValidMessage,
     handleChangeFunctions,
     validateFunction
-}: Props<T>) => {
+}: Props.InputContainer<T>) => {
     const [isValid, setIsValid] = React.useState(true);
     const [inputValue, setInputValue] = React.useState('');
 
