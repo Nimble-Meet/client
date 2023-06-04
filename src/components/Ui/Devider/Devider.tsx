@@ -6,12 +6,9 @@ import { FlexContainer, Typography } from 'nimble-ds';
 
 import { deviderStyle } from './Devider.style';
 
-interface Props {
-    width: number;
-    value?: string;
-}
+import type { Props } from './Devider.type';
 
-const Devider = ({ width, value }: Props) => {
+const Devider = ({ width, value }: Props.Devider) => {
     if (value) {
         return (
             <FlexContainer
