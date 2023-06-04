@@ -11,7 +11,6 @@ import type { Props } from './InputContainer.type';
 const InputContainer = <T extends IUserSignUp | IUserLogin>({
     id,
     type,
-    action,
     placeholder,
     labelText,
     inValidMessage,
@@ -25,7 +24,6 @@ const InputContainer = <T extends IUserSignUp | IUserLogin>({
         setInputValue(e.target.value);
 
         setInputTextWithKey({
-            action,
             key: id,
             value: e.target.value,
             handleChangeFunctions

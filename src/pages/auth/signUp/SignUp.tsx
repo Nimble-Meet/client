@@ -112,7 +112,6 @@ const SignUp = () => {
                         <InputContainer
                             key={i}
                             id={input.key}
-                            action={input.action}
                             type={input.type}
                             placeholder={input.placeholder}
                             labelText={input.label}
