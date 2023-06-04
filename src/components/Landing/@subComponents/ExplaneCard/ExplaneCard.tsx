@@ -17,14 +17,14 @@ import {
 
 import { imageSizeUp } from '@/common/animation/size';
 
-type Props = {
-    title: string;
-    description: string;
-    trasitionDelay: number;
-    icon: React.ComponentType<any>;
-};
+import type { Props } from './ExplaneCard.type';
 
-const ExplaneCard = ({ title, description, icon, trasitionDelay }: Props) => {
+const ExplaneCard = ({
+    title,
+    description,
+    icon,
+    trasitionDelay
+}: Props.ExplaneCard) => {
     const Icon = icon;
 
     const { targetRef: imageRef, isIntersecting: imageInterscting } =
