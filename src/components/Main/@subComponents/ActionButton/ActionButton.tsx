@@ -1,7 +1,9 @@
-import React from 'react';
 import { css } from '@emotion/react';
 
+// components
 import { Typography } from 'nimble-ds';
+
+// emotion
 import { actionButtonStyle } from './ActionButton.style';
 
 import type { Props } from './ActionButton.type';

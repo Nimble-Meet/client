@@ -1,3 +1,4 @@
+// components
 import { Typography } from 'nimble-ds';
 
 import type { Props } from './AuthGuide.type';

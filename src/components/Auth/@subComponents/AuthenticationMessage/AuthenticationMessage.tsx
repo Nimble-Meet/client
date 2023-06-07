@@ -1,7 +1,6 @@
-import React from 'react';
-
 import { css } from '@emotion/react';
 
+// components
 import { FlexContainer, Typography } from 'nimble-ds';
 
 import type { Props } from './AuthenticationMessage.type';

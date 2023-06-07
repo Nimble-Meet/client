@@ -1,16 +1,18 @@
-import React from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import Cookies from 'js-cookie';
 
+// react-query
 import useAuth from '@/query-hooks/useAuth';
 
+// components
 import { FlexContainer } from 'nimble-ds';
-
 import { NavigationButton } from '@/components/Main/@subComponents';
 
+// emotion
 import { navStyle } from './Navigation.style';
 
+// constants
 import { NAVIGATION_ITEMS } from './constants';
 
 const Navigation = () => {

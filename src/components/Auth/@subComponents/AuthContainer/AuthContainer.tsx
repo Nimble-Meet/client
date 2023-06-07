@@ -1,7 +1,8 @@
+// components
 import AuthHeader from './AuthHeader';
-
 import { FlexContainer } from 'nimble-ds';
 
+// emotion
 import { authContainerStyle } from './AuthContainer.style';
 
 import type { Props } from './AuthContainer.type';

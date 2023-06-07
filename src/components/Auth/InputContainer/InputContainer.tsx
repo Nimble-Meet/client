@@ -1,11 +1,12 @@
 import React from 'react';
 
+// components
 import { FlexContainer, Label, Input, Typography } from 'nimble-ds';
 
+// util
 import { setInputTextWithKey } from '@/utils/Auth/common';
 
 import type { IUserLogin, IUserSignUp } from 'UserInterfaces';
-
 import type { Props } from './InputContainer.type';
 
 const InputContainer = <T extends IUserSignUp | IUserLogin>({

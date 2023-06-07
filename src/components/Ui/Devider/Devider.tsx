@@ -1,9 +1,9 @@
-import React from 'react';
-
 import { css } from '@emotion/react';
 
+// components
 import { FlexContainer, Typography } from 'nimble-ds';
 
+// emotion
 import { deviderStyle } from './Devider.style';
 
 import type { Props } from './Devider.type';

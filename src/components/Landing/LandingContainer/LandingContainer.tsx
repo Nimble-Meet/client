@@ -1,24 +1,25 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-
 import { css } from '@emotion/react';
 
+// hooks
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 
+// components
 import { Button, Typography, FlexContainer } from 'nimble-ds';
-
 import { ExplaneCard, PricingCard } from '@/components/Landing/@subComponents';
 
-// emotion styles
+// emotion
 import {
     landingStyle,
     landingContentsStyle,
     introSectionImageStyle
 } from './LandingContainer.style';
 
-// animation styles
+// animation
 import { smoothVertical, smoothHorizontal } from '@/common/animation/move';
 
+// constants
 import { EXPLANE_CARD_LIST, PRICING_CARD_LIST } from './constants';
 
 const LandingContainer = () => {
