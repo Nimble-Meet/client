@@ -1,14 +1,18 @@
 import React from 'react';
 import { css } from '@emotion/react';
 
+// components
+import { FlexContainer, Typography } from 'nimble-ds';
+
+// utils
+import { getTime } from '@/utils/Main/time';
+
+// emotion
 import {
     currentTimeContainerStyle,
     currentTimeTopStyle,
     currentTimeBottomStyle
 } from './CurrentTimeContainer.style';
-import { FlexContainer, Typography } from 'nimble-ds';
-
-import { getTime } from '@/utils/Main/time';
 
 const CurrentTimeContainer = () => {
     const [{ year, month, day, time }, setCurrentTime] = React.useState(

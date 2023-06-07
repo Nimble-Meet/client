@@ -1,8 +1,7 @@
-import React from 'react';
 import { css } from '@emotion/react';
 
+// components
 import { FlexContainer } from 'nimble-ds';
-
 import {
     Navigation,
     MainContainer,

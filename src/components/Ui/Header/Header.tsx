@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router';
 
+// components
 import { Button, Typography, FlexContainer } from 'nimble-ds';
 
-// emotion styles
+// emotion
 import { headerStyle, headerContentsStyle } from './Header.style';
 
 const Header = () => {

@@ -1,11 +1,11 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-
 import { css } from '@emotion/react';
 
 // react-query
 import useUser from '@/query-hooks/useUser';
 
+// components
 import { FlexContainer, Button } from 'nimble-ds';
 import {
     InputContainer,
@@ -18,14 +18,17 @@ import {
     AuthGuide
 } from '@/components/Auth/@subComponents';
 
+// emotion
 import { signUpMainStyle } from './SignUp.style';
 
+// util
 import {
     validateNickname,
     validateEmail,
     validatePassword
 } from '@/utils/Auth/validation';
 
+// constants
 import { SIGN_UP_INPUT_DATA } from './constants';
 
 import type { IUserSignUp } from 'UserInterfaces';

@@ -1,6 +1,6 @@
 import type { Color, Weight } from 'FontInterface';
 
-const FOOTER_TEXT_DATA = {
+export const FOOTER_INFO = {
     INTRO: [
         {
             color: 'gray300' as Color,
@@ -64,5 +64,3 @@ const FOOTER_TEXT_DATA = {
         }
     ]
 };
-
-export default FOOTER_TEXT_DATA;

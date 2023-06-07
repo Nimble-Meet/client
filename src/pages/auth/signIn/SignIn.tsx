@@ -1,14 +1,13 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-
 import { css } from '@emotion/react';
 
 // react-query
 import useUser from '@/query-hooks/useUser';
 import useAuth from '@/query-hooks/useAuth';
 
+// components
 import { FlexContainer, Button } from 'nimble-ds';
-
 import { Devider } from '@/components/Ui';
 import { InputContainer, ServiceInfoContainer } from '@/components/Auth';
 import {
@@ -18,8 +17,10 @@ import {
     OAuthButton
 } from '@/components/Auth/@subComponents';
 
+// emotion
 import { signInMainStyle } from './SignIn.style';
 
+// constant
 import { SIGN_IN_INPUT_DATA, OAUTH_BUTTONS } from './constants';
 
 import type { IUserLogin } from 'UserInterfaces';

@@ -1,7 +1,9 @@
 import React from 'react';
 
+// components
 import { Typography, Label, Input, FlexContainer } from 'nimble-ds';
 
+// util
 import { validateSamePassword as validateFuction } from '@/utils/Auth/validation';
 
 import type { Props } from './SamePasswordCheckInput.type';

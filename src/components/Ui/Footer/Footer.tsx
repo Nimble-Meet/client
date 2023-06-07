@@ -1,9 +1,11 @@
+// components
 import { Typography, FlexContainer } from 'nimble-ds';
 
-// emotion styles
+// emotion
 import { footerStyle, footerContentsStyle } from './Footer.style';
 
-import TEXT_DATA from './constants';
+// constants
+import { FOOTER_INFO } from './constants';
 
 const Footer = () => (
     <footer css={footerStyle}>
@@ -13,7 +15,7 @@ const Footer = () => (
             customCss={footerContentsStyle}
         >
             <FlexContainer direction="column" gap="0.5rem">
-                {TEXT_DATA.INTRO.map((text, i) => (
+                {FOOTER_INFO.INTRO.map((text, i) => (
                     <Typography
                         key={i}
                         color={text.color}
@@ -25,7 +27,7 @@ const Footer = () => (
             </FlexContainer>
             <FlexContainer direction="column" gap="0.5rem">
                 <div>
-                    {TEXT_DATA.CEO.map((text, i) => (
+                    {FOOTER_INFO.CEO.map((text, i) => (
                         <Typography
                             key={i}
                             color={text.color}
@@ -36,7 +38,7 @@ const Footer = () => (
                     ))}
                 </div>
                 <div>
-                    {TEXT_DATA.CS.map((text, i) => (
+                    {FOOTER_INFO.CS.map((text, i) => (
                         <Typography
                             key={i}
                             color={text.color}
@@ -48,7 +50,7 @@ const Footer = () => (
                 </div>
             </FlexContainer>
             <FlexContainer direction="column" alignItems="end" gap="0.5rem">
-                {TEXT_DATA.TERMS.map((text, i) => (
+                {FOOTER_INFO.TERMS.map((text, i) => (
                     <Typography
                         key={i}
                         color={text.color}

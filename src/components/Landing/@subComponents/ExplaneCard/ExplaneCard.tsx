@@ -1,20 +1,23 @@
 import React from 'react';
 import { css } from '@emotion/react';
+
+// common
 import COLOR from '@/common/color';
 
+// hooks
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 
+// components
 import { Typography, FlexContainer } from 'nimble-ds';
 
-// emotion styles
+// emotion
 import { explaneCardStyle, introIconStyle } from './ExplaneCard.style';
 
-// animation styles
+// animation
 import {
     opacityToHundred,
     opacityZeroToHundred
 } from '@/common/animation/opacity';
-
 import { imageSizeUp } from '@/common/animation/size';
 
 import type { Props } from './ExplaneCard.type';

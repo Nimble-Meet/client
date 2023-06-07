@@ -1,21 +1,25 @@
-import React from 'react';
 import { css } from '@emotion/react';
+
+// common
 import COLOR from '@/common/color';
 
+// react-icon
 import { BsCheck } from 'react-icons/bs';
 import { TbCurrencyDollar } from 'react-icons/tb';
 
+// hooks
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 
+// components
 import { Button, Typography, FlexContainer } from 'nimble-ds';
 
-// emotion styles
+// emotion
 import {
     pricingCardContainerStyle,
     pricingPlanStyle
 } from './PricingCard.style';
 
-// animation styles
+// animation
 import { smoothVertical, smoothHorizontal } from '@/common/animation/move';
 import { opacityZeroToHundred } from '@/common/animation/opacity';
 
