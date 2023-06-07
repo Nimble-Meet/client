@@ -4,11 +4,9 @@ import { FlexContainer } from 'nimble-ds';
 
 import { authContainerStyle } from './AuthContainer.style';
 
-interface Props {
-    children: React.ReactNode;
-}
+import type { Props } from './AuthContainer.type';
 
-const AuthContainer = ({ children }: Props) => {
+const AuthContainer = ({ children }: Props.AuthContainer) => {
     return (
         <section css={authContainerStyle}>
             <AuthHeader />

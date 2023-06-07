@@ -1,11 +1,8 @@
 import { Typography } from 'nimble-ds';
 
-interface Props {
-    title: string;
-    description: string;
-}
+import type { Props } from './AuthGuide.type';
 
-const AuthGuide = ({ title, description }: Props) => {
+const AuthGuide = ({ title, description }: Props.AuthGuide) => {
     return (
         <>
             <Typography value={title} size="32px" />

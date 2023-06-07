@@ -1,18 +1,7 @@
 import { validateEmail, validatePassword } from '@/utils/Auth/validation';
 
-interface SignInData {
-    action: 'signIn';
-    key: string;
-    label: string;
-    type: string;
-    placeholder: string;
-    validate: (value: string) => boolean;
-    inValidMessage: string;
-}
-
-export const SIGN_IN_INPUT_DATA: SignInData[] = [
+export const SIGN_IN_INPUT_DATA = [
     {
-        action: 'signIn',
         key: 'email',
         label: '이메일',
         type: 'text',
@@ -21,7 +10,6 @@ export const SIGN_IN_INPUT_DATA: SignInData[] = [
         inValidMessage: '이메일 형식이 올바르지 않습니다.'
     },
     {
-        action: 'signIn',
         key: 'password',
         label: '패스워드',
         type: 'password',

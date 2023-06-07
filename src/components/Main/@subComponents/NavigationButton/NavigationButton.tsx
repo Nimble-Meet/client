@@ -7,12 +7,9 @@ import { Typography } from 'nimble-ds';
 
 import { navigationButtonStyle } from './NavigationButton.style';
 
-type Props = {
-    title: string;
-    urn: string;
-};
+import type { Props } from './NavigationButton.type';
 
-const NavigationButton = ({ title, urn }: Props) => {
+const NavigationButton = ({ title, urn }: Props.NavigationButton) => {
     return (
         <Link href={urn} css={css(navigationButtonStyle)}>
             <Typography value={title} />

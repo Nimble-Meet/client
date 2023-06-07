@@ -1,20 +1,27 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-
-import Cookies from 'js-cookie';
 import { css } from '@emotion/react';
+import Cookies from 'js-cookie';
+
+import useAuth from '@/query-hooks/useAuth';
 
 import { FlexContainer } from 'nimble-ds';
 
 import { NavigationButton } from '@/components/Main/@subComponents';
-import { NAVIGATION_ITEMS } from './constants';
+
 import { navStyle } from './Navigation.style';
+
+import { NAVIGATION_ITEMS } from './constants';
 
 const Navigation = () => {
     const router = useRouter();
 
-    const logout = () => {
+    const { mutateAsync: logoutUserMutate } = useAuth.POST('logout');
+
+    const logout = async () => {
+        await logoutUserMutate();
         Cookies.remove('accessToken');
+
         router.push('/auth/signIn');
     };
 

@@ -4,19 +4,14 @@ import { Typography, Label, Input, FlexContainer } from 'nimble-ds';
 
 import { validateSamePassword as validateFuction } from '@/utils/Auth/validation';
 
-type Props = {
-    password: string;
-    isSamePasswordValid: boolean;
-    setIsSamePasswordValid: Function;
-};
+import type { Props } from './SamePasswordCheckInput.type';
 
 const SamePasswordCheckInput = ({
     password,
     isSamePasswordValid,
     setIsSamePasswordValid
-}: Props) => {
-    const [passwordCheckValue, setPasswordCheckValue] =
-        React.useState<string>('');
+}: Props.SamePasswordCheckInput) => {
+    const [passwordCheckValue, setPasswordCheckValue] = React.useState('');
 
     const validateSamePassword = (password: string, samePassword: string) => {
         const isValid = validateFuction(password, samePassword);

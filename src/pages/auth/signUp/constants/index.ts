@@ -4,19 +4,8 @@ import {
     validatePassword
 } from '@/utils/Auth/validation';
 
-interface SignUpData {
-    action: 'signUp';
-    key: string;
-    label: string;
-    type: string;
-    placeholder: string;
-    validate: (value: string) => boolean;
-    inValidMessage: string;
-}
-
-export const SIGN_UP_INPUT_DATA: SignUpData[] = [
+export const SIGN_UP_INPUT_DATA = [
     {
-        action: 'signUp',
         key: 'nickname',
         label: '닉네임',
         type: 'text',
@@ -25,7 +14,6 @@ export const SIGN_UP_INPUT_DATA: SignUpData[] = [
         inValidMessage: '2~16자의 영문, 숫자, 한글만 사용 가능합니다.'
     },
     {
-        action: 'signUp',
         key: 'email',
         label: '이메일',
         type: 'text',
@@ -34,7 +22,6 @@ export const SIGN_UP_INPUT_DATA: SignUpData[] = [
         inValidMessage: '이메일 형식이 올바르지 않습니다.'
     },
     {
-        action: 'signUp',
         key: 'password',
         label: '비밀번호',
         type: 'password',
