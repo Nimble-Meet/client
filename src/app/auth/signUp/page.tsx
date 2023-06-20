@@ -20,9 +20,6 @@ import {
     AuthGuide
 } from '@/components/Auth/@subComponents';
 
-// emotion
-import { signUpMainStyle } from './style';
-
 // util
 import {
     validateNickname,
@@ -84,7 +81,7 @@ const SignUp = () => {
     };
 
     return (
-        <main css={signUpMainStyle}>
+        <>
             <AuthContainer>
                 <FlexContainer
                     direction="column"
@@ -146,7 +143,7 @@ const SignUp = () => {
                 </FlexContainer>
             </AuthContainer>
             <ServiceInfoContainer />
-        </main>
+        </>
     );
 };
 

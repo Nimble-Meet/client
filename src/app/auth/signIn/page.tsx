@@ -19,9 +19,6 @@ import {
     OAuthButton
 } from '@/components/Auth/@subComponents';
 
-// emotion
-import { signInMainStyle } from './style';
-
 // constant
 import { SIGN_IN_INPUT_DATA, OAUTH_BUTTONS } from './constants';
 
@@ -59,7 +56,7 @@ const SignIn = () => {
     }, [router, userData]);
 
     return (
-        <main css={signInMainStyle}>
+        <>
             <AuthContainer>
                 <FlexContainer
                     direction="column"
@@ -132,7 +129,7 @@ const SignIn = () => {
                 </FlexContainer>
             </AuthContainer>
             <ServiceInfoContainer />
-        </main>
+        </>
     );
 };
 
