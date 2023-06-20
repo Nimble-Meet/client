@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { css } from '@emotion/react';
 
 // react-query
@@ -19,7 +21,7 @@ import {
 } from '@/components/Auth/@subComponents';
 
 // emotion
-import { signUpMainStyle } from './SignUp.style';
+import { signUpMainStyle } from './style';
 
 // util
 import {
