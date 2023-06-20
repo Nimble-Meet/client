@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { css } from '@emotion/react';
 
 // react-query
@@ -16,9 +18,6 @@ import {
     AuthGuide,
     OAuthButton
 } from '@/components/Auth/@subComponents';
-
-// emotion
-import { signInMainStyle } from './SignIn.style';
 
 // constant
 import { SIGN_IN_INPUT_DATA, OAUTH_BUTTONS } from './constants';
@@ -57,7 +56,7 @@ const SignIn = () => {
     }, [router, userData]);
 
     return (
-        <main css={signInMainStyle}>
+        <>
             <AuthContainer>
                 <FlexContainer
                     direction="column"
@@ -130,7 +129,7 @@ const SignIn = () => {
                 </FlexContainer>
             </AuthContainer>
             <ServiceInfoContainer />
-        </main>
+        </>
     );
 };
 
