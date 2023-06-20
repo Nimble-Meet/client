@@ -26,7 +26,6 @@ export default function RootLayout({
         <html>
             <head />
             <body>
-                {' '}
                 <RecoilRoot>
                     <QueryClientProvider client={queryClient}>
                         {children}
