@@ -1,15 +1,5 @@
 'use client';
 
-// import React from 'react';
-
-// type Props = {};
-
-// function Home({}: Props) {
-//     return <div>Home</div>;
-// }
-
-// export default Home;
-
 import Head from 'next/head';
 
 import { Header, Footer } from '@/components/Ui';
