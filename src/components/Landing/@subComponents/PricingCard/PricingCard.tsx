@@ -138,7 +138,7 @@ const PricingCard = ({
             </div>
             <Button
                 size="lg"
-                theme="link"
+                color="link"
                 disabled={disabled}
                 fontSize="1rem"
                 width="100%"
