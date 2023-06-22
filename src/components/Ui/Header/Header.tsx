@@ -28,7 +28,7 @@ const Header = () => {
                         value="Nimble"
                     />
                 </div>
-                <Button theme="dark" size="md" onClick={moveMainPage} round>
+                <Button color="dark" size="md" onClick={moveMainPage} round>
                     시작하기
                 </Button>
             </FlexContainer>

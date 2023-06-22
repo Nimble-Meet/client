@@ -114,7 +114,7 @@ const SignIn = () => {
                         />
                     ))}
                     <Button
-                        theme="primary"
+                        color="primary"
                         size="lg"
                         onClick={postSignIn}
                         width={'100%'}

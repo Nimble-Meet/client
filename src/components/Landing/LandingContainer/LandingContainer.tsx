@@ -114,7 +114,7 @@ const LandingContainer = () => {
                                 }
                             >
                                 <Button
-                                    theme="link"
+                                    color="link"
                                     size="xl"
                                     width="10rem"
                                     fontSize="1.125rem"
@@ -124,7 +124,7 @@ const LandingContainer = () => {
                                     시작하기
                                 </Button>
                                 <Button
-                                    theme="dark"
+                                    color="dark"
                                     size="xl"
                                     width="10rem"
                                     fontSize="1rem"

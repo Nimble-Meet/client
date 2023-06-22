@@ -127,7 +127,7 @@ const SignUp = () => {
                         setIsSamePasswordValid={setIsSamePasswordValid}
                     />
                     <Button
-                        theme="primary"
+                        color="primary"
                         onClick={postSignUp}
                         disabled={validateSignupButtonDiabled(loginData)}
                         width="100%"
