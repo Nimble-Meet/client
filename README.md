@@ -11,6 +11,15 @@
 |--🗂️ cypress (e2e관련 폴더)
 |--🗂️ public (public 파일)
 |--🗂️ src
+   |--🗂️ app (next13 app dir)
+      |--🗂️ auth
+               |--🗂️ signIn
+                   |--🗂️ constants (signIn 내부에서만 사용하는 상수 정의)
+                   |--📑 layout.tsx (next13 layout)
+                   |--📑 page.tsx (next13 page)
+                   |--📑 error.tsx (next13 error)
+                   |--📑 loading.tsx (next13 loading)
+               |--🗂️ SignUp (signIn과 내부 구조 동일)
    |--🗂️ assets (에셋)
    |--🗂️ common (전체 프로젝트가 공유하는 common 파일)
         |--🗂️ animation
@@ -43,14 +52,6 @@
    |--🗂️ hooks (전역 hook 정의)
         |--📑 useIntersectionObserver.ts
    |--🗂️ lib (axios 미들웨어 등)
-   |--🗂️ pages
-        |--🗂️ auth
-            |--🗂️ signIn
-                |--🗂️ constants (signIn 내부에서만 사용하는 상수 정의)
-                |--📑 index.ts
-                |--📑 SignIn.style.tsx
-                |--📑 SignIn.tsx
-            |--🗂️ SignUp (signIn과 내부 구조 동일)
    |--🗂️ query-hooks (react-query 관련 폴더, 큰 틀의 명사 => 관심사로 분류)
         |--🗂️ useUser
             |--🗂️ GET
