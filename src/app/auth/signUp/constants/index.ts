@@ -30,3 +30,5 @@ export const SIGN_UP_INPUT_DATA = [
         inValidMessage: '8~16자의 영문, 숫자를 사용해야 합니다.'
     }
 ];
+
+export const ALREADY_EXIST_EMAIL_CODE = 409;
