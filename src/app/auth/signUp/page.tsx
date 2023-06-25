@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import { css } from '@emotion/react';
 
@@ -8,7 +9,7 @@ import { css } from '@emotion/react';
 import useUser from '@/query-hooks/useUser';
 
 // components
-import { FlexContainer, Button } from 'nimble-ds';
+import { FlexContainer, Button, Typography } from 'nimble-ds';
 import {
     InputContainer,
     ServiceInfoContainer,
@@ -28,7 +29,7 @@ import {
 } from '@/utils/Auth/validation';
 
 // constants
-import { SIGN_UP_INPUT_DATA } from './constants';
+import { SIGN_UP_INPUT_DATA, ALREADY_EXIST_EMAIL_CODE } from './constants';
 
 import type { IUserSignUp } from 'UserInterfaces';
 
@@ -41,6 +42,8 @@ const SignUp = () => {
         password: ''
     });
     const [isSamePasswordValid, setIsSamePasswordValid] =
+        React.useState<boolean>(false);
+    const [isAlreadyExistEmail, setIsAlreadyExistEmail] =
         React.useState<boolean>(false);
 
     const { mutateAsync: createNewUserMutate } = useUser.POST();
@@ -71,12 +74,22 @@ const SignUp = () => {
     };
 
     const postSignUp = async () => {
-        const data = await createNewUserMutate(loginData);
+        try {
+            const data = await createNewUserMutate(loginData);
 
-        if (data) {
-            router.push('/auth/signIn');
-        } else {
-            // 추후 사용자에게 알리는 방식 구현
+            if (data) {
+                router.push('/auth/signIn');
+            }
+        } catch (err: unknown) {
+            const axiosError = err as AxiosError;
+
+            if (
+                axiosError.response &&
+                axiosError.response.status === ALREADY_EXIST_EMAIL_CODE
+            ) {
+                setIsAlreadyExistEmail(true);
+                return;
+            }
         }
     };
 
@@ -126,15 +139,32 @@ const SignUp = () => {
                         isSamePasswordValid={isSamePasswordValid}
                         setIsSamePasswordValid={setIsSamePasswordValid}
                     />
-                    <Button
-                        color="primary"
-                        onClick={postSignUp}
-                        disabled={validateSignupButtonDiabled(loginData)}
-                        width="100%"
-                        size="lg"
+                    <FlexContainer
+                        direction="column"
+                        alignItems="center"
+                        justifyContent="center"
+                        gap="0.5rem"
+                        customCss={css`
+                            width: 100%;
+                        `}
                     >
-                        가입하기
-                    </Button>
+                        {isAlreadyExistEmail && (
+                            <Typography
+                                value="이미 존재하는 이메일입니다."
+                                color="red600"
+                                size="14px"
+                            />
+                        )}
+                        <Button
+                            color="primary"
+                            onClick={postSignUp}
+                            disabled={validateSignupButtonDiabled(loginData)}
+                            width="100%"
+                            size="lg"
+                        >
+                            가입하기
+                        </Button>
+                    </FlexContainer>
                     <AuthenticationMessage
                         suggestedText="이미 가입하셨나요?"
                         moveHandler={moveSignInPage}
