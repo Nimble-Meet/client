@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import { css } from '@emotion/react';
 
@@ -9,7 +10,7 @@ import useUser from '@/query-hooks/useUser';
 import useAuth from '@/query-hooks/useAuth';
 
 // components
-import { FlexContainer, Button } from 'nimble-ds';
+import { FlexContainer, Button, Typography } from 'nimble-ds';
 import { Devider } from '@/components/Ui';
 import { InputContainer, ServiceInfoContainer } from '@/components/Auth';
 import {
@@ -20,7 +21,11 @@ import {
 } from '@/components/Auth/@subComponents';
 
 // constant
-import { SIGN_IN_INPUT_DATA, OAUTH_BUTTONS } from './constants';
+import {
+    SIGN_IN_INPUT_DATA,
+    OAUTH_BUTTONS,
+    UNAUTHORIZED_CODE
+} from './constants';
 
 import type { IUserLogin } from 'UserInterfaces';
 
@@ -32,6 +37,9 @@ const SignIn = () => {
         password: ''
     });
 
+    const [isWrongLoginData, setIsWrongLoginData] =
+        React.useState<boolean>(false);
+
     const { mutateAsync: authenticateUserMutate } = useAuth.POST('login');
     const { data: userData } = useUser.GET();
 
@@ -40,12 +48,22 @@ const SignIn = () => {
     };
 
     const postSignIn = async () => {
-        const data = await authenticateUserMutate(loginData);
+        try {
+            const data = await authenticateUserMutate(loginData);
 
-        if (data) {
-            router.push('/main');
-        } else {
-            // 추후 사용자에게 알리는 방식 구현
+            if (data) {
+                router.push('/main');
+            }
+        } catch (err: unknown) {
+            const axiosError = err as AxiosError;
+
+            if (
+                axiosError.response &&
+                axiosError.response.status === UNAUTHORIZED_CODE
+            ) {
+                setIsWrongLoginData(true);
+                return;
+            }
         }
     };
 
@@ -113,14 +131,31 @@ const SignIn = () => {
                             handleChangeFunctions={setLoginData}
                         />
                     ))}
-                    <Button
-                        color="primary"
-                        size="lg"
-                        onClick={postSignIn}
-                        width={'100%'}
+                    <FlexContainer
+                        direction="column"
+                        alignItems="center"
+                        justifyContent="center"
+                        gap="0.5rem"
+                        customCss={css`
+                            width: 100%;
+                        `}
                     >
-                        로그인
-                    </Button>
+                        {isWrongLoginData && (
+                            <Typography
+                                value="이메일 또는 패스워드가 일치하지 않습니다."
+                                color="red600"
+                                size="14px"
+                            />
+                        )}
+                        <Button
+                            color="primary"
+                            size="lg"
+                            onClick={postSignIn}
+                            width={'100%'}
+                        >
+                            로그인
+                        </Button>
+                    </FlexContainer>
                     <AuthenticationMessage
                         suggestedText="회원가입을 하시겠습니까?"
                         moveHandler={moveSignUpPage}
