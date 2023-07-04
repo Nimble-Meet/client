@@ -22,7 +22,8 @@ import {
 import {
     validateNickname,
     validateEmail,
-    validatePassword
+    validatePassword,
+    validateSamePassword
 } from '@/utils/Auth/validation';
 
 // constants
@@ -40,26 +41,26 @@ const SignUp = () => {
 
     const { mutateAsync: createNewUserMutate } = useUser.POST();
 
-    const validateSignupButtonDiabled = ({
+    const validateSignupButtonDisabled = ({
         nickname,
         email,
         password,
         passwordCheck
-    }: IUserSignUp) => {
+    }: IUserSignUp): boolean => {
         const isNicknameValid = validateNickname(nickname);
         const isEmailValid = validateEmail(email);
         const isPasswordValid = validatePassword(password);
+        const isSamePasswordValid = validateSamePassword(
+            password,
+            passwordCheck
+        );
 
-        if (
+        return !(
             isNicknameValid &&
             isEmailValid &&
             isPasswordValid &&
-            password === passwordCheck
-        ) {
-            return false;
-        }
-
-        return true;
+            isSamePasswordValid
+        );
     };
 
     const moveSignInPage = () => {
@@ -171,7 +172,7 @@ const SignUp = () => {
                             <Button
                                 type="submit"
                                 color="primary"
-                                disabled={validateSignupButtonDiabled(watch())}
+                                disabled={validateSignupButtonDisabled(watch())}
                                 size="lg"
                                 width={'100%'}
                             >
