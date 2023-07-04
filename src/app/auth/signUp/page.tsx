@@ -3,18 +3,15 @@
 import React from 'react';
 import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
+import { useForm } from 'react-hook-form';
 import { css } from '@emotion/react';
 
 // react-query
 import useUser from '@/query-hooks/useUser';
 
 // components
-import { FlexContainer, Button, Typography } from 'nimble-ds';
-import {
-    InputContainer,
-    ServiceInfoContainer,
-    SamePasswordCheckInput
-} from '@/components/Auth';
+import { FlexContainer, Button, Typography, Label, Input } from 'nimble-ds';
+import { ServiceInfoContainer } from '@/components/Auth';
 import {
     AuthContainer,
     AuthenticationMessage,
@@ -36,13 +33,8 @@ import type { IUserSignUp } from 'UserInterfaces';
 const SignUp = () => {
     const router = useRouter();
 
-    const [loginData, setLoginData] = React.useState<IUserSignUp>({
-        nickname: '',
-        email: '',
-        password: ''
-    });
-    const [isSamePasswordValid, setIsSamePasswordValid] =
-        React.useState<boolean>(false);
+    const { register, handleSubmit, watch } = useForm<IUserSignUp>();
+
     const [isAlreadyExistEmail, setIsAlreadyExistEmail] =
         React.useState<boolean>(false);
 
@@ -51,7 +43,8 @@ const SignUp = () => {
     const validateSignupButtonDiabled = ({
         nickname,
         email,
-        password
+        password,
+        passwordCheck
     }: IUserSignUp) => {
         const isNicknameValid = validateNickname(nickname);
         const isEmailValid = validateEmail(email);
@@ -61,7 +54,7 @@ const SignUp = () => {
             isNicknameValid &&
             isEmailValid &&
             isPasswordValid &&
-            isSamePasswordValid
+            password === passwordCheck
         ) {
             return false;
         }
@@ -73,16 +66,23 @@ const SignUp = () => {
         router.push('/auth/signIn');
     };
 
-    const postSignUp = async () => {
+    const postSignUp = async (data: IUserSignUp) => {
+        const { nickname, email, password } = data;
+
         try {
-            const data = await createNewUserMutate(loginData);
+            const data = await createNewUserMutate({
+                nickname,
+                email,
+                password
+            });
+
+            setIsAlreadyExistEmail(false);
 
             if (data) {
                 router.push('/auth/signIn');
             }
         } catch (err: unknown) {
             const axiosError = err as AxiosError;
-
             if (
                 axiosError.response &&
                 axiosError.response.status === ALREADY_EXIST_EMAIL_CODE
@@ -122,49 +122,63 @@ const SignUp = () => {
                     justifyContent="center"
                     gap="1rem"
                 >
-                    {SIGN_UP_INPUT_DATA.map((input, i) => (
-                        <InputContainer
-                            key={i}
-                            id={input.key}
-                            type={input.type}
-                            placeholder={input.placeholder}
-                            labelText={input.label}
-                            inValidMessage={input.inValidMessage}
-                            validateFunction={input.validate}
-                            handleChangeFunctions={setLoginData}
-                        />
-                    ))}
-                    <SamePasswordCheckInput
-                        password={loginData.password}
-                        isSamePasswordValid={isSamePasswordValid}
-                        setIsSamePasswordValid={setIsSamePasswordValid}
-                    />
-                    <FlexContainer
-                        direction="column"
-                        alignItems="center"
-                        justifyContent="center"
-                        gap="0.5rem"
-                        customCss={css`
-                            width: 100%;
-                        `}
-                    >
-                        {isAlreadyExistEmail && (
-                            <Typography
-                                value="이미 존재하는 이메일입니다."
-                                color="red600"
-                                size="14px"
-                            />
-                        )}
-                        <Button
-                            color="primary"
-                            onClick={postSignUp}
-                            disabled={validateSignupButtonDiabled(loginData)}
-                            width="100%"
-                            size="lg"
+                    <form onSubmit={handleSubmit(postSignUp)}>
+                        <FlexContainer
+                            direction="column"
+                            alignItems="center"
+                            gap="1rem"
                         >
-                            가입하기
-                        </Button>
-                    </FlexContainer>
+                            {SIGN_UP_INPUT_DATA.map((input, i) => (
+                                <FlexContainer
+                                    key={i}
+                                    direction="column"
+                                    gap="0.5rem"
+                                >
+                                    <Label htmlFor={input.key}>
+                                        <Typography
+                                            value={input.label}
+                                            size="14px"
+                                        />
+                                    </Label>
+                                    <Input
+                                        id={input.key}
+                                        type={input.type}
+                                        placeholder={input.placeholder}
+                                        size="lg"
+                                        width={256}
+                                        {...register(input.key, {
+                                            pattern: input.validate
+                                        })}
+                                        invalid={
+                                            watch(input.key) &&
+                                            !input.validate.test(
+                                                watch(input.key)
+                                            )
+                                                ? true
+                                                : false
+                                        }
+                                        invalidMessage={input.inValidMessage}
+                                    />
+                                </FlexContainer>
+                            ))}
+                            {isAlreadyExistEmail && (
+                                <Typography
+                                    value="이미 존재하는 이메일입니다."
+                                    color="red600"
+                                    size="14px"
+                                />
+                            )}
+                            <Button
+                                type="submit"
+                                color="primary"
+                                disabled={validateSignupButtonDiabled(watch())}
+                                size="lg"
+                                width={'100%'}
+                            >
+                                가입하기
+                            </Button>
+                        </FlexContainer>
+                    </form>
                     <AuthenticationMessage
                         suggestedText="이미 가입하셨나요?"
                         moveHandler={moveSignInPage}
