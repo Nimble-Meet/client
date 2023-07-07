@@ -8,9 +8,42 @@ declare module 'UserInterfaces' {
         nickname: string;
         email: string;
         password: string;
+        passwordCheck: string;
     }
 
     export type ProviderType = 'LOCAL' | 'GOOGLE' | 'KAKAO' | 'NAVER';
+}
+
+declare module 'InputInterface' {
+    export type Type =
+        | 'button'
+        | 'checkbox'
+        | 'date'
+        | 'email'
+        | 'file'
+        | 'hidden'
+        | 'image'
+        | 'month'
+        | 'number'
+        | 'password'
+        | 'radio'
+        | 'range'
+        | 'reset'
+        | 'search'
+        | 'submit'
+        | 'tel'
+        | 'text'
+        | 'time'
+        | 'url'
+        | 'week';
+
+    export type SignInInputType = 'email' | 'password';
+
+    export type SignUpInputType =
+        | 'nickname'
+        | 'email'
+        | 'password'
+        | 'passwordCheck';
 }
 
 declare module 'FontInterface' {

@@ -1,17 +1,18 @@
 'use client';
 
 import React from 'react';
+import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
+import { useForm } from 'react-hook-form';
 import { css } from '@emotion/react';
 
 // react-query
-import useUser from '@/query-hooks/useUser';
 import useAuth from '@/query-hooks/useAuth';
 
 // components
-import { FlexContainer, Button } from 'nimble-ds';
+import { FlexContainer, Button, Typography, Label, Input } from 'nimble-ds';
 import { Devider } from '@/components/Ui';
-import { InputContainer, ServiceInfoContainer } from '@/components/Auth';
+import { ServiceInfoContainer } from '@/components/Auth';
 import {
     AuthContainer,
     AuthenticationMessage,
@@ -20,40 +21,52 @@ import {
 } from '@/components/Auth/@subComponents';
 
 // constant
-import { SIGN_IN_INPUT_DATA, OAUTH_BUTTONS } from './constants';
+import {
+    SIGN_IN_INPUT_DATA,
+    OAUTH_BUTTONS,
+    UNAUTHORIZED_CODE
+} from './constants';
 
 import type { IUserLogin } from 'UserInterfaces';
 
 const SignIn = () => {
+    const { register, handleSubmit } = useForm<IUserLogin>();
+
     const router = useRouter();
 
-    const [loginData, setLoginData] = React.useState<IUserLogin>({
-        email: '',
-        password: ''
-    });
+    const [isWrongLoginData, setIsWrongLoginData] =
+        React.useState<boolean>(false);
 
     const { mutateAsync: authenticateUserMutate } = useAuth.POST('login');
-    const { data: userData } = useUser.GET();
 
     const moveSignUpPage = () => {
         router.push('/auth/signUp');
     };
 
-    const postSignIn = async () => {
-        const data = await authenticateUserMutate(loginData);
+    const postSignIn = async ({ email, password }: IUserLogin) => {
+        try {
+            const data = await authenticateUserMutate({
+                email,
+                password
+            });
 
-        if (data) {
-            router.push('/main');
-        } else {
-            // 추후 사용자에게 알리는 방식 구현
+            setIsWrongLoginData(false);
+
+            if (data) {
+                router.push('/main');
+            }
+        } catch (err: unknown) {
+            const axiosError = err as AxiosError;
+
+            if (
+                axiosError.response &&
+                axiosError.response.status === UNAUTHORIZED_CODE
+            ) {
+                setIsWrongLoginData(true);
+                return;
+            }
         }
     };
-
-    React.useEffect(() => {
-        if (!!userData) {
-            router.push('/main');
-        }
-    }, [router, userData]);
 
     return (
         <>
@@ -101,32 +114,53 @@ const SignIn = () => {
                     justifyContent="center"
                     gap="1rem"
                 >
-                    {SIGN_IN_INPUT_DATA.map((input, i) => (
-                        <InputContainer
-                            key={i}
-                            id={input.key}
-                            type={input.type}
-                            placeholder={input.placeholder}
-                            labelText={input.label}
-                            inValidMessage={input.inValidMessage}
-                            validateFunction={input.validate}
-                            handleChangeFunctions={setLoginData}
-                        />
-                    ))}
-                    <Button
-                        color="primary"
-                        size="lg"
-                        onClick={postSignIn}
-                        width={'100%'}
-                    >
-                        로그인
-                    </Button>
-                    <AuthenticationMessage
-                        suggestedText="회원가입을 하시겠습니까?"
-                        moveHandler={moveSignUpPage}
-                        actionText="회원가입"
-                    />
+                    <form onSubmit={handleSubmit(postSignIn)}>
+                        <FlexContainer direction="column" gap="1rem">
+                            {SIGN_IN_INPUT_DATA.map((input, i) => (
+                                <FlexContainer
+                                    key={i}
+                                    direction="column"
+                                    gap="0.5rem"
+                                >
+                                    <Label htmlFor={input.key}>
+                                        <Typography
+                                            value={input.label}
+                                            size="14px"
+                                        />
+                                    </Label>
+                                    <Input
+                                        id={input.key}
+                                        type={input.type}
+                                        placeholder={input.placeholder}
+                                        size="lg"
+                                        width={256}
+                                        {...register(input.key)}
+                                    />
+                                </FlexContainer>
+                            ))}
+                            {isWrongLoginData && (
+                                <Typography
+                                    value="이메일 또는 패스워드가 일치하지 않습니다."
+                                    color="red600"
+                                    size="14px"
+                                />
+                            )}
+                            <Button
+                                type="submit"
+                                color="primary"
+                                size="lg"
+                                width={'100%'}
+                            >
+                                로그인
+                            </Button>
+                        </FlexContainer>
+                    </form>
                 </FlexContainer>
+                <AuthenticationMessage
+                    suggestedText="회원가입을 하시겠습니까?"
+                    moveHandler={moveSignUpPage}
+                    actionText="회원가입"
+                />
             </AuthContainer>
             <ServiceInfoContainer />
         </>

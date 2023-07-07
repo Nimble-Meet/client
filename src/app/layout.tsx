@@ -4,6 +4,7 @@ import React from 'react';
 import '@/styles/globals.css';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import { RecoilRoot } from 'recoil';
 
 import '../assets/font/font.css';
@@ -29,6 +30,7 @@ export default function RootLayout({
                 <RecoilRoot>
                     <QueryClientProvider client={queryClient}>
                         {children}
+                        <ReactQueryDevtools initialIsOpen={false} />
                     </QueryClientProvider>
                 </RecoilRoot>
             </body>
