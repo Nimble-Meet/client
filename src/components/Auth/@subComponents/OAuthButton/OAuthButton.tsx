@@ -15,7 +15,13 @@ const OAuthButton = ({ src, bgColor, handler }: Props.OAuthButton) => {
             alignItems="center"
             customCss={oauthButtonStyle(bgColor)}
         >
-            <Image src={src} alt="카카오 로그인 버튼" width={24} height={24} />
+            <Image
+                onClick={handler}
+                src={src}
+                alt="Oauth 로그인 버튼"
+                width={24}
+                height={24}
+            />
         </FlexContainer>
     );
 };
