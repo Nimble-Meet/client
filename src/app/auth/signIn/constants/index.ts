@@ -24,13 +24,17 @@ export const SIGN_IN_INPUT_DATA = [
 export const OAUTH_BUTTONS = [
     {
         src: 'https://statics.goorm.io/images/social/logo/googleLogo.svg',
-        handler: () => {},
+        handler: () => {
+            window.location.href = '/api/auth/login/google';
+        },
         bgColor: '#ffffff'
     },
     {
-        src: 'https://statics.goorm.io/images/social/logo/kakaoLogo.svg',
-        handler: () => {},
-        bgColor: '#fee500'
+        src: 'https://statics.goorm.io/images/social/logo/naverLogo.svg',
+        handler: () => {
+            window.location.href = '/api/auth/login/naver';
+        },
+        bgColor: '#1dc800'
     }
 ];
 
