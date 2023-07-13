@@ -20,7 +20,7 @@ export const postAuthenticateUser: PostAuthenticateUser.Func = async ({
                 params
             );
 
-        Cookies.set('accessToken', data.accessToken);
+        Cookies.set('access_token', data.access_token);
 
         return data;
     } catch (err) {

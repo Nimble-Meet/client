@@ -10,7 +10,7 @@ export namespace PostAuthenticateUser {
 
     export interface Response {
         userId: number;
-        accessToken: string;
+        access_token: string;
     }
 
     export type Return = Response;

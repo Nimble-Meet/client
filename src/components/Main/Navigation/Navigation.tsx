@@ -22,7 +22,7 @@ const Navigation = () => {
 
     const logout = async () => {
         await logoutUserMutate();
-        Cookies.remove('accessToken');
+        Cookies.remove('access_token');
 
         router.push('/auth/signIn');
     };
