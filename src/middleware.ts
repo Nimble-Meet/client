@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-    const cookie = request.cookies.get('accessToken')?.value;
+    const cookie = request.cookies.get('access_token')?.value;
 
     if (request.nextUrl.pathname.startsWith('/main') && !cookie) {
         return NextResponse.redirect(new URL('/auth/signIn', request.url));

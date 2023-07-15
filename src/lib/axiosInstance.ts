@@ -19,7 +19,7 @@ const axiosInstance: AxiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
     (config: any) => {
-        const token = Cookies.get('accessToken');
+        const token = Cookies.get('access_token');
         if (token) {
             config.headers['Authorization'] = `Bearer ${token}`;
         }
@@ -46,13 +46,15 @@ axiosInstance.interceptors.response.use(
             try {
                 const response = await axiosInstance.post('/auth/refresh');
                 const { accessToken } = response.data;
-                Cookies.set('accessToken', accessToken);
+
+                Cookies.set('access_token', accessToken);
+
                 axiosInstance.defaults.headers.common[
                     'Authorization'
                 ] = `Bearer ${accessToken}`;
                 return axiosInstance(originalRequest);
             } catch (error) {
-                Cookies.remove('accessToken');
+                Cookies.remove('access_token');
                 return Promise.reject(error);
             }
         }
