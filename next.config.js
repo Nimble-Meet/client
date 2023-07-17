@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 
-const withTwin = require('./withTwin');
+const enableEmotionRSC = require('./enableEmotionRSC');
 
-const nextConfig = withTwin({
+const nextConfig = enableEmotionRSC({
     reactStrictMode: true,
     experimental: { appDir: true },
     swcMinify: true,

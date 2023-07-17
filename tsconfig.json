@@ -32,7 +32,7 @@
         "cypress/**/*",
         "**/*.cy.ts",
         ".next/types/**/*.ts",
-        "withTwin.js"
+        "enableEmotionRSC.js"
     ],
     "exclude": ["node_modules"]
 }

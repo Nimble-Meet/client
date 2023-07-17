@@ -2,7 +2,7 @@ const path = require('path');
 
 const includedDirs = [path.resolve(__dirname, 'src')];
 
-module.exports = function withTwin(nextConfig) {
+module.exports = function enableEmotionRSC(nextConfig) {
     return {
         ...nextConfig,
         webpack: (config, { isServer }) => {
