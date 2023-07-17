@@ -1,3 +1,4 @@
+'use client';
 import { useRouter } from 'next/navigation';
 import { css } from '@emotion/react';
 import Cookies from 'js-cookie';
