@@ -20,8 +20,6 @@ export const postAuthenticateUser: PostAuthenticateUser.Func = async ({
                 params
             );
 
-        Cookies.set('access_token', data.access_token);
-
         return data;
     } catch (err) {
         console.error('로그인을 실패했습니다.', err);

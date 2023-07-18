@@ -27,8 +27,6 @@ module.exports = function enableEmotionRSC(nextConfig) {
 
             if (isServer) {
                 config.resolve.alias['@emotion/react'] = 'react';
-            } else {
-                config.resolve.alias['@emotion/react'] = '@emotion/react';
             }
 
             return config;
