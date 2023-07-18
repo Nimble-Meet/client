@@ -1,7 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { css } from '@emotion/react';
-import Cookies from 'js-cookie';
 
 // react-query
 import useAuth from '@/query-hooks/useAuth';
