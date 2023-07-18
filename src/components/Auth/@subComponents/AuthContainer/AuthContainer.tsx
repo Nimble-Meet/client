@@ -1,3 +1,4 @@
+'use client';
 // components
 import AuthHeader from './AuthHeader';
 import { FlexContainer } from 'nimble-ds';

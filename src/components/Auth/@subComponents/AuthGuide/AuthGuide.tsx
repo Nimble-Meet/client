@@ -1,3 +1,4 @@
+'use client';
 // components
 import { Typography } from 'nimble-ds';
 

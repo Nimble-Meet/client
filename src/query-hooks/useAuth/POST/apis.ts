@@ -1,6 +1,5 @@
 import axiosInstance from '@/lib/axiosInstance';
 import sha256 from 'crypto-js/sha256';
-import Cookies from 'js-cookie';
 
 import type { PostAuthenticateUser, PostLogoutUser } from './apis.type';
 
@@ -19,8 +18,6 @@ export const postAuthenticateUser: PostAuthenticateUser.Func = async ({
                 'auth/login/local',
                 params
             );
-
-        Cookies.set('access_token', data.access_token);
 
         return data;
     } catch (err) {

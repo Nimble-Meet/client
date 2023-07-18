@@ -1,9 +1,3 @@
-import {
-    validateNickname,
-    validateEmail,
-    validatePassword
-} from '@/utils/Auth/validation';
-
 import type { SignUpInputType, Type } from 'InputInterface';
 
 export const SIGN_UP_INPUT_DATA = [

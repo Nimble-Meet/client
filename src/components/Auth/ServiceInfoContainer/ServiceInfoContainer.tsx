@@ -1,3 +1,4 @@
+'use client';
 import { serviceInfoContainerMainStyle } from './ServiceInfoContainer.style';
 
 const ServiceInfoContainer = () => {

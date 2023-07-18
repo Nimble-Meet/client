@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+
+const enableEmotionRSC = require('./enableEmotionRSC');
+
+const nextConfig = enableEmotionRSC({
     reactStrictMode: true,
     experimental: { appDir: true },
     swcMinify: true,
@@ -12,6 +15,6 @@ const nextConfig = {
             }
         ];
     }
-};
+});
 
 module.exports = nextConfig;
