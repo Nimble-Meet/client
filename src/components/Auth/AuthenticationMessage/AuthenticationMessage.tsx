@@ -4,13 +4,18 @@ import { css } from '@emotion/react';
 // components
 import { FlexContainer, Typography } from 'nimble-ds';
 
-import type { Props } from './AuthenticationMessage.type';
+// Props type
+interface Props {
+    suggestedText: string;
+    actionText: string;
+    moveHandler: (e?: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+}
 
 const AuthenticationMessage = ({
     suggestedText,
     actionText,
     moveHandler
-}: Props.AuthenticationMessage) => {
+}: Props) => {
     return (
         <FlexContainer alignItems="center" justifyContent="center" gap="0.5rem">
             <Typography color="gray600" value={suggestedText} size="14px" />

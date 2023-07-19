@@ -11,13 +11,13 @@ import useAuth from '@/query-hooks/useAuth';
 // components
 import { FlexContainer, Button, Typography, Label, Input } from 'nimble-ds';
 import { Devider } from '@/components/Ui';
-import { ServiceInfoContainer } from '@/components/Auth';
 import {
     AuthContainer,
     AuthenticationMessage,
     AuthGuide,
-    OAuthButton
-} from '@/components/Auth/@subComponents';
+    OAuthButton,
+    ServiceInfoContainer
+} from '@/components/Auth';
 
 // constant
 import {
