@@ -1,14 +1,17 @@
 'use client';
 // components
-import AuthHeader from './AuthHeader';
+import AuthHeader from '../AuthHeader/AuthHeader';
 import { FlexContainer } from 'nimble-ds';
 
 // emotion
 import { authContainerStyle } from './AuthContainer.style';
 
-import type { Props } from './AuthContainer.type';
+// Props type
+interface Props {
+    children: React.ReactNode;
+}
 
-const AuthContainer = ({ children }: Props.AuthContainer) => {
+const AuthContainer = ({ children }: Props) => {
     return (
         <section css={authContainerStyle}>
             <AuthHeader />

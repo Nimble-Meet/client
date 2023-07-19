@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 
 // components
 import { FlexContainer } from 'nimble-ds';
-import { ActionButton } from '@/components/Main/@subComponents';
+import { ActionButton } from '@/components/Main';
 
 // emotion
 import { mainStyle } from './MainContainer.style';

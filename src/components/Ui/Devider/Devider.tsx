@@ -7,9 +7,13 @@ import { FlexContainer, Typography } from 'nimble-ds';
 // emotion
 import { deviderStyle } from './Devider.style';
 
-import type { Props } from './Devider.type';
+// Props type
+export interface Props {
+    width: number;
+    value?: string;
+}
 
-const Devider = ({ width, value }: Props.Devider) => {
+const Devider = ({ width, value }: Props) => {
     if (value) {
         return (
             <FlexContainer

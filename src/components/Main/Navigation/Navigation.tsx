@@ -8,7 +8,7 @@ import useAuth from '@/query-hooks/useAuth';
 
 // components
 import { FlexContainer } from 'nimble-ds';
-import { NavigationButton } from '@/components/Main/@subComponents';
+import { NavigationButton } from '@/components/Main';
 
 // emotion
 import { navStyle } from './Navigation.style';

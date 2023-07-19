@@ -7,9 +7,14 @@ import { FlexContainer } from 'nimble-ds';
 // emotion
 import { oauthButtonStyle } from './OAuthButton.style';
 
-import type { Props } from './OAuthButton.type';
+// Props type
+interface Props {
+    src: string;
+    bgColor: string;
+    handler: () => void;
+}
 
-const OAuthButton = ({ src, bgColor, handler }: Props.OAuthButton) => {
+const OAuthButton = ({ src, bgColor, handler }: Props) => {
     return (
         <FlexContainer
             justifyContent="center"

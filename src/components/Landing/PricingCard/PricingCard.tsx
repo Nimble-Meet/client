@@ -24,7 +24,16 @@ import {
 import { smoothVertical, smoothHorizontal } from '@/common/animation/move';
 import { opacityZeroToHundred } from '@/common/animation/opacity';
 
-import type { Props } from './PricingCard.type';
+// Props type
+export interface Props {
+    type: string;
+    description: string;
+    benefits: string[];
+    price: string;
+    disabled: boolean;
+    animationDelay: number;
+    moveMainPage: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}
 
 const PricingCard = ({
     type,
@@ -34,7 +43,7 @@ const PricingCard = ({
     disabled,
     animationDelay,
     moveMainPage
-}: Props.PricingCard) => {
+}: Props) => {
     const { targetRef: titleRef, isIntersecting: titleInterscting } =
         useIntersectionObserver(0);
 

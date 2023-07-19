@@ -21,14 +21,15 @@ import {
 } from '@/common/animation/opacity';
 import { imageSizeUp } from '@/common/animation/size';
 
-import type { Props } from './ExplaneCard.type';
+// Props type
+export interface Props {
+    title: string;
+    description: string;
+    trasitionDelay: number;
+    icon: React.ComponentType<any>;
+}
 
-const ExplaneCard = ({
-    title,
-    description,
-    icon,
-    trasitionDelay
-}: Props.ExplaneCard) => {
+const ExplaneCard = ({ title, description, icon, trasitionDelay }: Props) => {
     const Icon = icon;
 
     const { targetRef: imageRef, isIntersecting: imageInterscting } =

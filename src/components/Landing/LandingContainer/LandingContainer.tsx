@@ -8,7 +8,7 @@ import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 
 // components
 import { Button, Typography, FlexContainer } from 'nimble-ds';
-import { ExplaneCard, PricingCard } from '@/components/Landing/@subComponents';
+import { ExplaneCard, PricingCard } from '@/components/Landing';
 
 // emotion
 import {

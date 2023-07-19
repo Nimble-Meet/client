@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 import { Header, Footer } from '@/components/Ui';
-import Landing from '@/components/Landing/LandingContainer';
+import { LandingContainer } from '@/components/Landing';
 
 export default function Home() {
     return (
@@ -20,7 +20,7 @@ export default function Home() {
             </Head>
             <main>
                 <Header />
-                <Landing />
+                <LandingContainer />
                 <Footer />
             </main>
         </>

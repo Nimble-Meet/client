@@ -7,9 +7,12 @@ import { Typography } from 'nimble-ds';
 // emotion
 import { actionButtonStyle } from './ActionButton.style';
 
-import type { Props } from './ActionButton.type';
+// Props type
+export interface Props {
+    title: string;
+}
 
-const ActionButton = ({ title }: Props.ActionButton) => {
+const ActionButton = ({ title }: Props) => {
     return (
         <div css={css(actionButtonStyle)}>
             <Typography value={title} color="gray800" />

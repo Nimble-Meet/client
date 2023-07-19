@@ -10,12 +10,12 @@ import useUser from '@/query-hooks/useUser';
 
 // components
 import { FlexContainer, Button, Typography, Label, Input } from 'nimble-ds';
-import { ServiceInfoContainer } from '@/components/Auth';
 import {
     AuthContainer,
     AuthenticationMessage,
-    AuthGuide
-} from '@/components/Auth/@subComponents';
+    AuthGuide,
+    ServiceInfoContainer
+} from '@/components/Auth';
 
 // util
 import {
