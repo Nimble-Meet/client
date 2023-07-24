@@ -1,6 +1,6 @@
 import MainPage from '@/view/main';
 
-const Main = async () => {
+const Main = () => {
     return <MainPage />;
 };
 
