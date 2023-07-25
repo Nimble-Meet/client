@@ -1,6 +1,8 @@
 'use client';
+import React from 'react';
 import { css } from '@emotion/react';
 
+import useUser from '@/query-hooks/useUser';
 // components
 import { FlexContainer } from 'nimble-ds';
 import {
@@ -9,25 +11,36 @@ import {
     CurrentTimeContainer
 } from '@/components/Main';
 
+import { MainLayout } from './main.style';
+
 const Main = () => {
+    const { data: userData } = useUser.GET();
+
     return (
-        <main>
-            <Navigation />
-            <FlexContainer
-                justifyContent="center"
-                alignItems="center"
-                gap="3rem"
-                customCss={css`
-                    height: calc(100vh - 8rem);
-                `}
-            >
-                <MainContainer />
-                <CurrentTimeContainer />
+        <main css={css(MainLayout)}>
+            <FlexContainer>
+                <Navigation userData={userData} />
+                <FlexContainer
+                    justifyContent="center"
+                    alignItems="center"
+                    gap="3rem"
+                    customCss={css`
+                        width: 100%;
+                        box-shadow: -0.15rem 0 0.2rem -0.15rem rgba(0, 0, 0, 0.15);
+                    `}
+                >
+                    <MainContainer />
+                    <CurrentTimeContainer />
+                </FlexContainer>
             </FlexContainer>
         </main>
     );
 };
 
-Main.isRequireAuthPage = true;
-
-export default Main;
+export default () => {
+    return (
+        <React.Suspense fallback={<h1>...loading</h1>}>
+            <Main />
+        </React.Suspense>
+    );
+};

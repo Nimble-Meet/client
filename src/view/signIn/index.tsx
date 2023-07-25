@@ -52,7 +52,7 @@ const SignIn = () => {
             setIsWrongLoginData(false);
 
             if (data) {
-                router.push('/main');
+                router.push('/');
             }
         } catch (err: unknown) {
             const axiosError = err as AxiosError;

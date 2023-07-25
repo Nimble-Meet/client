@@ -7,8 +7,7 @@ import Cookies from 'js-cookie';
 import useAuth from '@/query-hooks/useAuth';
 
 // components
-import { FlexContainer } from 'nimble-ds';
-import { NavigationButton } from '@/components/Main';
+import { FlexContainer, Button } from 'nimble-ds';
 
 // emotion
 import { navStyle } from './Navigation.style';
@@ -16,7 +15,20 @@ import { navStyle } from './Navigation.style';
 // constants
 import { NAVIGATION_ITEMS } from './constants';
 
-const Navigation = () => {
+import type { ProviderType } from 'UserInterfaces';
+
+interface Props {
+    userData:
+        | {
+              email: string;
+              nickname: string;
+              providerType: ProviderType;
+          }
+        | undefined;
+}
+
+const Navigation = ({ userData }: Props) => {
+    const existsUser = !!userData;
     const router = useRouter();
 
     const { mutateAsync: logoutUserMutate } = useAuth.POST('logout');
@@ -27,24 +39,22 @@ const Navigation = () => {
         router.push('/auth/signIn');
     };
 
+    const login = () => {
+        router.push('/auth/signIn');
+    };
+
     return (
         <nav css={css(navStyle)}>
             <FlexContainer
-                justifyContent="center"
-                alignItems="center"
-                gap="3rem"
+                direction="column"
+                gap="2rem"
                 customCss={css`
                     height: 100%;
                 `}
             >
-                {NAVIGATION_ITEMS.map((item, i) => (
-                    <NavigationButton
-                        title={item.title}
-                        urn={item.urn}
-                        key={i}
-                    />
-                ))}
-                <button onClick={logout}>Logout</button>
+                <Button color="basic" onClick={existsUser ? logout : login}>
+                    {existsUser ? 'Logout' : 'Login'}
+                </Button>
             </FlexContainer>
         </nav>
     );
