@@ -2,35 +2,38 @@
 import React from 'react';
 import { css } from '@emotion/react';
 
+// react-query
 import useUser from '@/query-hooks/useUser';
+
 // components
 import { FlexContainer } from 'nimble-ds';
 import {
     Navigation,
-    MainContainer,
-    CurrentTimeContainer
+    CreateMeetingContainer,
+    LocalNavigation
 } from '@/components/Main';
 
-import { MainLayout } from './main.style';
+// emotion
+import { mainLayoutStyle } from './main.style';
 
 const Main = () => {
     const { data: userData } = useUser.GET();
 
     return (
-        <main css={css(MainLayout)}>
+        <main css={css(mainLayoutStyle)}>
             <FlexContainer>
                 <Navigation userData={userData} />
                 <FlexContainer
-                    justifyContent="center"
-                    alignItems="center"
-                    gap="3rem"
+                    direction="column"
                     customCss={css`
                         width: 100%;
                         box-shadow: -0.15rem 0 0.2rem -0.15rem rgba(0, 0, 0, 0.15);
                     `}
                 >
-                    <MainContainer />
-                    <CurrentTimeContainer />
+                    <LocalNavigation />
+                    <FlexContainer direction="column" justifyContent="center">
+                        <CreateMeetingContainer userData={userData} />
+                    </FlexContainer>
                 </FlexContainer>
             </FlexContainer>
         </main>

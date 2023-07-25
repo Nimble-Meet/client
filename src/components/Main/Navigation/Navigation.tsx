@@ -1,7 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { css } from '@emotion/react';
-import Cookies from 'js-cookie';
 
 // react-query
 import useAuth from '@/query-hooks/useAuth';
@@ -11,9 +10,6 @@ import { FlexContainer, Button } from 'nimble-ds';
 
 // emotion
 import { navStyle } from './Navigation.style';
-
-// constants
-import { NAVIGATION_ITEMS } from './constants';
 
 import type { ProviderType } from 'UserInterfaces';
 

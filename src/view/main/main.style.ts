@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 
-export const MainLayout = css`
+export const mainLayoutStyle = css`
     min-width: 64rem; // 1024px
     max-width: 100rem; // 1600px
 
