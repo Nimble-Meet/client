@@ -1,14 +1,14 @@
 export const NAVIGATION_ITEMS = [
     {
         title: 'Home',
-        urn: '/main'
+        urn: '/'
     },
     {
         title: 'Chat',
-        urn: '/main/chat'
+        urn: '/chat'
     },
     {
         title: 'Meetings',
-        urn: '/main/meetings'
+        urn: '/meetings'
     }
 ];
