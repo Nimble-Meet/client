@@ -12,6 +12,7 @@ import {
     CreateMeetingContainer,
     LocalNavigation
 } from '@/components/Main';
+import { Loader } from '@/components/Ui';
 
 // emotion
 import { mainLayoutStyle } from './main.style';
@@ -42,7 +43,7 @@ const Main = () => {
 
 export default () => {
     return (
-        <React.Suspense fallback={<h1>...loading</h1>}>
+        <React.Suspense fallback={<Loader />}>
             <Main />
         </React.Suspense>
     );
