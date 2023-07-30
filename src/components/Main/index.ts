@@ -5,3 +5,5 @@ export { default as Navigation } from './Navigation/Navigation';
 export { default as NavigationButton } from './NavigationButton/NavigationButton';
 export { default as CreateMeetModal } from './CreateMeetModal/CreateMeetModal';
 export { default as LocalNavigation } from './LocalNavigation/LocalNavigation';
+export { default as MeetingDashboard } from './MeetingDashboard/MeetingDashboard';
+export { default as MeetingCard } from './MeetingCard/MeetingCard';
