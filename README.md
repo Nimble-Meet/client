@@ -11,7 +11,7 @@
 |--🗂️ cypress (e2e관련 폴더)
 |--🗂️ public (public 파일)
 |--🗂️ src
-   |--🗂️ app (next13 app dir)
+   |--🗂️ app (next13 app dir)
       |--🗂️ auth
                |--🗂️ signIn
                    |--🗂️ constants (signIn 내부에서만 사용하는 상수 정의)
@@ -29,11 +29,6 @@
             |--📑 index.ts
    |--🗂️ components (관심사별로 묶은 컴포넌트)
         |--🗂️ Auth (관심사)
-            |--🗂️ @subComponents (Auth 관심사에서 사용하는 subComponent)
-                |--🗂️ AuthContainer
-                |--🗂️ AuthGuide
-                |--🗂️ OAuthButton
-                |--📑 index.ts
             |--🗂️ InputContainer
                 |--📑 InputContainer.style.tsx
                 |--📑 InputContainer.tsx
@@ -49,6 +44,7 @@
                 |--📑 Header.tsx
                 |--📑 index.ts
             |--🗂️ Footer
+            |--📑 index.ts
    |--🗂️ hooks (전역 hook 정의)
         |--📑 useIntersectionObserver.ts
    |--🗂️ lib (axios 미들웨어 등)
@@ -65,11 +61,17 @@
    |--🗂️ styles (global 스타일 정의)
    |--🗂️ utils (global util 정의)
         |--🗂️ Auth (관심사)
-            |-- common.ts
-            |-- validation.ts
+            |--📑 common.ts
+            |--📑 validation.ts
         |--🗂️ Main (관심사)
-            |-- time.ts
+            |--📑 time.ts
+   |--🗂️ view (app dir에서 랜더링 하는 view - SSR로 데이터 받아오고 클라이언트 컴포넌트인 view로 넘겨줌)
+        |--🗂️ landing ("/landing" view - landing관련 컴포넌트를 구성)
+        |--🗂️ layout (app dir에서 필요한 레이아웃 정의)
+            |--📑 auth (auth layout 정의)
    |--📑 index.d.ts (global type 정의)
+   |--📑 middleware.ts (next middleware)
+
 ```
 
 # Description
