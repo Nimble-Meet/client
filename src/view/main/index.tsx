@@ -9,31 +9,42 @@ import useUser from '@/query-hooks/useUser';
 import { FlexContainer } from 'nimble-ds';
 import {
     Navigation,
+    LocalNavigation,
     CreateMeetingContainer,
-    LocalNavigation
+    MeetingDashboard
 } from '@/components/Main';
 import { Loader } from '@/components/Ui';
 
 // emotion
-import { mainLayoutStyle } from './main.style';
+import {
+    layoutStyle,
+    mainStyle,
+    sectionStyle,
+    meetingSectionStyle,
+    infoSectionStyle
+} from './main.style';
 
 const Main = () => {
     const { data: userData } = useUser.GET();
 
     return (
-        <main css={css(mainLayoutStyle)}>
+        <main css={css(layoutStyle)}>
             <FlexContainer>
                 <Navigation userData={userData} />
-                <FlexContainer
-                    direction="column"
-                    customCss={css`
-                        width: 100%;
-                        box-shadow: -0.15rem 0 0.2rem -0.15rem rgba(0, 0, 0, 0.15);
-                    `}
-                >
+                <FlexContainer direction="column" customCss={mainStyle}>
                     <LocalNavigation />
-                    <FlexContainer direction="column" justifyContent="center">
-                        <CreateMeetingContainer userData={userData} />
+                    <FlexContainer customCss={sectionStyle}>
+                        <FlexContainer
+                            direction="column"
+                            justifyContent="center"
+                            customCss={meetingSectionStyle}
+                        >
+                            <CreateMeetingContainer userData={userData} />
+                            <MeetingDashboard />
+                        </FlexContainer>
+                        <FlexContainer customCss={infoSectionStyle}>
+                            Infomation!
+                        </FlexContainer>
                     </FlexContainer>
                 </FlexContainer>
             </FlexContainer>
