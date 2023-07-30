@@ -10,7 +10,7 @@ import useAuth from '@/query-hooks/useAuth';
 
 // components
 import { FlexContainer, Button, Typography, Label, Input } from 'nimble-ds';
-import { Devider } from '@/components/Ui';
+import { Divider } from '@/components/Ui';
 import {
     AuthContainer,
     AuthenticationMessage,
@@ -106,7 +106,7 @@ const SignIn = () => {
                         ))}
                     </FlexContainer>
                 </FlexContainer>
-                <Devider width={256} value="OR" />
+                <Divider width={256} value="OR" />
                 <FlexContainer
                     direction="column"
                     alignItems="center"

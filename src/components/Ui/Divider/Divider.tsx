@@ -5,7 +5,7 @@ import { css } from '@emotion/react';
 import { FlexContainer, Typography } from 'nimble-ds';
 
 // emotion
-import { deviderStyle } from './Devider.style';
+import { dividerStyle } from './Divider.style';
 
 // Props type
 export interface Props {
@@ -13,7 +13,7 @@ export interface Props {
     value?: string;
 }
 
-const Devider = ({ width, value }: Props) => {
+const Divider = ({ width, value }: Props) => {
     if (value) {
         return (
             <FlexContainer
@@ -23,14 +23,14 @@ const Devider = ({ width, value }: Props) => {
                     width: ${width}px;
                 `}
             >
-                <div css={deviderStyle(width / 2)} />
+                <div css={dividerStyle(width / 2)} />
                 <Typography size="12px" color="gray600" value={value} />
-                <div css={deviderStyle(width / 2)} />
+                <div css={dividerStyle(width / 2)} />
             </FlexContainer>
         );
     }
 
-    return <div css={deviderStyle(width)} />;
+    return <div css={dividerStyle(width)} />;
 };
 
-export default Devider;
+export default Divider;

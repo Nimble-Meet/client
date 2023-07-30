@@ -2,35 +2,50 @@
 import React from 'react';
 import { css } from '@emotion/react';
 
+// react-query
 import useUser from '@/query-hooks/useUser';
+
 // components
 import { FlexContainer } from 'nimble-ds';
 import {
     Navigation,
-    MainContainer,
-    CurrentTimeContainer
+    LocalNavigation,
+    CreateMeetingContainer,
+    MeetingDashboard
 } from '@/components/Main';
+import { Loader } from '@/components/Ui';
 
-import { MainLayout } from './main.style';
+// emotion
+import {
+    layoutStyle,
+    mainStyle,
+    sectionStyle,
+    meetingSectionStyle,
+    infoSectionStyle
+} from './main.style';
 
 const Main = () => {
     const { data: userData } = useUser.GET();
 
     return (
-        <main css={css(MainLayout)}>
+        <main css={css(layoutStyle)}>
             <FlexContainer>
                 <Navigation userData={userData} />
-                <FlexContainer
-                    justifyContent="center"
-                    alignItems="center"
-                    gap="3rem"
-                    customCss={css`
-                        width: 100%;
-                        box-shadow: -0.15rem 0 0.2rem -0.15rem rgba(0, 0, 0, 0.15);
-                    `}
-                >
-                    <MainContainer />
-                    <CurrentTimeContainer />
+                <FlexContainer direction="column" customCss={mainStyle}>
+                    <LocalNavigation />
+                    <FlexContainer customCss={sectionStyle}>
+                        <FlexContainer
+                            direction="column"
+                            justifyContent="center"
+                            customCss={meetingSectionStyle}
+                        >
+                            <CreateMeetingContainer userData={userData} />
+                            <MeetingDashboard />
+                        </FlexContainer>
+                        <FlexContainer customCss={infoSectionStyle}>
+                            Infomation!
+                        </FlexContainer>
+                    </FlexContainer>
                 </FlexContainer>
             </FlexContainer>
         </main>
@@ -39,7 +54,7 @@ const Main = () => {
 
 export default () => {
     return (
-        <React.Suspense fallback={<h1>...loading</h1>}>
+        <React.Suspense fallback={<Loader />}>
             <Main />
         </React.Suspense>
     );
