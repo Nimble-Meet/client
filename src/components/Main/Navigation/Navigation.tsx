@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import { css } from '@emotion/react';
 
 // react-query
-import useAuth from '@/query-hooks/useAuth';
+import { usePostLogoutUser } from '@/query-hooks/useAuth';
 
 // components
 import { FlexContainer, Button } from 'nimble-ds';
@@ -27,7 +27,7 @@ const Navigation = ({ userData }: Props) => {
     const existsUser = !!userData;
     const router = useRouter();
 
-    const { mutateAsync: logoutUserMutate } = useAuth.POST('logout');
+    const { mutateAsync: logoutUserMutate } = usePostLogoutUser();
 
     const logout = async () => {
         await logoutUserMutate();
