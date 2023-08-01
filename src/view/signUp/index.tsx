@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { css } from '@emotion/react';
 
 // react-query
-import useUser from '@/query-hooks/useUser';
+import { useCreateNewUser } from '@/query-hooks/useUser';
 
 // components
 import { FlexContainer, Button, Typography, Label, Input } from 'nimble-ds';
@@ -38,7 +38,7 @@ const SignUp = () => {
     const [isAlreadyExistEmail, setIsAlreadyExistEmail] =
         React.useState<boolean>(false);
 
-    const { mutateAsync: createNewUserMutate } = useUser.POST();
+    const { mutateAsync: createNewUserMutate } = useCreateNewUser();
 
     const validateSignupButtonDisabled = ({
         nickname,

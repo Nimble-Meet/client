@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { css } from '@emotion/react';
 
 // react-query
-import useAuth from '@/query-hooks/useAuth';
+import { usePostAuthenticateUser } from '@/query-hooks/useAuth';
 
 // components
 import { FlexContainer, Button, Typography, Label, Input } from 'nimble-ds';
@@ -36,7 +36,7 @@ const SignIn = () => {
     const [isWrongLoginData, setIsWrongLoginData] =
         React.useState<boolean>(false);
 
-    const { mutateAsync: authenticateUserMutate } = useAuth.POST('login');
+    const { mutateAsync: authenticateUserMutate } = usePostAuthenticateUser();
 
     const moveSignUpPage = () => {
         router.push('/auth/signUp');
