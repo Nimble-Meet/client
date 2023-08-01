@@ -1,10 +1,14 @@
 'use client';
 
 import COLOR from '@/common/color';
+
+// components
 import { FlexContainer, Button, Typography } from 'nimble-ds';
 
+// react-icons
 import { BiCommentError } from 'react-icons/bi';
 
+// emotion
 import { layoutStyle } from './ErrorFallback.style';
 
 const ErrorFallback = () => {
