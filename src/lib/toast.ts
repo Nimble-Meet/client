@@ -6,7 +6,7 @@ interface IToast {
     duration?: number;
 }
 
-const renderToast = ({ type, message, duration }: IToast) => {
+const renderToast = ({ type, message, duration = 2000 }: IToast) => {
     switch (type) {
         case 'error':
             return toast.error(message, {
