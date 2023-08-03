@@ -2,6 +2,8 @@
 import React from 'react';
 import '@/styles/globals.css';
 
+import { Toaster } from 'react-hot-toast';
+import { ErrorBoundary } from '@/components/Error';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { RecoilRoot } from 'recoil';
@@ -11,8 +13,10 @@ import '../assets/font/font.css';
 const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
+            useErrorBoundary: true,
             refetchOnWindowFocus: false,
-            retry: false
+            retry: 0,
+            suspense: true
         }
     }
 });
@@ -28,7 +32,10 @@ export default function RootLayout({
             <body>
                 <RecoilRoot>
                     <QueryClientProvider client={queryClient}>
-                        {children}
+                        <ErrorBoundary>
+                            {children}
+                            <Toaster />
+                        </ErrorBoundary>
                         <ReactQueryDevtools initialIsOpen={false} />
                     </QueryClientProvider>
                 </RecoilRoot>
