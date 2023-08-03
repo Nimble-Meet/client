@@ -1,6 +1,5 @@
 'use client';
 import React from 'react';
-import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { css } from '@emotion/react';
@@ -26,7 +25,7 @@ import {
 } from '@/utils/Auth/validation';
 
 // constants
-import { SIGN_UP_INPUT_DATA, ALREADY_EXIST_EMAIL_CODE } from './constants';
+import { SIGN_UP_INPUT_DATA } from './constants';
 
 import type { IUserSignUp } from 'UserInterfaces';
 
@@ -34,9 +33,6 @@ const SignUp = () => {
     const router = useRouter();
 
     const { register, handleSubmit, watch } = useForm<IUserSignUp>();
-
-    const [isAlreadyExistEmail, setIsAlreadyExistEmail] =
-        React.useState<boolean>(false);
 
     const { mutateAsync: createNewUserMutate } = useCreateNewUser();
 
@@ -66,30 +62,15 @@ const SignUp = () => {
         router.push('/auth/signIn');
     };
 
-    const postSignUp = async (data: IUserSignUp) => {
-        const { nickname, email, password } = data;
+    const postSignUp = async ({ nickname, email, password }: IUserSignUp) => {
+        const data = await createNewUserMutate({
+            nickname,
+            email,
+            password
+        });
 
-        try {
-            const data = await createNewUserMutate({
-                nickname,
-                email,
-                password
-            });
-
-            setIsAlreadyExistEmail(false);
-
-            if (data) {
-                router.push('/auth/signIn');
-            }
-        } catch (err: unknown) {
-            const axiosError = err as AxiosError;
-            if (
-                axiosError.response &&
-                axiosError.response.status === ALREADY_EXIST_EMAIL_CODE
-            ) {
-                setIsAlreadyExistEmail(true);
-                return;
-            }
+        if (data) {
+            router.push('/auth/signIn');
         }
     };
 
@@ -161,13 +142,6 @@ const SignUp = () => {
                                     />
                                 </FlexContainer>
                             ))}
-                            {isAlreadyExistEmail && (
-                                <Typography
-                                    value="이미 존재하는 이메일입니다."
-                                    color="red600"
-                                    size="14px"
-                                />
-                            )}
                             <Button
                                 type="submit"
                                 color="primary"
