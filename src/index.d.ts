@@ -14,6 +14,14 @@ declare module 'UserInterfaces' {
     export type ProviderType = 'LOCAL' | 'GOOGLE' | 'KAKAO' | 'NAVER';
 }
 
+declare module 'ErrorInterfaces' {
+    export interface IApiErrorResponse {
+        error: string;
+        message: string;
+        status: number;
+    }
+}
+
 declare module 'MeetInterface' {
     export interface User {
         email: string;
