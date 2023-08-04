@@ -37,5 +37,3 @@ export const OAUTH_BUTTONS = [
         bgColor: '#1dc800'
     }
 ];
-
-export const UNAUTHORIZED_CODE = 400;

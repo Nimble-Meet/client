@@ -34,5 +34,3 @@ export const SIGN_UP_INPUT_DATA = [
         inValidMessage: '비밀번호가 일치하지 않습니다.'
     }
 ];
-
-export const ALREADY_EXIST_EMAIL_CODE = 409;

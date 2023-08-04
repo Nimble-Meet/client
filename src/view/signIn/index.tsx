@@ -1,12 +1,11 @@
 'use client';
 import React from 'react';
-import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { css } from '@emotion/react';
 
 // react-query
-import useAuth from '@/query-hooks/useAuth';
+import { usePostAuthenticateUser } from '@/query-hooks/useAuth';
 
 // components
 import { FlexContainer, Button, Typography, Label, Input } from 'nimble-ds';
@@ -20,11 +19,7 @@ import {
 } from '@/components/Auth';
 
 // constant
-import {
-    SIGN_IN_INPUT_DATA,
-    OAUTH_BUTTONS,
-    UNAUTHORIZED_CODE
-} from './constants';
+import { SIGN_IN_INPUT_DATA, OAUTH_BUTTONS } from './constants';
 
 import type { IUserLogin } from 'UserInterfaces';
 
@@ -33,37 +28,20 @@ const SignIn = () => {
 
     const router = useRouter();
 
-    const [isWrongLoginData, setIsWrongLoginData] =
-        React.useState<boolean>(false);
-
-    const { mutateAsync: authenticateUserMutate } = useAuth.POST('login');
+    const { mutateAsync: authenticateUserMutate } = usePostAuthenticateUser();
 
     const moveSignUpPage = () => {
         router.push('/auth/signUp');
     };
 
     const postSignIn = async ({ email, password }: IUserLogin) => {
-        try {
-            const data = await authenticateUserMutate({
-                email,
-                password
-            });
+        const data = await authenticateUserMutate({
+            email,
+            password
+        });
 
-            setIsWrongLoginData(false);
-
-            if (data) {
-                router.push('/');
-            }
-        } catch (err: unknown) {
-            const axiosError = err as AxiosError;
-
-            if (
-                axiosError.response &&
-                axiosError.response.status === UNAUTHORIZED_CODE
-            ) {
-                setIsWrongLoginData(true);
-                return;
-            }
+        if (data) {
+            router.push('/');
         }
     };
 
@@ -137,13 +115,6 @@ const SignIn = () => {
                                     />
                                 </FlexContainer>
                             ))}
-                            {isWrongLoginData && (
-                                <Typography
-                                    value="이메일 또는 패스워드가 일치하지 않습니다."
-                                    color="red600"
-                                    size="14px"
-                                />
-                            )}
                             <Button
                                 type="submit"
                                 color="primary"

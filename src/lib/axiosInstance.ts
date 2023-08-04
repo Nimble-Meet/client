@@ -52,10 +52,10 @@ axiosInstance.interceptors.response.use(
                 axiosInstance.defaults.headers.common[
                     'Authorization'
                 ] = `Bearer ${accessToken}`;
+
                 return axiosInstance(originalRequest);
             } catch (error) {
                 Cookies.remove('access_token');
-                return Promise.reject(error);
             }
         }
         return Promise.reject(error);

@@ -14,6 +14,30 @@ declare module 'UserInterfaces' {
     export type ProviderType = 'LOCAL' | 'GOOGLE' | 'KAKAO' | 'NAVER';
 }
 
+declare module 'ErrorInterfaces' {
+    export interface IApiErrorResponse {
+        error: string;
+        message: string;
+        status: number;
+    }
+}
+
+declare module 'MeetInterface' {
+    export interface User {
+        email: string;
+        nickname: string;
+    }
+
+    export interface IMeet {
+        id: number;
+        meetName: string;
+        description: string;
+        createdAt: Date;
+        host: User;
+        members: User[];
+    }
+}
+
 declare module 'InputInterface' {
     export type Type =
         | 'button'
