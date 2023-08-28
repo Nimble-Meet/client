@@ -1,31 +1,41 @@
 'use client';
+import React from 'react';
 import { css } from '@emotion/react';
 import { useRouter } from 'next/navigation';
 
 // components
 import { Button, FlexContainer, Typography } from 'nimble-ds';
 import { Avatar } from '@/components/Ui';
+import { InvitePeopleAvater } from '@/components/Main';
 
 // emotion
 import { layoutStyle } from './MeetingCard.style';
-import { StaticImageData } from 'next/image';
 
 interface Props {
-    id: string;
+    meetingId: number;
     title: string;
     description: string;
+    host: {
+        email: string;
+        nickname: string;
+    };
     peoples: {
         email: string;
         nickname: string;
-        imgSrc: string | StaticImageData;
     }[];
 }
 
-const MeetingCard = ({ id, title, description, peoples }: Props) => {
+const MeetingCard = ({
+    meetingId,
+    title,
+    description,
+    host,
+    peoples
+}: Props) => {
     const router = useRouter();
 
-    const moveMeetingPage = (id: string) => () => {
-        router.push(`/meeting/${id}`);
+    const moveMeetingPage = (meetingId: number) => () => {
+        router.push(`/meeting/${meetingId}`);
     };
 
     return (
@@ -43,17 +53,23 @@ const MeetingCard = ({ id, title, description, peoples }: Props) => {
                 </FlexContainer>
                 <FlexContainer justifyContent="between" alignItems="end">
                     <FlexContainer>
+                        <Avatar
+                            nickname={host.nickname}
+                            // imgSrc={people.imgSrc}
+                            isFirst
+                        />
                         {peoples.map((people, i) => (
                             <Avatar
                                 key={i}
                                 nickname={people.nickname}
-                                imgSrc={people.imgSrc}
-                                isFirst={i === 0}
+                                // imgSrc={people.imgSrc}
+                                zIndex={i}
                             />
                         ))}
+                        <InvitePeopleAvater meetingId={meetingId} />
                     </FlexContainer>
                     <Button
-                        onClick={moveMeetingPage(id)}
+                        onClick={moveMeetingPage(meetingId)}
                         color="link"
                         size="lg"
                     >

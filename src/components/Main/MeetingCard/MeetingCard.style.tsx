@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import COLOR from '@/common/color';
 
 export const layoutStyle = css`
-    width: calc(50% - 0.75rem);
+    width: 100%;
     min-height: 12rem;
     max-height: 12rem;
 
