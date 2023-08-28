@@ -26,6 +26,7 @@ declare module 'MeetInterface' {
     export interface User {
         email: string;
         nickname: string;
+        imgSrc: string;
     }
 
     export interface IMeet {
@@ -35,6 +36,11 @@ declare module 'MeetInterface' {
         createdAt: Date;
         host: User;
         members: User[];
+    }
+
+    export interface IMeetCreate {
+        meetName: string;
+        description: string;
     }
 }
 
