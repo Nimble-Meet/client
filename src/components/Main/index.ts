@@ -7,3 +7,5 @@ export { default as CreateMeetModal } from './CreateMeetModal/CreateMeetModal';
 export { default as LocalNavigation } from './LocalNavigation/LocalNavigation';
 export { default as MeetingDashboard } from './MeetingDashboard/MeetingDashboard';
 export { default as MeetingCard } from './MeetingCard/MeetingCard';
+export { default as PeopleSearchBox } from './PeopleSearchBox/PeopleSearchBox';
+export { default as InvitePeopleAvater } from './InvitePeopleAvater/InvitePeopleAvater';
