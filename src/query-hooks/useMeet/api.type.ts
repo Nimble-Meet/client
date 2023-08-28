@@ -15,7 +15,7 @@ export namespace Get {
     // 특정 미팅 가져오기 namespace
     export namespace Specific {
         export interface ReqParams {
-            id: string;
+            meetingId: number;
         }
 
         export type Response = IMeet;
@@ -32,7 +32,7 @@ export namespace Post {
     // 미팅 만들기 namespace
     export namespace Meet {
         export interface ReqParams {
-            title: string;
+            meetName: string;
             description: string;
         }
 
@@ -52,7 +52,7 @@ export namespace Post {
         }
 
         export interface ReqParamsWithId extends ReqParams {
-            id: string;
+            meetingId: number;
         }
 
         export type Response = IMeet;
@@ -67,11 +67,11 @@ export namespace Post {
     // 미팅에서 특정 유저 추방하기 namespace
     export namespace KickOut {
         export interface ReqParams {
-            email: string;
+            userId: string;
         }
 
         export interface ReqParamsWithId extends ReqParams {
-            id: string;
+            meetingId: string;
         }
 
         export type Response = IMeet;

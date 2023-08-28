@@ -10,18 +10,18 @@ const getMeet: Get.All.Func = async () => {
 };
 
 // [GET] 특정 meeting 정보를 가져옴
-const getSpecificMeet: Get.Specific.Func = async ({ id }) => {
+const getSpecificMeet: Get.Specific.Func = async ({ meetingId }) => {
     const { data } = await axiosInstance.get<Get.Specific.Response>(
-        `meet/${id}`
+        `meet/${meetingId}`
     );
 
     return data;
 };
 
 // [POST] 새로운 meeting을 만듦
-const postMeet: Post.Meet.Func = async ({ title, description }) => {
+const postMeet: Post.Meet.Func = async ({ meetName, description }) => {
     const params = <Post.Meet.ReqParams>{
-        title,
+        meetName,
         description
     };
 
@@ -34,13 +34,13 @@ const postMeet: Post.Meet.Func = async ({ title, description }) => {
 };
 
 // [POST] 특정 meeting에 사용자를 초대함
-const inviteMeet: Post.Invite.Func = async ({ id, email }) => {
+const inviteMeet: Post.Invite.Func = async ({ meetingId, email }) => {
     const params = <Post.Invite.ReqParams>{
         email
     };
 
     const { data } = await axiosInstance.post<Post.Invite.Response>(
-        `meet/${id}/invite`,
+        `meet/${meetingId}/member`,
         params
     );
 
@@ -48,13 +48,13 @@ const inviteMeet: Post.Invite.Func = async ({ id, email }) => {
 };
 
 // [POST] 특정 meeting에서 사용자를 강퇴함
-const kickOutMeet: Post.KickOut.Func = async ({ id, email }) => {
+const kickOutMeet: Post.KickOut.Func = async ({ meetingId, userId }) => {
     const params = <Post.KickOut.ReqParams>{
-        email
+        userId
     };
 
     const { data } = await axiosInstance.post<Post.KickOut.Response>(
-        `meet/${id}/kick-out`,
+        `meet/${meetingId}/member/${userId}`,
         params
     );
 

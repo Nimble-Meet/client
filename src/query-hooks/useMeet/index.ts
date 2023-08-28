@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios';
-import { useQuery, useMutation } from 'react-query';
+import { useQuery, useMutation, useQueryClient } from 'react-query';
 
 // apis
 import {
@@ -31,10 +31,10 @@ const useGetMeet = () =>
     });
 
 // [GET] 특정 meeting 정보를 가져옴
-const useGetSpecificMeet = (id: string) =>
+const useGetSpecificMeet = (meetingId: number) =>
     useQuery<Get.Specific.Return>(
-        meetKey.specificMeet(id),
-        () => getSpecificMeet({ id }),
+        meetKey.specificMeet(meetingId),
+        () => getSpecificMeet({ meetingId }),
         {
             onError: () => {
                 renderToast({
@@ -48,10 +48,13 @@ const useGetSpecificMeet = (id: string) =>
 
 // [POST] 새로운 meeting을 만듦
 const usePostMeet = () => {
+    const queryClient = useQueryClient();
+
     return useMutation<Post.Meet.Return, AxiosError, Post.Meet.ReqParams>(
-        ({ title, description }) => postMeet({ title, description }),
+        ({ meetName, description }) => postMeet({ meetName, description }),
         {
             onSuccess: (data: Post.Meet.Return) => {
+                queryClient.invalidateQueries(meetKey.all());
                 return Promise.resolve(data);
             },
             onError: () => {
@@ -67,12 +70,15 @@ const usePostMeet = () => {
 
 // [POST] 특정 meeting에 사용자를 초대함
 const useInviteMeet = () => {
+    const queryClient = useQueryClient();
+
     return useMutation<
         Post.Invite.Return,
         AxiosError,
         Post.Invite.ReqParamsWithId
-    >(({ id, email }) => inviteMeet({ id, email }), {
+    >(({ meetingId, email }) => inviteMeet({ meetingId, email }), {
         onSuccess: (data: Post.Invite.Return) => {
+            queryClient.invalidateQueries(meetKey.all());
             return Promise.resolve(data);
         },
         onError: () => {
@@ -91,7 +97,7 @@ const useKickOutMeet = () => {
         Post.KickOut.Return,
         AxiosError,
         Post.KickOut.ReqParamsWithId
-    >(({ id, email }) => kickOutMeet({ id, email }), {
+    >(({ meetingId, userId }) => kickOutMeet({ meetingId, userId }), {
         onSuccess: (data: Post.KickOut.Return) => {
             return Promise.resolve(data);
         },
