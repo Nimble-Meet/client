@@ -18,6 +18,6 @@ export const mainStyle = css`
     border-top: 1px solid ${COLOR.gray100};
     border-bottom: 1px solid ${COLOR.gray100};
 
-    height: calc(100vh - 422.5px);
+    max-height: calc(100vh - 422.5px);
     overflow: scroll;
 `;

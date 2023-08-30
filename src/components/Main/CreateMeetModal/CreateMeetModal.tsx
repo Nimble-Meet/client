@@ -1,9 +1,14 @@
 'use client';
 import React from 'react';
 
+// react-query
+import { usePostMeet } from '@/query-hooks/useMeet';
+
 // components
 import { Button, FlexContainer, Modal } from 'nimble-ds';
 import { InputContainer } from '@/components/Ui';
+
+import type { IMeetCreate } from 'MeetInterface';
 
 interface Props {
     isModalOpen: boolean;
@@ -11,17 +16,19 @@ interface Props {
 }
 
 const CreateMeetModal = ({ isModalOpen, setIsModalOpen }: Props) => {
-    const [meetingData, setMeetingData] = React.useState({
-        title: '',
+    const [meetingData, setMeetingData] = React.useState<IMeetCreate>({
+        meetName: '',
         description: ''
     });
 
+    const { mutateAsync: postMeetMutate } = usePostMeet();
+
     const changeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { value: title } = e.target;
+        const { value: meetName } = e.target;
 
         setMeetingData((prev) => ({
             ...prev,
-            title
+            meetName
         }));
     };
 
@@ -34,11 +41,13 @@ const CreateMeetModal = ({ isModalOpen, setIsModalOpen }: Props) => {
         }));
     };
 
-    const createMeeting = (data: { title: string; description: string }) => {
-        console.log(data);
+    const postMeet = async (meetingData: IMeetCreate) => {
+        await postMeetMutate(meetingData);
+
+        setIsModalOpen(false);
     };
 
-    const isValideTitle = /^.{2,48}$/.test(meetingData.title);
+    const isValideTitle = /^.{2,48}$/.test(meetingData.meetName);
 
     return (
         <Modal isOpen={isModalOpen}>
@@ -48,7 +57,7 @@ const CreateMeetModal = ({ isModalOpen, setIsModalOpen }: Props) => {
                     <InputContainer
                         labelText="미팅 제목"
                         placeholder="미팅 제목을 입력해주세요. ( 2 ~ 48자 )"
-                        value={meetingData.title}
+                        value={meetingData.meetName}
                         onChange={changeTitle}
                         id="title"
                         size="lg"
@@ -76,7 +85,7 @@ const CreateMeetModal = ({ isModalOpen, setIsModalOpen }: Props) => {
                     <Button
                         type="submit"
                         size="lg"
-                        onClick={() => createMeeting(meetingData)}
+                        onClick={() => postMeet(meetingData)}
                         disabled={!isValideTitle}
                     >
                         만들기
