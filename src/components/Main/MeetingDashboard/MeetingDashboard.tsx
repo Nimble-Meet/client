@@ -1,7 +1,8 @@
 'use client';
 
 // react-query
-import { useGetMeet } from '@/query-hooks/useMeet';
+import { useQuery } from '@tanstack/react-query';
+import { fetchMeet } from '@/query-hooks/useMeet';
 
 // components
 import { FlexContainer, Typography } from 'nimble-ds';
@@ -15,7 +16,7 @@ import {
 } from './MeetingDashboard.style';
 
 const MeetingDashboard = () => {
-    const { data: meetings } = useGetMeet();
+    const { data: meetings } = useQuery(fetchMeet());
 
     return (
         <FlexContainer direction="column" customCss={layoutStyle}>

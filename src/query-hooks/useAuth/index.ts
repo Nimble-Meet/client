@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios';
-import { useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 
 // apis
 import { postAuthenticateUser, postLogoutUser } from './api';

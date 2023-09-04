@@ -3,7 +3,8 @@ import React from 'react';
 import { css } from '@emotion/react';
 
 // react-query
-import { useFetchLoginStatus } from '@/query-hooks/useUser';
+import { useQuery } from '@tanstack/react-query';
+import { fetchLoginStatus } from '@/query-hooks/useUser';
 
 // components
 import { FlexContainer } from 'nimble-ds';
@@ -25,7 +26,7 @@ import {
 } from './main.style';
 
 const Main = () => {
-    const { data: userData } = useFetchLoginStatus();
+    const { data: userData } = useQuery(fetchLoginStatus());
 
     return (
         <main css={css(layoutStyle)}>

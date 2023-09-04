@@ -1,7 +1,9 @@
 import React from 'react';
 
 // react-query
-import { useInviteMeet, useGetSpecificMeet } from '@/query-hooks/useMeet';
+import { useQuery } from '@tanstack/react-query';
+import { useInviteMeet, fetchSpecificMeet } from '@/query-hooks/useMeet';
+
 // hooks
 import useOnClickOutside from '@/hooks/useOnClickOutside';
 
@@ -18,7 +20,7 @@ interface Props {
 
 const PeopleSearchBox = ({ meetingId, setIsSearchBoxOpen }: Props) => {
     const [userEmail, setUserEmail] = React.useState('');
-    const { data } = useGetSpecificMeet(meetingId);
+    const { data } = useQuery(fetchSpecificMeet(meetingId));
     const { mutateAsync: inviteMeetMutate, isLoading } = useInviteMeet();
 
     const changeUserEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
