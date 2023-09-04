@@ -4,7 +4,11 @@ import axios, {
     AxiosRequestConfig,
     AxiosResponse
 } from 'axios';
+
 import Cookies from 'js-cookie';
+
+import { handleError } from '@/utils/Error/handleError';
+import { ERROR_CODE } from '@/constants/error';
 
 interface InternalAxiosRequestConfig<T = any> extends AxiosRequestConfig {
     _retry?: boolean;
@@ -37,12 +41,13 @@ axiosInstance.interceptors.response.use(
     async (error: AxiosError) => {
         const originalRequest = error.config as InternalAxiosRequestConfig;
 
-        if (error.response?.status === 401) {
+        if (error.response?.status === ERROR_CODE.UNAUTHORIZED) {
+            handleError(error, ERROR_CODE.UNAUTHORIZED);
             return { data: null };
         }
 
         if (
-            error.response?.status === 401 &&
+            error.response?.status === ERROR_CODE.UNAUTHORIZED &&
             !originalRequest._retry &&
             originalRequest.url !== '/auth/refresh'
         ) {
