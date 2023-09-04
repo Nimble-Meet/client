@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios';
-import { useQuery, useMutation, useQueryClient } from 'react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 // apis
 import {
@@ -16,35 +16,32 @@ import { meetKey } from './key';
 // lib utils
 import renderToast from '@/lib/toast';
 
-import type { Post, Get } from './api.type';
+import type { Post } from './api.type';
 
 // [GET] 본인에게 해당되는 meeting 목록을 가져옴
-const useGetMeet = () =>
-    useQuery<Get.All.Return>(meetKey.all(), getMeet, {
-        onError: () => {
-            renderToast({
-                type: 'error',
-                message:
-                    '미팅 목록을 가져오는데 실패했습니다. 다시 시도해주세요.'
-            });
-        }
-    });
+const fetchMeet = () => ({
+    queryKey: meetKey.all(),
+    queryFn: () => getMeet(),
+    onError: () => {
+        renderToast({
+            type: 'error',
+            message: '미팅 목록을 가져오는데 실패했습니다. 다시 시도해주세요.'
+        });
+    }
+});
 
 // [GET] 특정 meeting 정보를 가져옴
-const useGetSpecificMeet = (meetingId: number) =>
-    useQuery<Get.Specific.Return>(
-        meetKey.specificMeet(meetingId),
-        () => getSpecificMeet({ meetingId }),
-        {
-            onError: () => {
-                renderToast({
-                    type: 'error',
-                    message:
-                        '특정 미팅 정보를 가져오는데 실패했습니다. 다시 시도해주세요.'
-                });
-            }
-        }
-    );
+const fetchSpecificMeet = (meetingId: number) => ({
+    queryKey: meetKey.specificMeet(meetingId),
+    queryFn: () => getSpecificMeet({ meetingId }),
+    onError: () => {
+        renderToast({
+            type: 'error',
+            message:
+                '특정 미팅 정보를 가져오는데 실패했습니다. 다시 시도해주세요.'
+        });
+    }
+});
 
 // [POST] 새로운 meeting을 만듦
 const usePostMeet = () => {
@@ -112,8 +109,8 @@ const useKickOutMeet = () => {
 };
 
 export {
-    useGetMeet,
-    useGetSpecificMeet,
+    fetchMeet,
+    fetchSpecificMeet,
     usePostMeet,
     useInviteMeet,
     useKickOutMeet

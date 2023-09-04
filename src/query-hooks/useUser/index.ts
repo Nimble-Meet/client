@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios';
-import { useQuery, useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 
 // apis
 import { getUserInfo, checkLoginStatus, createNewUser } from './api';
@@ -15,35 +15,32 @@ import renderToast from '@/lib/toast';
 // error code constants
 import { ERROR_CODE } from '@/constants/error';
 
-import type { Get, Post } from './api.type';
+import type { Post } from './api.type';
 
 // [GET] 특정 사용자의 정보를 가져옴
-const useGetUserInfo = (email: string) =>
-    useQuery<Get.UserInfo.Return>(
-        userKey.info(email),
-        () => getUserInfo({ email }),
-        {
-            onError: () => {
-                renderToast({
-                    type: 'error',
-                    message:
-                        '사용자의 정보를 가져오는데 실패했습니다. 다시 시도해주세요.'
-                });
-            }
-        }
-    );
+const fetchUserInfo = (email: string) => ({
+    queryKey: userKey.info(email),
+    queryFn: () => getUserInfo({ email }),
+    onError: () => {
+        renderToast({
+            type: 'error',
+            message:
+                '사용자의 정보를 가져오는데 실패했습니다. 다시 시도해주세요.'
+        });
+    }
+});
 
 // [GET] 로그인 상태를 확인함
-const useFetchLoginStatus = () =>
-    useQuery<Get.CheckUser.Return>(userKey.all(), checkLoginStatus, {
-        onError: () => {
-            renderToast({
-                type: 'error',
-                message:
-                    '로그인 상태를 확인하는데 실패했습니다. 다시 시도해주세요.'
-            });
-        }
-    });
+const fetchLoginStatus = () => ({
+    queryKey: userKey.all(),
+    queryFn: () => checkLoginStatus(),
+    onError: () => {
+        renderToast({
+            type: 'error',
+            message: '로그인 상태를 확인하는데 실패했습니다. 다시 시도해주세요.'
+        });
+    }
+});
 
 // [POST] 새로운 사용자를 만듦
 const useCreateNewUser = () => {
@@ -61,4 +58,4 @@ const useCreateNewUser = () => {
     );
 };
 
-export { useGetUserInfo, useFetchLoginStatus, useCreateNewUser };
+export { fetchUserInfo, fetchLoginStatus, useCreateNewUser };
