@@ -16,7 +16,11 @@ const queryClient = new QueryClient({
             useErrorBoundary: true,
             refetchOnWindowFocus: false,
             retry: 0,
-            suspense: true
+            suspense: true,
+            staleTime: 1000 * 60 * 5
+        },
+        mutations: {
+            useErrorBoundary: true
         }
     }
 });
