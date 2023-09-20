@@ -3,6 +3,12 @@ import React from 'react';
 import { css } from '@emotion/react';
 import Link from 'next/link';
 
+import { useRouter } from 'next/navigation';
+
+// react-query
+import { useQuery } from '@tanstack/react-query';
+import { fetchLoginStatus } from '@/query-hooks/useUser';
+
 // common
 import COLOR from '@/common/color';
 
@@ -23,7 +29,11 @@ import {
 
 import type { ProviderType } from 'UserInterfaces';
 
-interface Props {
+const handleCreateMeeting = ({
+    userData,
+    navigate,
+    openModal
+}: {
     userData:
         | {
               email: string;
@@ -31,10 +41,22 @@ interface Props {
               providerType: ProviderType;
           }
         | undefined;
-}
+    navigate: () => void;
+    openModal: () => void;
+}) => {
+    if (!userData) {
+        navigate();
+        return;
+    }
+    openModal();
+};
 
-const CreateMeetingContainer = ({ userData }: Props) => {
+const CreateMeetingContainer = () => {
+    const router = useRouter();
+
+    const { data: userData } = useQuery(fetchLoginStatus());
     const [isModalOpen, setIsModalOpen] = React.useState(false);
+
     return (
         <FlexContainer direction="column" customCss={layoutStyle}>
             <FlexContainer justifyContent="end" customCss={descriptionStyle}>
@@ -74,9 +96,15 @@ const CreateMeetingContainer = ({ userData }: Props) => {
                     <Button
                         size="xl"
                         width={400}
-                        onClick={() => setIsModalOpen(true)}
+                        onClick={() =>
+                            handleCreateMeeting({
+                                userData,
+                                navigate: () => router.push('/auth/signIn'),
+                                openModal: () => setIsModalOpen(true)
+                            })
+                        }
                     >
-                        미팅 만들기
+                        {userData ? '미팅 만들기' : '로그인하고 미팅 시작하기'}
                     </Button>
                 </FlexContainer>
             </section>
