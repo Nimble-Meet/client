@@ -40,7 +40,7 @@ const Main = () => {
                             justifyContent="center"
                             customCss={meetingSectionStyle}
                         >
-                            <CreateMeetingContainer userData={userData} />
+                            <CreateMeetingContainer />
                             <MeetingDashboard />
                         </FlexContainer>
                         <FlexContainer customCss={infoSectionStyle}>
