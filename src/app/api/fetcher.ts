@@ -1,24 +1,22 @@
 import { cookies } from 'next/headers';
 
-export async function fetcher(method: string, url: string, options = {}) {
-    const accessToken = cookies().get('access_token')?.value
+export const fetcher = async (url: string, options = {}) => {
+    const accessToken = cookies().get('access_token')?.value;
 
-    const option = {
-        method,
+    const defaultOptions = {
+        method: 'GET',
         headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${accessToken}`
-        },
-        ...options
-    }
-  
-    try {
-        const response = await fetch(`http://localhost:3000${url}`, option);
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${accessToken}`
+        }
+    };
 
-        const data = await response.json();
-  
-        return data;
-    } catch(e) {
-        console.error(e);
-    }
-  }
+    const response = await fetch(`http://localhost:3000${url}`, {
+        ...defaultOptions,
+        ...options
+    });
+
+    const data = await response.json();
+
+    return data;
+};
