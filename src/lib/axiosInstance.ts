@@ -7,7 +7,6 @@ import axios, {
 
 import Cookies from 'js-cookie';
 
-import { handleError } from '@/utils/Error/handleError';
 import { ERROR_CODE } from '@/constants/error';
 
 interface InternalAxiosRequestConfig<T = any> extends AxiosRequestConfig {
@@ -42,7 +41,6 @@ axiosInstance.interceptors.response.use(
         const originalRequest = error.config as InternalAxiosRequestConfig;
 
         if (error.response?.status === ERROR_CODE.UNAUTHORIZED) {
-            handleError(error, ERROR_CODE.UNAUTHORIZED);
             return { data: null };
         }
 
