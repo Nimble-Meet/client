@@ -10,13 +10,14 @@ import { layoutStyle } from './Avatar.style';
 
 interface Props {
     nickname: string;
+    size: number;
     imgSrc?: string | StaticImageData;
     isFirst?: boolean;
     zIndex?: number;
 }
 
 // TODO: 툴팁 구현 및 +, - 버튼 구현
-const Avatar = ({ nickname, imgSrc, isFirst, zIndex }: Props) => {
+const Avatar = ({ nickname, imgSrc, isFirst, zIndex, size }: Props) => {
     return imgSrc ? (
         <Image
             style={{
@@ -26,12 +27,12 @@ const Avatar = ({ nickname, imgSrc, isFirst, zIndex }: Props) => {
                 zIndex: isFirst ? 100 : zIndex
             }}
             src={imgSrc}
-            width={40}
-            height={40}
+            width={size}
+            height={size}
             alt="profile"
         />
     ) : (
-        <div css={layoutStyle}>
+        <div css={layoutStyle(size)}>
             <Typography value={nickname.substring(2)} color="gray100" />
         </div>
     );

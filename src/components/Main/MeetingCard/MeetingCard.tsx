@@ -57,6 +57,7 @@ const MeetingCard = ({
                             nickname={host.nickname}
                             // imgSrc={people.imgSrc}
                             isFirst
+                            size={40}
                         />
                         {peoples.map((people, i) => (
                             <Avatar
@@ -64,6 +65,7 @@ const MeetingCard = ({
                                 nickname={people.nickname}
                                 // imgSrc={people.imgSrc}
                                 zIndex={i}
+                                size={40}
                             />
                         ))}
                         <InvitePeopleAvater meetingId={meetingId} />
