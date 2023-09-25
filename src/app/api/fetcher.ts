@@ -11,7 +11,7 @@ export const fetcher = async (url: string, options = {}) => {
         }
     };
 
-    const response = await fetch(`http://localhost:3000${url}`, {
+    const response = await fetch(`${process.env.CLIENT_BASE_URL}${url}`, {
         ...defaultOptions,
         ...options
     });
