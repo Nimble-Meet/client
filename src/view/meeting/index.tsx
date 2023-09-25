@@ -1,9 +1,15 @@
-"use client"
+'use client';
 
-const Meeting = ({ meetingData }: { meetingData : any}) => {
-    console.log(meetingData);
-    
-    return <div>21312412412</div>
-}
+import { MemberSpace, ChatSpace } from '@/components/Meeting';
+
+const Meeting = ({ meetingData }: { meetingData: any }) => {
+    const members = [meetingData.host, ...meetingData.members];
+
+    return (
+        <main>
+            <MemberSpace members={[...members, ...members]} />
+        </main>
+    );
+};
 
 export default Meeting;
