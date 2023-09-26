@@ -11,7 +11,7 @@ export const fetcher = async (url: string, options = {}) => {
         }
     };
 
-    const response = await fetch(`${process.env.CLIENT_BASE_URL}${url}`, {
+    const response = await fetch(`${process.env.REACT_APP_URL}${url}`, {
         ...defaultOptions,
         ...options
     });
